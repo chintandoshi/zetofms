@@ -1,0 +1,40 @@
+<% render :partial => 'sidebar' %>
+
+<div id="controls">
+    <%=  global_print_link() %> |
+    <%= link_to 'Edit', edit_vehicle_path(@vehicle), :class => "edit" %> |
+    <%= link_to "Delete", @vehicle, :class => "delete", :confirm => 'Are you sure?', :method => :delete %> |
+    <%= link_to 'Attachments', attachments_vehicle_path(@vehicle), :class => "attachments" %> |
+    <%= link_to 'Back', vehicles_path, :class => "back" %>
+</div>
+
+<h1>Vehicle information</h1>
+
+
+<table class="info">
+  <tbody>
+    <tr>
+        <td class="field"> Registration Number:</td> <td>
+        <%=h @vehicle.registration_number %></td>
+    </tr>
+    <tr>
+        <td class="field"> Vehicle Manufacturer:</td> <td>
+        <%=h @vehicle.make.make_name %></td>
+    </tr>
+    <tr>
+        <td class="field"> Vehicle Model:</td> <td>
+        <%=h @vehicle.vmodel.model_name %></td>
+    </tr>
+    <tr>
+        <td class="field"> Products:</td> 
+        <td> <ul>
+            <% @vehicle.product_types.each do |product| %>
+              <li> <%=h product.product_type_name %>  </li>
+              <% end %>
+        </ul> </td>
+    </tr>
+
+  </tbody>
+</table>
+
+

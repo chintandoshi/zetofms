@@ -1,0 +1,36 @@
+<% render :partial => 'sidebar' %>
+
+<h1>Vehicle management</h1>
+
+<%=  render :partial => 'vehiclefilter' %>
+<br/>
+
+<table class="listing">
+  <thead>
+      <tr class="header">
+        <th>  <%= sort_link 'Registration Number', :registration_number %>  <%= sort_flag :registration_number %>  </th>
+        <th> Manufacturer / Model </th>
+        <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <% @vehicles.each do |vehicle| %>
+      <tr class="<%= cycle("odd", "even") -%>">
+        <td><%=h vehicle.registration_number %></td>
+        <td><%=h vehicle.make.make_name %> <%=h vehicle.vmodel.model_name %></td>
+         <td class="invisible"><span>
+            <%= link_to "Show",vehicle, :class => "showlink" %>
+            <%= link_to "Delete", vehicle,:class => "dellink", :confirm => 'Are you sure?', :method => :delete %>
+         </span></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+
+
+ <div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info @vehicles %>
+  </div>
+  <%= will_paginate @vehicles, :container => false %>
+</div>

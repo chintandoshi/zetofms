@@ -1,0 +1,38 @@
+<% render :partial => 'sidebar' %>
+
+<h1>Drivers</h1>
+
+<%=  render :partial => 'driverfilter' %>
+<br/>
+
+<table class="listing">
+  <thead>
+      <tr class="header">
+        <th>  <%= sort_link 'First Name', :first_name %>  <%= sort_flag :first_name %>  </th>
+        <th> <%= sort_link 'Last Name', :last_name %> <%=  sort_flag :last_name %>  </th>
+        <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <% @drivers.each do |driver| %>
+      <tr class="<%= cycle("odd", "even") -%>">
+        <td><%=h driver.first_name %></td>
+        <td><%=h driver.last_name %></td>
+         <td class="invisible"><span>
+            <%= link_to "Show",driver, :class => "showlink" %>
+            <%= link_to "Delete", driver,:class => "dellink", :confirm => 'Are you sure?', :method => :delete %>
+         </span></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+
+
+ <div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info @drivers %>
+  </div>
+  <%= will_paginate @drivers, :container => false %>
+</div>
+
+

@@ -1,0 +1,35 @@
+<% render :partial => '/shared/sidebar/admin' %>
+
+<div id="controls">
+    <%= link_to 'Back to vehicle manufacturers', makes_path, :class => "back" %>
+</div>
+
+<table class="admin">
+  <thead>
+      <tr class="header">
+        <th>Models for <%=  @make.make_name%> :</th>
+        <th></th>
+      </tr>
+  </thead>
+  <tbody>
+    <% unless @make.vmodels.empty? -%>
+          <% @make.vmodels.each do |vmodel| %>
+          <tr>
+             <td><%=h vmodel.model_name %></td>
+             <td class="invisible"><span>
+                  <%= link_to 'Delete', make_vmodel_url(@make, vmodel),:class => "dellink", :confirm => 'Are you sure?', :method => :delete %>
+             </span></td>
+          </tr>
+          <% end %>
+      <% end %>
+   </tbody>
+</table>
+
+<% form_for [@make,Vmodel.new] do |f| %>
+  <%= error_messages_for :vmodel %>
+  <div id="adminpanel">
+      <%= f.label :model_name, "New Model for #{@make.make_name}" %>
+      <%= f.text_field :model_name, :size => 20, :maxlength => 25 %>
+      <%= f.submit 'Add', :class => "button" %>
+  </div>
+<% end %>

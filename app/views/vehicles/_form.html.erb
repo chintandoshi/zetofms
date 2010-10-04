@@ -1,0 +1,27 @@
+<div id="panel">
+  <p>
+    <%= form.label :registration_number %><br />
+    <% if mode == "new" %>
+      <%= form.text_field :registration_number, :size => 25, :maxlength => 25 %>
+    <% else %>
+      <%= form.text_field :registration_number, :size => 25, :maxlength => 25 ,:disabled => 'true'  %>
+    <% end %>
+  </p>
+  <p>
+    <%= form.label :vmodel_id, "Select Vehicle Model" %><br />
+    <%= form.select(:vmodel_id, populate_combo_with_vehiclemodels, :include_blank => true) %>
+  </p>
+
+  <p>
+		<label for="products_ui">Products that can be transported:</label> <br />
+		<% (populate_combo_with_products()).each do |product| %>
+			<%= check_box_tag(
+                            "vehicle[product_list][#{product.id}]",
+                            "1",
+                            @vehicle.product_types.detect{|d| d == product}) %>
+			<%= "#{product.product_type_name}"%><br />
+		<% end %>
+
+  </p>
+
+</div>

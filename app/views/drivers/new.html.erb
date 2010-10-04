@@ -1,0 +1,17 @@
+<% render :partial => 'sidebar' %>
+
+<div id="controls">
+    <%= link_to 'Cancel', drivers_path, :class => "cancel" %>
+</div>
+
+<h1>Add a new driver record</h1>
+
+<% form_for(@driver) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => "form", :object => f %>
+
+  <%= f.submit 'Add Driver' %>
+  <%= link_to 'Cancel', drivers_path, :method => 'get'%>
+
+<% end %>

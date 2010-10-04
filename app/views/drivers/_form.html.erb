@@ -1,0 +1,131 @@
+<div id="panel">
+  <h3> Basic Details </h3>
+  <p>
+    <%= form.label :first_name, "First Name" %><br />
+    <%= form.text_field :first_name, :size => 50, :maxlength => 50 %>
+  </p>
+
+  <p>
+    <%= form.label :middle_name, "Middle Name" %><br />
+    <%= form.text_field :middle_name, :size => 25, :maxlength => 25 %>
+  </p>
+
+  <p>
+    <%= form.label :last_name, "Last Name"  %><br />
+    <%= form.text_field :last_name, :size => 50, :maxlength => 50 %>
+  </p>
+  <p>
+      <%= form.label :date_of_birth, "Date of Birth" %><br />
+      <%= form.date_select :date_of_birth,:order => [:day, :month, :year], :start_year => 1930,
+                        :end_year=>2049, :include_blank => false %>
+   </p>
+ </div>
+
+
+ <div id="panel">
+     <h3> Current Address </h3>
+  <p>
+    <%= form.label :addr_line_1, "Address Line 1"  %><br />
+    <%= form.text_field :addr_line_1,:size => 50, :maxlength => 50  %>
+  </p>
+  <p>
+    <%= form.label :addr_line_2, "Address Line 2" %><br />
+    <%= form.text_field :addr_line_2,:size => 50, :maxlength => 50  %>
+  </p>
+  <p>
+    <%= form.label :addr_line_3, "Address Line 3" %><br />
+    <%= form.text_field :addr_line_3,:size => 50, :maxlength => 50  %>
+  </p>
+  <p>
+    <%= form.label :city, "City" %><br />
+    <%= form.text_field :city,:size => 25, :maxlength => 25  %>
+  </p>
+  <p>
+    <%= form.label :state, "State" %><br />
+    <%= form.text_field :state,:size => 25, :maxlength => 25  %>
+  </p>
+  <p>
+    <%= form.label :country, "Country" %><br />
+    <%= form.text_field :country,:size => 25, :maxlength => 25  %>
+  </p>
+  <p>
+    <%= form.label :postal_code, "Postal Code" %><br />
+    <%= form.text_field :postal_code, :size => 10, :maxlength => 10 %>
+  </p>
+  </div>
+
+
+   <div id="panel">
+       <h3> Permanent Address </h3>
+  <p>
+    <%= form.label :addr_line_1_perm, "Address Line 1"  %><br />
+    <%= form.text_field :addr_line_1_perm,:size => 50, :maxlength => 50  %>
+  </p>
+  <p>
+    <%= form.label :addr_line_2_perm, "Address Line 2" %><br />
+    <%= form.text_field :addr_line_2_perm,:size => 50, :maxlength => 50  %>
+  </p>
+  <p>
+    <%= form.label :addr_line_3_perm, "Address Line 3" %><br />
+    <%= form.text_field :addr_line_3_perm,:size => 50, :maxlength => 50  %>
+  </p>
+  <p>
+    <%= form.label :city_perm, "City" %><br />
+    <%= form.text_field :city_perm,:size => 25, :maxlength => 25  %>
+  </p>
+  <p>
+    <%= form.label :state_perm, "State" %><br />
+    <%= form.text_field :state_perm,:size => 25, :maxlength => 25  %>
+  </p>
+  <p>
+    <%= form.label :country_perm, "Country" %><br />
+    <%= form.text_field :country_perm,:size => 25, :maxlength => 25  %>
+  </p>
+  <p>
+    <%= form.label :postal_code_perm, "Postal Code" %><br />
+    <%= form.text_field :postal_code_perm, :size => 10, :maxlength => 10 %>
+  </p>
+  </div>
+
+  <div id="panel">
+      <h3> Phone </h3>
+   <p>
+    <%= form.label :phone_country_1, "Country Code" %>
+    <%= form.text_field :phone_country_1, :size => 3, :maxlength => 3 %>
+    <%= form.label :phone_area_1, "Area Code" %>
+    <%= form.text_field :phone_area_1, :size => 4, :maxlength => 4 %>
+    <%= form.label :phone_number_1, "Number" %>
+    <%= form.text_field :phone_number_1, :size => 10, :maxlength => 10 %>
+    <%= form.label :phone_ext_1, "Extension" %>
+    <%= form.text_field :phone_ext_1, :size => 3, :maxlength => 3 %>
+     <br />
+  </p>
+  <p>
+    <%= form.label :phone_country_2, "Country Code" %>
+    <%= form.text_field :phone_country_2, :size => 3, :maxlength => 3 %>
+    <%= form.label :phone_area_2, "Area Code" %>
+    <%= form.text_field :phone_area_2, :size => 4, :maxlength => 4 %>
+    <%= form.label :phone_number_2, "Number" %>
+    <%= form.text_field :phone_number_2, :size => 10, :maxlength => 10 %>
+    <%= form.label :phone_ext_2, "Extension" %>
+    <%= form.text_field :phone_ext_2, :size => 3, :maxlength => 3 %>
+     <br />
+  </p>
+  </div>
+
+  <div id="panel">
+      <h3> Misc. Details </h3>
+    <p>
+      <%= form.label :driving_license_number, "Driving License Number" %><br />
+      <%= form.text_field :driving_license_number,:size=> 15, :maxlength => 15  %>
+    </p>
+    <p>
+      <%= form.label :driving_license_validity, "Driving License Valid Until" %><br />
+      <%= form.date_select :driving_license_validity,:order => [:day, :month, :year], :start_year => 2000,
+                        :end_year=>2099, :include_blank => true %>
+    </p>
+    <p>
+      <%= form.label :blood_group, "Blood group" %><br />
+      <%= form.text_field :blood_group,:size => 5, :maxlength => 5  %>
+    </p>
+  </div>

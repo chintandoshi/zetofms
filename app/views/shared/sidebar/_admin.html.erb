@@ -1,0 +1,13 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<% content_for :sidebar_links_list do %>
+Configure: <br/>
+<div class="right-container">
+  <%= button_to 'Vehicles Manufacturers & Models', makes_path, :method => :get, :class => "button" %>
+  <%= button_to 'Freight product types', product_types_path, :method => :get, :class => "button" %>
+  <%= button_to 'Frieght product units', product_units_path, :method => :get, :class => "button" %>
+</div>
+<% end %>

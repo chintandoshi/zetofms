@@ -1,0 +1,50 @@
+<% render :partial => '/shared/sidebar/admin' %>
+
+<h1>Freight Product Types</h1>
+<br/>
+<table class="admin">
+  <thead>
+      <tr class="header">
+        <th>  <%= sort_link 'Freight Product Name', :product_type_name %>  <%= sort_flag :product_type_name %>  </th>
+        <th></th>
+      </tr>
+  </thead>
+  <tbody>
+    <% unless @product_types.empty? -%>
+          <% @product_types.each do |type| %>
+          <tr>
+             <td><%=h type.product_type_name %></td>
+             <td class="invisible"><span>
+                  <%= link_to 'Delete', type,:class => "dellink",
+                    :confirm => 'Are you sure?',
+                    :method => :delete %>
+             </span></td>
+          </tr>
+          <% end %>
+      <% end %>
+   </tbody>
+</table>
+
+ <div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info @product_types %>
+  </div>
+  <%= will_paginate @product_types, :container => false %>
+</div>
+
+<% form_for(ProductType.new) do |f| %>
+  <%= error_messages_for :product_type %>
+  <div id="adminpanel">
+      <%= f.label :product_type_name, "New product" %>
+      <%= f.text_field :product_type_name, :size => 20, :maxlength => 25 %>
+      <%= f.submit 'Add', :class => "button" %>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+

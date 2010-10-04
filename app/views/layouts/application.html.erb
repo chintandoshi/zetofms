@@ -1,0 +1,50 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>LogiCRM: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'scaffold' %>
+  <%= stylesheet_link_tag 'template' %>
+  <%= stylesheet_link_tag 'custom' %>
+  <%= stylesheet_link_tag 'pagination' %>
+  <%=  stylesheet_link_tag('print', :media => :print) %>
+  <%= javascript_include_tag :defaults %>
+</head>
+
+<body>
+		<div id="main">
+			<div id="header">
+                            <p id="status">
+                              Signed in as <%= current_user_session.record.login %> |
+                              <%= link_to('Logout',  logout_login_url, :method => :delete) if current_user() %>
+                            </p>
+                            <h1>ZetoCRM</h1>
+			</div>
+			<div id="menu">
+                            <%=  render :partial => "shared/tabs"%>
+			</div>
+
+			<div id="content">
+                          <div id="left-column">
+                                <% if !notice.nil? %>
+                                  <p style="color: green"><%= notice %></p>
+                                <% end %>
+                                <%= yield %>
+                          </div>
+                          <div id="right-column">
+                            <%= yield :sidebar_links_list -%>
+                          </div>
+			</div>
+
+			<div id="footer">
+                          <p>
+                             <%= link_to "Zeto Technologies Pvt. Ltd.", "http://www.zetotech.com" %> &copy; 2010
+                          </p>
+			</div>
+		</div>
+</body>
+</html>

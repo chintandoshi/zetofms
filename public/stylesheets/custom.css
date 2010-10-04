@@ -1,0 +1,62 @@
+.listing { width: 100%;
+          border-collapse: collapse;
+          margin: 2px 0 16px 0;
+          background: #fff;
+          border-top: 1px solid #ccc;
+          }
+.listing th, .listing td { text-align: left; padding: 4px 2px; border-bottom: 1px solid #ccc; }
+.listing th { padding: 6px 2px; }
+.listing tr.header { background: #DDDDDD;}
+.listing tr.even { background: #E1E5EB; }
+.listing tr.odd { background:#fff;}
+.listing tr:hover { background: #ecf4fd; }
+.listing tr.header:hover { background: #DDDDDD; }
+.listing td.invisible span { display:none; margin: 0; padding: 0; background: #fff }
+.listing tr:hover span { display:inline; }
+.listing tr span .dellink { margin: 0; padding: 4px 4px 4px 20px; background: #fff url('../images/delete.gif') no-repeat 2px;  font-weight: normal; border: 1px solid #fee; }
+.listing tr span .showlink { margin: 0; padding: 4px 4px 4px 20px; background: #fff url('../images/details.gif') no-repeat 2px;  font-weight: normal; border: 1px solid #fee; }
+
+
+.admin {  width: auto;
+          border-collapse: collapse;
+          margin: 2px 0 16px 0;
+          background: #fff;
+          }
+.admin th { text-align: left; padding: 4px 2px;  }
+.admin td { text-align: left; padding: 4px 2px;}
+.admin tr.header:hover { background: #fff; }
+.admin tr:hover { background: #ecf4fd; }
+.admin td.invisible span { display:none; margin: 0; padding: 0; background: #fff }
+.admin tr:hover span { display:inline; }
+.admin tr span .dellink { margin: 0; padding: 4px 4px 4px 20px; background: #fff url('../images/delete.gif') no-repeat 2px;  font-weight: normal; border: 1px solid #fee; }
+.admin tr span .showlink { margin: 0; padding: 4px 4px 4px 20px; background: #fff url('../images/details.gif') no-repeat 2px;  font-weight: normal; border: 1px solid #fee; }
+
+
+
+
+
+
+.info { width: auto;
+        border-collapse: collapse;
+        margin: 2px 0 16px 0;
+        background: #fff;
+        border-top: 1px solid #ccc;
+        }
+.info tr {
+        border-bottom: 1px solid #ccc;
+}
+.info td {
+     padding: 5px;
+     text-align: left;
+}
+.info td.field {
+    font-weight: bold;
+}
+
+
+img
+{  
+   border-style: none;
+   margin: auto;
+
+}

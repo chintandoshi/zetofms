@@ -1,0 +1,43 @@
+<% render :partial => '/shared/sidebar/admin' %>
+
+<h1>Vehicle Manufacturers & Models</h1>
+<br/>
+<table class="admin">
+  <thead>
+      <tr class="header">
+        <th>  <%= sort_link 'Manufacturer Name', :make_name %>  <%= sort_flag :make_name %>  </th>
+        <th></th>
+      </tr>
+  </thead>
+  <tbody>
+    <% unless @makes.empty? -%>
+          <% @makes.each do |make| %>
+          <tr>
+             <td><%=h make.make_name %></td>
+             <td class="invisible"><span>
+                  <%= link_to 'View Models', make,:class => "showlink" %>
+                  <%= link_to 'Delete', make,:class => "dellink",
+                    :confirm => 'This will also delete any associated models defined for this manufacturer.Are you sure?',
+                    :method => :delete %>
+             </span></td>
+          </tr>
+          <% end %>
+      <% end %>
+   </tbody>
+</table>
+
+ <div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info @makes %>
+  </div>
+  <%= will_paginate @makes, :container => false %>
+</div>
+
+<% form_for(Make.new) do |f| %>
+  <%= error_messages_for :make %>
+  <div id="adminpanel">
+      <%= f.label :make_name, "New Manufacturer" %>
+      <%= f.text_field :make_name, :size => 20, :maxlength => 25 %>
+      <%= f.submit 'Add', :class => "button" %>
+  </div>
+<% end %>

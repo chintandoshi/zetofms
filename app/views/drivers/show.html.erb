@@ -1,0 +1,79 @@
+<% render :partial => 'sidebar' %>
+
+<div id="controls">
+    <%=  global_print_link() %> |
+    <%= link_to 'Edit', edit_driver_path(@driver), :class => "edit" %> |
+    <%= link_to "Delete", @driver, :class => "delete", :confirm => 'Are you sure?', :method => :delete %> |
+    <%= link_to 'Attachments', attachments_driver_path(@driver), :class => "attachments" %> |
+    <%= link_to 'Back', drivers_path, :class => "back" %>
+</div>
+
+<h1><%=h @driver.display_name %></h1>
+
+
+
+<table class="info">
+  <tbody>
+    <tr>
+        <td class="field"> Name:</td> <td>
+        <%=h @driver.first_name %>
+        <%=h @driver.middle_name %>
+        <%=h @driver.last_name %></td>
+    </tr>
+    <tr>
+        <td class="field"> Date of Birth:</td> <td>
+        <% if !(@driver.date_of_birth.nil?) then %>
+        <%=h @driver.date_of_birth.to_s(:long_ordinal) %>
+        <%  end %> </td>
+    </tr>
+    <tr>
+        <td class="field"> Current Address:</td> <td>
+        <%= display_address(@driver.addr_line_1,
+                         @driver.addr_line_2,
+                         @driver.addr_line_3,
+                         @driver.city,
+                         @driver.state,
+                         @driver.country,
+                         @driver.postal_code) %> </td>
+    </tr>
+    <tr>
+        <td class="field"> Permanent Address:</td> <td>
+        <%= display_address(@driver.addr_line_1_perm,
+                         @driver.addr_line_2_perm,
+                         @driver.addr_line_3_perm,
+                         @driver.city_perm,
+                         @driver.state_perm,
+                         @driver.country_perm,
+                         @driver.postal_code_perm) %> </td>
+    </tr>
+    <tr>
+        <td class="field"> Phone 1:</td> <td>
+        <%=h display_phone_number(@driver.phone_country_1,
+                           @driver.phone_area_1,
+                           @driver.phone_number_1,
+                           @driver.phone_ext_1) %> </td>
+    </tr>
+    <tr>
+        <td class="field"> Phone 2:</td> <td>
+        <%=h display_phone_number(@driver.phone_country_2,
+                           @driver.phone_area_2,
+                           @driver.phone_number_2,
+                           @driver.phone_ext_2) %> </td>
+    </tr>
+    <tr>
+        <td class="field"> Driving License Number:</td> <td>
+        <%=h  ((@driver.driving_license_number.nil? || @driver.driving_license_number.blank?) ?
+        "N/A" : @driver.driving_license_number) %> </td>
+    </tr>
+    <tr>
+        <td class="field"> Driving License Valid Until:</td> <td>
+        <%=h  ((@driver.driving_license_validity.nil? || @driver.driving_license_validity.blank?) ?
+       "N/A" : @driver.driving_license_validity.to_s(:long_ordinal)) %></td>
+    </tr>
+    <tr>
+        <td class="field"> Blood Group:</td> <td>
+        <%=h  ((@driver.blood_group.nil? || @driver.blood_group.blank?) ? "N/A" : @driver.blood_group) %></td>
+    </tr> 
+
+  </tbody>
+</table>

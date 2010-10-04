@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  registration_number: MyString
+  vehiclemodel_id: 1
+
+two:
+  registration_number: MyString
+  vehiclemodel_id: 1
