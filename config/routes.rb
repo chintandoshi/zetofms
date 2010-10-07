@@ -1,4 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
+  
+  map.resources :custaccounts do |acc|
+    acc.resources :custcontacts, :only => [:new, :create, :edit, :update, :destroy]
+  end
+
   map.resources :vehicles, :member => {:attachments => :get, :add_attachment => :post}
 
   map.resources :product_units

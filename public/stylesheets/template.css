@@ -141,6 +141,7 @@ p {
 #controls a { padding: 3px 0 3px 25px; position: relative; line-height: 16px; }
 #controls .print {  background: transparent url('../images/print.png') no-repeat 0 1px;}
 #controls .back { background: transparent url('../images/back.jpeg') no-repeat 0 1px;}
+#controls .add {  background: transparent url('../images/add.png') no-repeat 0 1px;}
 #controls .edit {  background: transparent url('../images/edit.png') no-repeat 0 1px;}
 #controls .delete { background: transparent url('../images/delete.gif') no-repeat 0 1px;}
 #controls .attachments { background: transparent url('../images/attachments.gif') no-repeat 0 1px;}

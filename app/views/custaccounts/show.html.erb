@@ -1,0 +1,65 @@
+<% render :partial => '/shared/sidebar/accounts' %>
+
+<div id="controls">
+    <%=  global_print_link() %> |
+    <%= link_to 'Edit', edit_custaccount_path(@custaccount), :class => "edit" %> |
+    <%= link_to "Delete", @custaccount, :class => "delete", :confirm => 'Are you sure?', :method => :delete %> |
+    <%= link_to 'Add a contact', new_custaccount_custcontact_path(@custaccount), :class => "add" %> |
+    <%= link_to 'Back', custaccounts_path, :class => "back" %>
+</div>
+
+<h1>Customer Account information</h1>
+
+
+<table class="info">
+  <tbody>
+    <tr>
+        <td class="field"> Account Name:</td> <td>
+        <%=h @custaccount.company_name %></td>
+    </tr>
+    <tr>
+        <td class="field"> Address:</td> <td>
+        <%=h @custaccount.address %></td>
+    </tr>
+    <tr>
+        <td class="field"> City:</td> <td>
+        <%=h @custaccount.city %></td>
+    </tr>
+    <tr>
+        <td class="field"> State:</td><td>
+        <%=h @custaccount.state %></td>
+    </tr>
+    <tr>
+        <td class="field"> Country:</td><td>
+        <%=h @custaccount.country %></td>
+    </tr>
+    <tr>
+        <td class="field"> Postal Code:</td><td>
+        <%=h @custaccount.postal_code %></td>
+    </tr>
+    <tr>
+        <td class="field"> Phone Number 1:</td><td>
+        <%=h @custaccount.phone1 %></td>
+    </tr>
+    <tr>
+        <td class="field"> Phone Number 2:</td><td>
+        <%=h @custaccount.phone2 %></td>
+    </tr>
+    <tr>
+        <td class="field"> Email:</td><td>
+        <%=h @custaccount.email %></td>
+    </tr>
+    <tr>
+        <td class="field"> Fax Number:</td><td>
+        <%=h @custaccount.fax %></td>
+    </tr>
+    <tr>
+        <td class="field"> Website:</td><td>
+        <%=h @custaccount.website %></td>
+    </tr>
+
+  </tbody>  
+</table>
+
+<%= render :partial => 'contacts', :object => @custaccount.custcontacts, :locals => { :custaccount => @custaccount} %>
+

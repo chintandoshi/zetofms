@@ -1,0 +1,39 @@
+<% render :partial => '/shared/sidebar/accounts' %>
+
+<h1>Customer Accounts</h1>
+
+<%=  render :partial => 'custfilter' %>
+<br/>
+
+<table class="listing">
+  <thead>
+      <tr class="header">
+        <th>  <%= sort_link 'Account Name', :company_name %>  <%= sort_flag :company_name %>  </th>
+        <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <% @custaccounts.each do |cust| %>
+      <tr class="<%= cycle("odd", "even") -%>">
+        <td><%=h cust.company_name %></td>
+         <td class="invisible"><span>
+            <%= link_to "Show",cust, :class => "showlink" %>
+            <%= link_to "Delete", cust,:class => "dellink", :confirm => 'Are you sure?', :method => :delete %>
+         </span></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+
+
+ <div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info @custaccounts %>
+  </div>
+  <%= will_paginate @custaccounts, :container => false %>
+</div>
+
+
+
+
+

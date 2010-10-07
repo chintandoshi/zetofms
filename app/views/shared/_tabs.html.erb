@@ -4,10 +4,8 @@
 %>
 
 <% tabs_tag do |tab| %>
-  <%= tab.products     'Products', url_for(:controller => "products", :action => "index") %>
+  <%= tab.custaccounts    'Customers', url_for(:controller => "custaccounts", :action => "index") %>
   <%= tab.vehicles 'Vehicles',  url_for(:controller => "vehicles", :action => "index")%>
   <%= tab.drivers 'Drivers',  url_for(:controller => "drivers", :action => "index")%>
-  <%= tab.makes 'Makes',  url_for(:controller => "makes", :action => "index")%>
-  <%= tab.schedulings 'Schedulings',  url_for(:controller => "driver_schedulings", :action => "index")%>
   <%= tab.admin 'Admin', url_for(:controller => "makes", :action => "index" ) %>
 <% end %>

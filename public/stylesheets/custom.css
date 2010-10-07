@@ -13,8 +13,15 @@
 .listing tr.header:hover { background: #DDDDDD; }
 .listing td.invisible span { display:none; margin: 0; padding: 0; background: #fff }
 .listing tr:hover span { display:inline; }
-.listing tr span .dellink { margin: 0; padding: 4px 4px 4px 20px; background: #fff url('../images/delete.gif') no-repeat 2px;  font-weight: normal; border: 1px solid #fee; }
-.listing tr span .showlink { margin: 0; padding: 4px 4px 4px 20px; background: #fff url('../images/details.gif') no-repeat 2px;  font-weight: normal; border: 1px solid #fee; }
+.listing tr .dellink { margin: 0; padding: 4px 4px 4px 20px; background: #fff url('../images/delete.gif') no-repeat 2px;  font-weight: normal; border: 1px solid #fee; }
+.listing tr .showlink { margin: 0; padding: 4px 4px 4px 20px; background: #fff url('../images/details.gif') no-repeat 2px;  font-weight: normal; border: 1px solid #fee; }
+
+.sublisting { padding: 1em; border-bottom: 1px solid #ccc;  }
+.sublisting .dropdowndetails {padding: 1em; background: #EBF0F5; }
+.sublisting .dropdowndetails a { padding: 3px 0 3px 25px; position: relative; line-height: 16px; }
+.sublisting .dropdowndetails .edit {  background: transparent url('../images/edit.png') no-repeat 0 1px;}
+.sublisting .dropdowndetails .delete { background: transparent url('../images/delete.gif') no-repeat 0 1px;}
+.sublisting .dropdowndetails .cancel { background: transparent url('../images/cancel.png') no-repeat 0 1px;}
 
 
 .admin {  width: auto;
@@ -28,8 +35,8 @@
 .admin tr:hover { background: #ecf4fd; }
 .admin td.invisible span { display:none; margin: 0; padding: 0; background: #fff }
 .admin tr:hover span { display:inline; }
-.admin tr span .dellink { margin: 0; padding: 4px 4px 4px 20px; background: #fff url('../images/delete.gif') no-repeat 2px;  font-weight: normal; border: 1px solid #fee; }
-.admin tr span .showlink { margin: 0; padding: 4px 4px 4px 20px; background: #fff url('../images/details.gif') no-repeat 2px;  font-weight: normal; border: 1px solid #fee; }
+.admin tr .dellink { margin: 0; padding: 4px 4px 4px 20px; background: #fff url('../images/delete.gif') no-repeat 2px;  font-weight: normal; border: 1px solid #fee; }
+.admin tr .showlink { margin: 0; padding: 4px 4px 4px 20px; background: #fff url('../images/details.gif') no-repeat 2px;  font-weight: normal; border: 1px solid #fee; }
 
 
 
