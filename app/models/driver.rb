@@ -1,6 +1,6 @@
 class Driver < ActiveRecord::Base
 
-  validates_presence_of :first_name, :last_name, :addr_line_1, :city,
+  validates_presence_of :first_name, :last_name,  :city,
                         :state, :country, :postal_code, :phone_country_1,
                         :phone_area_1, :phone_number_1, :date_of_birth
   validates_numericality_of :phone_country_1, :allow_nil => true, :allow_blank => true

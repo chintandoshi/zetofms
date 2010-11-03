@@ -1,0 +1,32 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+<h3>Consignor Contacts:</h3>
+
+<% unless contacts.empty? %>
+    <ol class="sublisting">
+      <% contacts.each do |consignorcontact| %>
+      <li>
+              <%= link_to_function "#{consignorcontact.display_name}","new Effect.toggle( 'details#{consignorcontact.id}',  'blind' )" %> <br/>
+              <div id="details<%= consignorcontact.id %>" style="display:none;" class="dropdowndetails">
+                <div>
+                    <b>Position: </b> <%=h consignorcontact.position %> <br/>
+                    <b>Department:</b> <%=h consignorcontact.department %><br/>
+                    <b>Phone Number 1:</b> <%=h consignorcontact.phone1 %><br/>
+                    <b>Phone Number 2:</b> <%=h consignorcontact.phone2 %><br/>
+                    <b>Email:</b> <%=h consignorcontact.email %><br/>
+                    <b>Fax:</b> <%=h consignorcontact.fax %><br/><br/>
+                    <%= link_to 'Edit', edit_consignor_contact_path(consignor,consignorcontact), :class => "edit" %> |
+                    <%= link_to 'Delete', consignor_contact_path(consignor,consignorcontact), :confirm => 'Are you sure?', :method => :delete, :class => "delete" %> |
+                    <%= link_to_function "Hide","new Effect.toggle( 'details#{consignorcontact.id}',  'blind' )", :class => "cancel" %> |
+                 </div>
+              </div>
+      </li>
+      <% end %>
+    </ol>
+<%  else %>
+  0 contact(s) found.
+<% end %>
+
+

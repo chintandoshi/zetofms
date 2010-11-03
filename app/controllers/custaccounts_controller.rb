@@ -2,7 +2,7 @@ class CustaccountsController < ApplicationController
   # GET /custaccounts
   # GET /custaccounts.xml
 
-  set_tab :custaccounts
+  set_tab :contacts
 
   def index
 

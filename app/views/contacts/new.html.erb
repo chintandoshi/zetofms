@@ -1,0 +1,18 @@
+<% render :partial => '/shared/sidebar/contacts' %>
+
+<div id="controls">
+    <%= link_to 'Cancel', @resource, :class => "cancel" %>
+</div>
+
+<h1>Add a new contact for <%= @resource.display_name  %>  </h1>
+
+<% form_for [@resource,@contact] do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => "form", :object => f, :locals => { :mode => "new"} %>
+
+  <%= f.submit 'Add Contact' %>
+  <%= link_to 'Cancel', @resource, :method => 'get'%>
+
+<% end %>
+

@@ -1,0 +1,16 @@
+<% render :partial => '/shared/sidebar/contacts' %>
+
+<div id="controls">
+    <%= link_to 'Cancel', @consignor, :class => "cancel" %>
+</div>
+
+<h1>Editing Consignor information</h1>
+
+<% form_for(@consignor) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => "form", :object => f, :locals => { :mode => "edit"}%>
+
+  <%= f.submit 'Update Consignor Information', :class => "button" %>
+  <%= link_to 'Cancel', @consignor, :method => 'get' %>
+<% end %>

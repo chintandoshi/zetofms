@@ -1,0 +1,64 @@
+<% render :partial => '/shared/sidebar/contacts' %>
+
+<div id="controls">
+    <%=  global_print_link() %> |
+    <%= link_to 'Edit', edit_consignee_path(@consignee), :class => "edit" %> |
+    <%= link_to "Delete", @consignee, :class => "delete", :confirm => 'Are you sure?', :method => :delete %> |
+    <%= link_to 'Add a contact', new_consignee_contact_path(@consignee), :class => "add" %> |
+    <%= link_to 'Back', consignees_path, :class => "back" %>
+</div>
+
+<h1>Consignee information</h1>
+
+
+<table class="info">
+  <tbody>
+    <tr>
+        <td class="field"> Consignee Name:</td> <td>
+        <%=h @consignee.consignee_name %></td>
+    </tr>
+    <tr>
+        <td class="field"> Address:</td> <td>
+        <%=h @consignee.address %></td>
+    </tr>
+    <tr>
+        <td class="field"> City:</td> <td>
+        <%=h @consignee.city %></td>
+    </tr>
+    <tr>
+        <td class="field"> State:</td><td>
+        <%=h @consignee.state %></td>
+    </tr>
+    <tr>
+        <td class="field"> Country:</td><td>
+        <%=h @consignee.country %></td>
+    </tr>
+    <tr>
+        <td class="field"> Postal Code:</td><td>
+        <%=h @consignee.postal_code %></td>
+    </tr>
+    <tr>
+        <td class="field"> Phone Number 1:</td><td>
+        <%=h @consignee.phone1 %></td>
+    </tr>
+    <tr>
+        <td class="field"> Phone Number 2:</td><td>
+        <%=h @consignee.phone2 %></td>
+    </tr>
+    <tr>
+        <td class="field"> Email:</td><td>
+        <%=h @consignee.email %></td>
+    </tr>
+    <tr>
+        <td class="field"> Fax Number:</td><td>
+        <%=h @consignee.fax %></td>
+    </tr>
+    <tr>
+        <td class="field"> Website:</td><td>
+        <%=h @consignee.website %></td>
+    </tr>
+
+  </tbody>
+</table>
+
+<%= render :partial => 'contacts', :object => @consignee.contacts, :locals => { :consignee => @consignee} %>

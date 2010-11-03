@@ -7,7 +7,7 @@ class Custaccount < ActiveRecord::Base
                         :message => 'Email address must be valid',
                         :allow_nil => true, :allow_blank => true
 
-  has_many :custcontacts, :dependent => :destroy
+  has_many :contacts, :as => :resource, :dependent => :destroy
 
   def display_name
     return self.company_name

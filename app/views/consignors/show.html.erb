@@ -1,0 +1,65 @@
+<% render :partial => '/shared/sidebar/contacts' %>
+
+<div id="controls">
+    <%=  global_print_link() %> |
+    <%= link_to 'Edit', edit_consignor_path(@consignor), :class => "edit" %> |
+    <%= link_to "Delete", @consignor, :class => "delete", :confirm => 'Are you sure?', :method => :delete %> |
+    <%= link_to 'Add a contact', new_consignor_contact_path(@consignor), :class => "add" %> |
+    <%= link_to 'Back', consignors_path, :class => "back" %>
+</div>
+
+<h1>Consignor information</h1>
+
+
+<table class="info">
+  <tbody>
+    <tr>
+        <td class="field"> Consignor Name:</td> <td>
+        <%=h @consignor.consignor_name %></td>
+    </tr>
+    <tr>
+        <td class="field"> Address:</td> <td>
+        <%=h @consignor.address %></td>
+    </tr>
+    <tr>
+        <td class="field"> City:</td> <td>
+        <%=h @consignor.city %></td>
+    </tr>
+    <tr>
+        <td class="field"> State:</td><td>
+        <%=h @consignor.state %></td>
+    </tr>
+    <tr>
+        <td class="field"> Country:</td><td>
+        <%=h @consignor.country %></td>
+    </tr>
+    <tr>
+        <td class="field"> Postal Code:</td><td>
+        <%=h @consignor.postal_code %></td>
+    </tr>
+    <tr>
+        <td class="field"> Phone Number 1:</td><td>
+        <%=h @consignor.phone1 %></td>
+    </tr>
+    <tr>
+        <td class="field"> Phone Number 2:</td><td>
+        <%=h @consignor.phone2 %></td>
+    </tr>
+    <tr>
+        <td class="field"> Email:</td><td>
+        <%=h @consignor.email %></td>
+    </tr>
+    <tr>
+        <td class="field"> Fax Number:</td><td>
+        <%=h @consignor.fax %></td>
+    </tr>
+    <tr>
+        <td class="field"> Website:</td><td>
+        <%=h @consignor.website %></td>
+    </tr>
+
+  </tbody>
+</table>
+
+<%= render :partial => 'contacts', :object => @consignor.contacts, :locals => { :consignor => @consignor} %>
+

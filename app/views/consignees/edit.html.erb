@@ -1,0 +1,16 @@
+<% render :partial => '/shared/sidebar/contacts' %>
+
+<div id="controls">
+    <%= link_to 'Cancel', @consignee, :class => "cancel" %>
+</div>
+
+<h1>Editing Consignee information</h1>
+
+<% form_for(@consignee) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => "form", :object => f, :locals => { :mode => "edit"}%>
+
+  <%= f.submit 'Update Consignee Information', :class => "button" %>
+  <%= link_to 'Cancel', @consignee, :method => 'get' %>
+<% end %>

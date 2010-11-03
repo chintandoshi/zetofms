@@ -1,7 +1,15 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :consignees do |consignee|
+    consignee.resources :contacts, :only => [:new, :create, :edit, :update, :destroy]
+  end
+  
+  map.resources :consignors do |consignor|
+    consignor.resources :contacts, :only => [:new, :create, :edit, :update, :destroy]
+  end
+
   
   map.resources :custaccounts do |acc|
-    acc.resources :custcontacts, :only => [:new, :create, :edit, :update, :destroy]
+    acc.resources :contacts, :only => [:new, :create, :edit, :update, :destroy]
   end
 
   map.resources :vehicles, :member => {:attachments => :get, :add_attachment => :post}

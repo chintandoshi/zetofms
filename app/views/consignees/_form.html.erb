@@ -1,0 +1,56 @@
+<div id="panel">
+  <h3>Basic details</h3>
+  <p>
+    <%= form.label :consignee_name, "Consignee Name" %><br />
+    <% if mode == "new" %>
+    <%= form.text_field :consignee_name, :size => 50, :maxlength => 50 %>
+    <% else %>
+    <%= form.text_field :consignee_name, :size => 50, :maxlength => 50, :disabled => true  %>
+    <% end %>
+  </p>
+  <p>
+    <%= form.label :phone1, "Phone Number 1" %><br />
+    <%= form.text_field :phone1, :size => 25, :maxlength => 25 %>
+  </p>
+  <p>
+    <%= form.label :phone2, "Phone Number 2" %><br />
+    <%= form.text_field :phone2, :size => 25, :maxlength => 25 %>
+  </p>
+  <p>
+    <%= form.label :email, "Email" %><br />
+    <%= form.text_field :email, :size => 25, :maxlength => 25 %>
+  </p>
+  <p>
+    <%= form.label :fax, "Fax Number" %><br />
+    <%= form.text_field :fax, :size => 25, :maxlength => 25 %>
+  </p>
+  <p>
+    <%= form.label :website, "Website URL" %><br />
+    <%= form.text_field :website, :size => 25, :maxlength => 25 %>
+  </p>
+</div>
+
+
+<div id="panel">
+  <h3>Address</h3>
+  <p>
+    <%= form.label :address, "Address" %><br />
+    <%= form.text_area :address, :cols => 25, :rows => 3, :maxlength => 100   %>
+  </p>
+  <p>
+    <%= form.label :city %><br />
+    <%= form.text_field :city,:size => 25, :maxlength => 25 %>
+  </p>
+  <p>
+    <%= form.label :state %><br />
+    <%= form.text_field :state,:size => 25, :maxlength => 25 %>
+  </p>
+  <p>
+    <%= form.label :country %><br />
+    <%= form.text_field :country,:size => 25, :maxlength => 25 %>
+  </p>
+  <p>
+    <%= form.label :postal_code %><br />
+    <%= form.text_field :postal_code,:size => 25, :maxlength => 25 %>
+  </p>
+</div>

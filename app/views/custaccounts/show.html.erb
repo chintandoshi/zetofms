@@ -1,10 +1,10 @@
-<% render :partial => '/shared/sidebar/accounts' %>
+<% render :partial => '/shared/sidebar/contacts' %>
 
 <div id="controls">
     <%=  global_print_link() %> |
     <%= link_to 'Edit', edit_custaccount_path(@custaccount), :class => "edit" %> |
     <%= link_to "Delete", @custaccount, :class => "delete", :confirm => 'Are you sure?', :method => :delete %> |
-    <%= link_to 'Add a contact', new_custaccount_custcontact_path(@custaccount), :class => "add" %> |
+    <%= link_to 'Add a contact', new_custaccount_contact_path(@custaccount), :class => "add" %> |
     <%= link_to 'Back', custaccounts_path, :class => "back" %>
 </div>
 
@@ -61,5 +61,5 @@
   </tbody>  
 </table>
 
-<%= render :partial => 'contacts', :object => @custaccount.custcontacts, :locals => { :custaccount => @custaccount} %>
+<%= render :partial => 'contacts', :object => @custaccount.contacts, :locals => { :custaccount => @custaccount} %>
 

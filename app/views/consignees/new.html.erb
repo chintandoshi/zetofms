@@ -1,0 +1,17 @@
+<% render :partial => '/shared/sidebar/contacts' %>
+
+<div id="controls">
+    <%= link_to 'Cancel', consignees_path, :class => "cancel" %>
+</div>
+
+<h1>Add a new consignee</h1>
+
+<% form_for(@consignee) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => "form", :object => f, :locals => { :mode => "new"} %>
+
+  <%= f.submit 'Add Consignee' %>
+  <%= link_to 'Cancel', consignees_path, :method => 'get'%>
+
+<% end %>

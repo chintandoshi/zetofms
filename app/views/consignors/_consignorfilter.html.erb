@@ -1,0 +1,16 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<div id="searchpanel">
+<% form_for @search do |f| %>
+  <p>
+  <%= f.label :consignor_name_like, "Consignor Name:" %> <br/>
+  <%= f.text_field :consignor_name_like,:maxlength => 50, :size => 40 %>
+  </p>
+  <p>
+  <%= f.submit "Filter", :class => "button" %>
+  </p>
+<% end %>
+</div>

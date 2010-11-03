@@ -1,0 +1,34 @@
+<% render :partial => '/shared/sidebar/contacts' %>
+
+<h1>Consignors</h1>
+
+<%=  render :partial => 'consignorfilter' %>
+<br/>
+
+<table class="listing">
+  <thead>
+      <tr class="header">
+        <th>  <%= sort_link 'Consignor Name', :consignor_name %>  <%= sort_flag :consignor_name %>  </th>
+        <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <% @consignors.each do |consignor| %>
+      <tr class="<%= cycle("odd", "even") -%>">
+        <td><%=h consignor.consignor_name %></td>
+         <td class="invisible"><span>
+            <%= link_to "Show",consignor, :class => "showlink" %>
+            <%= link_to "Delete", consignor,:class => "dellink", :confirm => 'Are you sure?', :method => :delete %>
+         </span></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+
+
+ <div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info @consignors %>
+  </div>
+  <%= will_paginate @consignors, :container => false %>
+</div>

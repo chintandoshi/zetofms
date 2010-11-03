@@ -17,8 +17,8 @@
                     <b>Phone Number 2:</b> <%=h custcontact.phone2 %><br/>
                     <b>Email:</b> <%=h custcontact.email %><br/>
                     <b>Fax:</b> <%=h custcontact.fax %><br/><br/>
-                    <%= link_to 'Edit', edit_custaccount_custcontact_path(custaccount,custcontact), :class => "edit" %> |
-                    <%= link_to 'Delete', custaccount_custcontact_path(custaccount,custcontact), :confirm => 'Are you sure?', :method => :delete, :class => "delete" %> |
+                    <%= link_to 'Edit', edit_custaccount_contact_path(custaccount,custcontact), :class => "edit" %> |
+                    <%= link_to 'Delete', custaccount_contact_path(custaccount,custcontact), :confirm => 'Are you sure?', :method => :delete, :class => "delete" %> |
                     <%= link_to_function "Hide","new Effect.toggle( 'details#{custcontact.id}',  'blind' )", :class => "cancel" %> |
                  </div>
               </div>
