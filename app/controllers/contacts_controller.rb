@@ -3,6 +3,11 @@ class ContactsController < ApplicationController
   # GET /contacts/new
   # GET /contacts/new.xml
   before_filter :find_resource
+  set_tab :contacts
+
+  def index
+    
+  end
 
   def new
     @contact = Contact.new

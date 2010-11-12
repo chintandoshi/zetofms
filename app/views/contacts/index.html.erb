@@ -1,20 +1,6 @@
-<h1>Listing contacts</h1>
-
-<table>
-  <tr>
-    <th>First name</th>
-  </tr>
-
-<% @contacts.each do |contact| %>
-  <tr>
-    <td><%=h contact.first_name %></td>
-    <td><%= link_to 'Show', contact %></td>
-    <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-    <td><%= link_to 'Destroy', contact, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New contact', new_contact_path %>
+<p>
+Select: <br/>
+<%= link_to 'Customer Accounts',custaccounts_path %> <br />
+<%= link_to 'Consignors', consignors_path %> <br />
+<%= link_to 'Consignees', consignees_path %> <br />
+</p>

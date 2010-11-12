@@ -1,7 +1,9 @@
-<% render :partial => '/shared/sidebar/contacts' %>
+<% render :partial =>  'sidebar' %>
 
 <h1>Consignors</h1>
-
+<div id="controls">
+  <%=  link_to 'Back', url_for(:controller => "contacts", :action => "index"), :class => "back" %>
+</div>
 <%=  render :partial => 'consignorfilter' %>
 <br/>
 
