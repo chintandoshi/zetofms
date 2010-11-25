@@ -11,6 +11,8 @@ class Vehicle < ActiveRecord::Base
   belongs_to :vmodel
   has_one :make, :through => :vmodel
   has_and_belongs_to_many :product_types
+  has_many :planned_orders
+  has_many :loaded_orders
 
   attr_accessor :product_list
 

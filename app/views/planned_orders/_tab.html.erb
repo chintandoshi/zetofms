@@ -1,0 +1,37 @@
+<% if order.approved? && plannedorder.nil? %>
+    <%= link_to 'Add Planning information', new_order_planned_order_path(order), :class => "newbutton" %>
+<% elsif order.approved? && plannedorder %>
+
+    <% if !plannedorder.approved? %>
+        <span id="toolbar" class="ui-widget-header ui-corner-all">
+              <%= link_to 'Edit', edit_order_planned_order_path(order,plannedorder), :class => "editbutton" %>
+              <%= link_to 'Lock', lock_order_planned_order_path(order,plannedorder), :class => "approvebutton" %>
+        </span>
+    <% end %>
+
+    <table class="info">
+      <tbody>
+        <tr>
+            <td class="field"> Dispatch Date Planned:</td> <td>
+            <%=h plannedorder.dispatch_date_planned %>
+            </td>
+        </tr>
+        <tr>
+            <td class="field"> Delivery Date Planned:</td> <td>
+            <%=h plannedorder.delivery_date_planned %>
+            </td>
+        </tr>
+        <tr>
+            <td class="field"> Vehicle:</td> <td>
+              <%=h plannedorder.vehicle.registration_number if plannedorder.vehicle %>
+            </td>
+        </tr>
+        <tr>
+            <td class="field"> Notes:</td> <td>
+            <%=h plannedorder.notes %>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+
+<% end %>

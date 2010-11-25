@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  order_id: 1
+  detention_location_id: 1
+  start_time: 2010-11-24 13:41:38
+  end_time: 2010-11-24 13:41:38
+  detention_reason_id: 1
+  notes: MyText
+  billing: false
+  created_by: MyString
+  updated_by: MyString
+
+two:
+  order_id: 1
+  detention_location_id: 1
+  start_time: 2010-11-24 13:41:38
+  end_time: 2010-11-24 13:41:38
+  detention_reason_id: 1
+  notes: MyText
+  billing: false
+  created_by: MyString
+  updated_by: MyString

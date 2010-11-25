@@ -1,16 +1,14 @@
-<% render :partial => 'sidebar' %>
-
 <div id="controls">
-    <%= link_to 'Cancel', @vehicle, :class => "cancel" %>
+    <%= link_to 'Cancel', @vehicle, :class => "closebutton" , :style => "float:right;" %>
 </div>
 
-<h1>Editing Vehicle information</h1>
+<h2>Editing Vehicle information</h2>
 
 <% form_for(@vehicle) do |f| %>
   <%= f.error_messages %>
 
   <%= render :partial => "form", :object => f, :locals => { :mode => "edit"}%>
 
-  <%= f.submit 'Update Vehicle Information', :class => "button" %>
-  <%= link_to 'Cancel', @vehicle, :method => 'get' %>
+  <%= f.submit 'Update Vehicle Information', :class => "savebutton" %>
+  <%= link_to 'Cancel', @vehicle, :method => 'get', :class => "closebutton" %>
 <% end %>

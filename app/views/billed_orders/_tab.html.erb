@@ -1,0 +1,54 @@
+<% @enable_billing = order.approved && order.loaded_order && order.delivered_order && order.loaded_order.approved? && order.delivered_order.approved? %>
+
+<% if @enable_billing && billedorder.nil? %>
+    <%= link_to 'Add Billing information', new_order_billed_order_path(order), :class => "newbutton" %>
+<% elsif @enable_billing  && billedorder %>
+
+    <% if !billedorder.approved? %>
+        <span id="toolbar" class="ui-widget-header ui-corner-all">
+              <%= link_to 'Edit', edit_order_billed_order_path(order,billedorder), :class => "editbutton" %>
+              <%= link_to 'Lock', lock_order_billed_order_path(order,billedorder), :class => "approvebutton" %>
+        </span>
+    <% end %>
+
+    <table class="info">
+      <tbody>
+       <tr>
+            <td class="field"> Invoice no.:</td> <td>
+            <%=h billedorder.invoice_no %>
+            </td>
+        </tr>
+       <tr>
+            <td class="field"> Invoice amount:</td> <td>
+            <%=h billedorder.invoice_amount %>
+            </td>
+        </tr>
+        <tr>
+            <td class="field"> Invoice due date:</td> <td>
+            <%=h billedorder.invoice_due_date %>
+            </td>
+        </tr>
+        <tr>
+            <td class="field"> Invoice dispatch date:</td> <td>
+            <%=h billedorder.invoice_dispatch_date %>
+            </td>
+        </tr>
+        <tr>
+            <td class="field"> Payment received:</td> <td>
+            <% if billedorder.paid? %> Yes <% else %> No <% end %>
+            </td>
+        </tr>
+         <tr>
+            <td class="field"> Payment details:</td> <td>
+            <%=h billedorder.payment_details %>
+            </td>
+        </tr>
+        <tr>
+            <td class="field"> Notes:</td> <td>
+            <%=h billedorder.notes %>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+
+<% end %>

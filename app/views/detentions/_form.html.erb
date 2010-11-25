@@ -1,0 +1,63 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+<div id="panel">
+    <h3>Details</h3>
+  <p>
+    <%= form.label :detention_location_id %><br />
+    <%= form.select :detention_location_id, [["Consignor",0] ,["Consignee",1]], :include_blank => "Please Select" %>
+  </p>
+  <p>
+    <%= form.label :start_time %><br />
+    <%= form.datetime_select :start_time, :prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year', :hour => "Choose Hours", :minute => "Choose minutes"} %>
+  </p>
+  <p>
+    <%= form.label :end_time %><br />
+   <%= form.datetime_select :end_time, :prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year', :hour => "Choose Hours", :minute => "Choose minutes"} %>
+  </p>  
+  <p>
+    <%= form.label :detention_reason_id %> <br />
+    <%= form.select :detention_reason_id, populate_combo_with_detentionreasons() , :include_blank => "Please Select" %>
+  </p>
+</div>
+<div id="panel">
+    <h3>Billing</h3>
+  <p>
+    <%= form.label :billing, "Billing for this detention " %>
+    <%= form.check_box :billing, :onchange => "runToggle();" %>
+  </p>
+  <div id="billingElements">
+      <p>
+        <%= form.label :invoice_no %><br />
+        <%= form.text_field :invoice_no, :size => 20 %>
+      </p>
+      <p>
+        <%= form.label :invoice_amount %><br />
+        <%= form.text_field :invoice_amount, :size => 10 %>
+      </p>
+      <p>
+        <%= form.label :invoice_due_date %><br />
+        <%= form.date_select :invoice_due_date, :prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'} %>
+      </p>
+      <p>
+        <%= form.label :invoice_dispatch_date %><br />
+        <%= form.date_select :invoice_dispatch_date, :prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'} %>
+      </p>
+      <p>
+        <%= form.label :paid %><br />
+        <%= form.check_box :paid %>
+      </p>
+      <p>
+        <%= form.label :payment_details %><br />
+        <%= form.text_area :payment_details, :rows => 3, :columns => 15 %>
+      </p>
+  </div>
+</div>
+<div id="panel">
+  <h3>Misc.</h3>
+  <p>
+    <%= form.label :notes %><br />
+    <%= form.text_area :notes, :rows => 7, :columns => 15 %>
+  </p>
+</div>

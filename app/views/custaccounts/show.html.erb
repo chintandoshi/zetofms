@@ -1,16 +1,13 @@
-<% render :partial =>  'sidebar' %>
-
-<div id="controls">
-    <%=  global_print_link() %> |
-    <%= link_to 'Edit', edit_custaccount_path(@custaccount), :class => "edit" %> |
-    <%= link_to "Delete", @custaccount, :class => "delete", :confirm => 'Are you sure?', :method => :delete %> |
-    <%= link_to 'Add a contact', new_custaccount_contact_path(@custaccount), :class => "add" %> |
-    <%= link_to 'Back', custaccounts_path, :class => "back" %>
-</div>
-
-<h1>Customer Account information</h1>
+<span id="toolbar" class="ui-widget-header ui-corner-all">
+    <%=  global_print_link() %>
+    <%= link_to 'Edit', edit_custaccount_path(@custaccount), :class => "editbutton" %>
+    <%= link_to "Delete", @custaccount, :class => "deletebutton", :confirm => 'Are you sure?', :method => :delete %>
+    <%= link_to 'Add a contact', new_custaccount_contact_path(@custaccount), :class => "newbutton" %>
+    <%= link_to 'Back', custaccounts_path, :class => "backbutton" %>
+</span> 
 
 
+<h2>Customer Account Information</h2><br/>
 <table class="info">
   <tbody>
     <tr>

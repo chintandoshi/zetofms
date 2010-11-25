@@ -1,0 +1,14 @@
+<%= javascript_include_tag 'order' %>
+<%= link_to 'Cancel', order_path(@order), :class => "closebutton", :style => "float:right;" %>
+
+<h1>Edit order #<%= @order.id %> </h1>
+
+<% form_for(@order) do |f| %>
+  <%= f.error_messages %>
+
+  <%=  render :partial => 'form', :object => f, :locals => { :mode => "edit"} %>
+  <p>
+    <%= f.submit 'Save', :class => 'savebutton' %>
+    <%= link_to 'Cancel', order_path(@order), :class => "closebutton" %>
+  </p>
+<% end %>

@@ -1,0 +1,37 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  order_id: 1
+  invoice_no: 1
+  invoice_amount: 1
+  invoice_due_date: 2010-11-22
+  invoice_dispatch_date: 2010-11-22
+  detention_billing: false
+  detention_invoice_no: 1
+  detention_invoice_amount: 1
+  dentention_invoice_due_date: 2010-11-22
+  detention_invoice_dispatch_date: 2010-11-22
+  notes: MyText
+  created_by: MyString
+  updated_by: MyString
+  approved_by: MyString
+  approved_at: 2010-11-22 17:40:27
+  approved: false
+
+two:
+  order_id: 1
+  invoice_no: 1
+  invoice_amount: 1
+  invoice_due_date: 2010-11-22
+  invoice_dispatch_date: 2010-11-22
+  detention_billing: false
+  detention_invoice_no: 1
+  detention_invoice_amount: 1
+  dentention_invoice_due_date: 2010-11-22
+  detention_invoice_dispatch_date: 2010-11-22
+  notes: MyText
+  created_by: MyString
+  updated_by: MyString
+  approved_by: MyString
+  approved_at: 2010-11-22 17:40:27
+  approved: false

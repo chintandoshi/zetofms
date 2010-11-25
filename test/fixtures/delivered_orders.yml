@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  order_id: 1
+  delivery_date: 2010-11-22 15:18:38
+  customer_ref_no: MyString
+  unloaded_quantity: 1
+  notes: MyText
+  created_by: MyString
+  updated_by: MyString
+  approved_by: MyString
+  approved_at: 2010-11-22 15:18:38
+  approved: false
+
+two:
+  order_id: 1
+  delivery_date: 2010-11-22 15:18:38
+  customer_ref_no: MyString
+  unloaded_quantity: 1
+  notes: MyText
+  created_by: MyString
+  updated_by: MyString
+  approved_by: MyString
+  approved_at: 2010-11-22 15:18:38
+  approved: false

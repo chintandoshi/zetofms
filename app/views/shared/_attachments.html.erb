@@ -18,8 +18,8 @@
         <td><%= attachment.uploadedfile.original_filename  %></td>
         <td><%= attachment.username %></td>
         <td><%= attachment.created_at  %></td>
-        <td> <%= link_to "View",attachment_box_url(attachment) %></td>
-        <td><%= link_to "Remove", attachment_box_url(attachment), :method => :delete%></td>
+        <td> <%= link_to "",attachment_box_url(attachment), :class => "viewbutton" %></td>
+        <td><%= link_to "", attachment_box_url(attachment), :method => :delete, :class => "deletebutton" %></td>
       </tr>
       <% end %>
   </tbody>

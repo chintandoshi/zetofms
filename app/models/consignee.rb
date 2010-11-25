@@ -8,6 +8,7 @@ class Consignee < ActiveRecord::Base
                         :allow_nil => true, :allow_blank => true
 
   has_many :contacts, :as => :resource, :dependent => :destroy
+  has_many :orders, :dependent => :destroy
 
   def display_name
     return self.consignee_name

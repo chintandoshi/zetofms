@@ -1,16 +1,13 @@
-<% render :partial => 'sidebar' %>
+<%= link_to 'Back', @driver, :class => "backbutton", :style => "float:right;" %> <br/>
 
-<div id="controls">
-    <%= link_to 'Back', @driver, :class => "back" %>
-</div>
-
-  <h1>Attachments for <%=h @driver.display_name %> :</h1>
+  <h2>Attachments for <%=h @driver.display_name %> :</h2>
 
   <%=  render :partial => "shared/attachments", :object => @driver.attachment_boxes  %>
 
   <p>
       <% form_for [@driver, AttachmentBox.new], :url => add_attachment_driver_path(@driver),:html => { :multipart => true } do |form| %>
         <%= error_messages_for :attachment %>
-        <%= form.file_field :uploadedfile %> <%= form.submit "Upload" %>
+        <%= form.file_field :uploadedfile %> <br/><br/>
+        <%= form.submit "Upload", :class => "attachmentsbutton" %>
       <% end %>
   </p>   

@@ -8,20 +8,17 @@
 <table class="listing">
   <thead>
       <tr class="header">
+        <th>Id</th>
         <th>  <%= sort_link 'First Name', :first_name %>  <%= sort_flag :first_name %>  </th>
         <th> <%= sort_link 'Last Name', :last_name %> <%=  sort_flag :last_name %>  </th>
-        <th></th>
       </tr>
   </thead>
   <tbody>
       <% @drivers.each do |driver| %>
       <tr class="<%= cycle("odd", "even") -%>">
+        <td><%=h link_to driver.id, driver %></td>
         <td><%=h driver.first_name %></td>
         <td><%=h driver.last_name %></td>
-         <td class="invisible"><span>
-            <%= link_to "Show",driver, :class => "showlink" %>
-            <%= link_to "Delete", driver,:class => "dellink", :confirm => 'Are you sure?', :method => :delete %>
-         </span></td>
       </tr>
       <% end %>
   </tbody>

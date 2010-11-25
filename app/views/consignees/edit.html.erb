@@ -1,7 +1,4 @@
-<div id="controls">
-    <%= link_to 'Cancel', @consignee, :class => "cancel" %>
-</div>
-
+<%= link_to 'Cancel', @consignee, :class => "closebutton", :style => "float:right;" %>
 <h1>Editing Consignee information</h1>
 
 <% form_for(@consignee) do |f| %>
@@ -9,6 +6,6 @@
 
   <%= render :partial => "form", :object => f, :locals => { :mode => "edit"}%>
 
-  <%= f.submit 'Update Consignee Information', :class => "button" %>
-  <%= link_to 'Cancel', @consignee, :method => 'get' %>
+  <%= f.submit 'Update Consignee Information', :class => "savebutton" %>
+  <%= link_to 'Cancel', @consignee, :method => 'get', :class => "closebutton" %>
 <% end %>

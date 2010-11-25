@@ -45,7 +45,7 @@ module ApplicationHelper
   end
 
   def global_print_link
-    link_to_function("Print this Page", "javascript:print()", :class => "print")
+    link_to_function("Print this Page", "javascript:print()", :class => "printbutton")
   end
 
 end

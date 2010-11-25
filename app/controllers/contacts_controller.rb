@@ -6,7 +6,9 @@ class ContactsController < ApplicationController
   set_tab :contacts
 
   def index
-    
+    @no_of_customers = Custaccount.count
+    @no_of_consignors = Consignor.count
+    @no_of_consignees = Consignee.count
   end
 
   def new

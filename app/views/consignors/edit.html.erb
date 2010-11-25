@@ -1,7 +1,4 @@
-
-<div id="controls">
-    <%= link_to 'Cancel', @consignor, :class => "cancel" %>
-</div>
+<%= link_to 'Cancel', @consignor, :class => "closebutton", :style => "float:right;" %>
 
 <h1>Editing Consignor information</h1>
 
@@ -10,6 +7,6 @@
 
   <%= render :partial => "form", :object => f, :locals => { :mode => "edit"}%>
 
-  <%= f.submit 'Update Consignor Information', :class => "button" %>
-  <%= link_to 'Cancel', @consignor, :method => 'get' %>
+  <%= f.submit 'Update Consignor Information', :class => "savebutton" %>
+  <%= link_to 'Cancel', @consignor, :method => 'get', :class => "closebutton" %>
 <% end %>

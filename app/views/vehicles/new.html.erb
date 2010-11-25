@@ -1,8 +1,4 @@
-<% render :partial => 'sidebar' %>
-
-<div id="controls">
-    <%= link_to 'Cancel', vehicles_path, :class => "cancel" %>
-</div>
+<%= link_to 'Cancel', vehicles_path, :class => "closebutton", :style => "float:right;"  %>
 
 <h1>Add a new vehicle</h1>
 
@@ -11,7 +7,7 @@
 
   <%= render :partial => "form", :object => f, :locals => { :mode => "new"} %>
 
-  <%= f.submit 'Add Vehicle' %>
-  <%= link_to 'Cancel', vehicles_path, :method => 'get'%>
+  <%= f.submit 'Add Vehicle', :class => "savebutton" %>
+  <%= link_to 'Cancel', vehicles_path, :method => 'get', :class => "closebutton"%>
 
 <% end %>

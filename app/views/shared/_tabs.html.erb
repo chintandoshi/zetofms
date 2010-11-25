@@ -4,6 +4,7 @@
 %>
 
 <% tabs_tag do |tab| %>
+  <%= tab.orders 'Orders', url_for(:controller => "orders", :action => "index" ) %>
   <%= tab.contacts    'Contacts', url_for(:controller => "contacts", :action => "index") %>
   <%= tab.vehicles 'Vehicles',  url_for(:controller => "vehicles", :action => "index")%>
   <%= tab.drivers 'Drivers',  url_for(:controller => "drivers", :action => "index")%>

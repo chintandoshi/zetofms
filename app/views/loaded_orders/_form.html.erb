@@ -1,0 +1,43 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+<div id="panel">
+    <h3>Loading information</h3>
+  <p>
+    <%= form.label :loading_date %><br />
+    <%= form.date_select :loading_date,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'} %>
+  </p>
+  <p>
+    <%= form.label :lorry_receipt_no %><br />
+    <%= form.text_field :lorry_receipt_no, :size => 25 %>
+  </p>
+  <p>
+    <%= form.label :vehicle_id %><br />
+    <%= form.select(:vehicle_id, populate_combo_with_vehiclelist, :include_blank => 'Please Select ') %>
+    <%= link_to "Manage vehicles", vehicles_path  %>
+  </p>  
+  <p>
+    <%= form.label :loaded_quantity %> <br />
+    <%= form.text_field :loaded_quantity, :size => 10 %> <%= @order.product_unit.product_unit_name %>
+  </p>
+</div>
+<div id="panel">
+    <h3>Misc.</h3>
+  <p>
+    <%= form.label :expected_delivery_date %><br />
+    <%= form.date_select :expected_delivery_date,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'} %>
+  </p>
+  <p>
+    <%= form.label :delivery_order_no %><br />
+    <%= form.text_field :delivery_order_no, :size => 25 %>
+  </p>
+  <p>
+    <%= form.label :bill_of_entry_no %><br />
+    <%= form.text_field :bill_of_entry_no, :size => 25 %>
+  </p>
+  <p>
+    <%= form.label :notes %><br />
+    <%= form.text_area :notes, :rows => 7, :columns => 15 %>
+  </p>
+</div>

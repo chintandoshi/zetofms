@@ -1,6 +1,5 @@
-<div id="controls">
-    <%= link_to 'Cancel', @resource, :class => "cancel" %>
-</div>
+<%= link_to 'Cancel', @resource, :class => "closebutton",:style => "float:right;"  %>
+
 
 <h1>Editing contact for <%= @resource.display_name  %>  </h1>
 
@@ -9,8 +8,8 @@
 
   <%= render :partial => "form", :object => f, :locals => { :mode => "edit"} %>
 
-  <%= f.submit 'Update Contact Information' %>
-  <%= link_to 'Cancel', @resource, :method => 'get'%>
+  <%= f.submit 'Update Contact Information', :class => "savebutton" %>
+  <%= link_to 'Cancel', @resource, :method => 'get', :class => "closebutton"%>
 
 <% end %>
 

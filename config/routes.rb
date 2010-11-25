@@ -1,29 +1,43 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :consignees do |consignee|
-    consignee.resources :contacts, :only => [:new, :create, :edit, :update, :destroy]
-  end
-  
-  map.resources :consignors do |consignor|
-    consignor.resources :contacts, :only => [:new, :create, :edit, :update, :destroy]
+
+
+  # order module
+  map.resources :orders, :member => { :lock => :get} do |order|
+     order.resources :planned_orders, :only => [:new, :create, :edit, :update],:member => { :lock => :get }
+     order.resources :loaded_orders, :only => [:new, :create, :edit, :update], :member => { :lock => :get }
+     order.resources :delivered_orders, :only => [:new,:create, :edit,:update], :member => { :lock => :get}
+     order.resources :billed_orders, :only => [:new, :create, :edit, :update], :member => {:lock => :get}
+     order.resources :detentions, :only => [:new, :create, :edit, :update, :destroy]
   end
 
-  
+
+  #contacts
+  map.resources :consignees, :member => { :city_autocomplete => :get} do |consignee|
+    consignee.resources :contacts, :only => [:new, :create, :edit, :update, :destroy]
+  end
+  map.resources :consignors, :member => { :city_autocomplete => :get} do |consignor|
+    consignor.resources :contacts, :only => [:new, :create, :edit, :update, :destroy]
+  end
   map.resources :custaccounts do |acc|
     acc.resources :contacts, :only => [:new, :create, :edit, :update, :destroy]
   end
 
+  #drivers
+  map.resources :drivers, :member => {:attachments => :get, :add_attachment => :post}
+
+  #vehicles
   map.resources :vehicles, :member => {:attachments => :get, :add_attachment => :post}
 
-  map.resources :product_units
-
+  #admin
+  map.resources :detention_reasons, :only => [:index, :create, :destroy]
+  map.resources :product_units, :only => [:index, :create, :destroy]
   map.resources :product_types, :only => [:index, :create, :destroy]
-
   map.resources :makes, :only => [:index, :show, :create, :destroy] do |make|
       make.resources :vmodels, :only => [:create, :destroy]
   end
 
 
-  map.resources :drivers, :member => {:attachments => :get, :add_attachment => :post}
+
                                       
   map.resources :attachment_boxes, :controller => "attachment_boxes", :only => [:destroy, :show]
 

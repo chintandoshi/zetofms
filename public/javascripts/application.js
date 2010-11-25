@@ -1,19 +1,19 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
-
-
 var $j = jQuery.noConflict();
 
-$j(function() {
-        $j( "#tabs" ).tabs({
-                ajaxOptions: {
-                        error: function( xhr, status, index, anchor ) {
-                                $j( anchor.hash ).html(
-                                        "Couldn't load this tab. We'll try to fix this as soon as possible. " +
-                                        "If this wouldn't be a demo." );
-                        }
-                }
-        });
+$j(document).ready(function(){
+
+    /* Used globally for all class=listing tables */
+    $j('.listing tr').click(function() {        
+        var href = $j(this).find("a").attr("href");
+        if(href) {
+            window.location = href;
+        }
+    });
+    
 });
+
+
 

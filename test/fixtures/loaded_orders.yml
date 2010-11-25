@@ -1,0 +1,33 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  order_id: 1
+  loading_date: 2010-11-22
+  lorry_receipt_no: MyString
+  vehicle_id: 1
+  loaded_quantity: 1
+  expected_delivery_date: 2010-11-22
+  delivery_order_no: MyString
+  bill_of_entry_no: MyString
+  notes: MyText
+  created_by: MyString
+  updated_by: MyString
+  approved_by: MyString
+  approved_at: 2010-11-22 13:09:56
+  approved: false
+
+two:
+  order_id: 1
+  loading_date: 2010-11-22
+  lorry_receipt_no: MyString
+  vehicle_id: 1
+  loaded_quantity: 1
+  expected_delivery_date: 2010-11-22
+  delivery_order_no: MyString
+  bill_of_entry_no: MyString
+  notes: MyText
+  created_by: MyString
+  updated_by: MyString
+  approved_by: MyString
+  approved_at: 2010-11-22 13:09:56
+  approved: false

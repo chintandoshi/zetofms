@@ -2,27 +2,29 @@
 # To change this template, choose Tools | Templates
 # and open the template in the editor.
 %>
-<h3>Consignee Contacts:</h3>
+<h3>Contacts:</h3>
 
 <% unless contacts.empty? %>
     <ol class="sublisting">
-      <% contacts.each do |consigneecontact| %>
+      <% contacts.each do |contact| %>
       <li>
-              <%= link_to_function "#{consigneecontact.display_name}","new Effect.toggle( 'details#{consigneecontact.id}',  'blind' )" %> <br/>
-              <div id="details<%= consigneecontact.id %>" style="display:none;" class="dropdowndetails">
+              <%= link_to_function "#{contact.display_name}","$j('#details#{contact.id}').toggle('drop',[],'slow')", :class => "viewbutton" %> <br/>
+              <div id="details<%= contact.id %>" style="display:none;" class="dropdowndetails">
                 <div>
-                    <b>Position: </b> <%=h consigneecontact.position %> <br/>
-                    <b>Department:</b> <%=h consigneecontact.department %><br/>
-                    <b>Phone Number 1:</b> <%=h consigneecontact.phone1 %><br/>
-                    <b>Phone Number 2:</b> <%=h consigneecontact.phone2 %><br/>
-                    <b>Email:</b> <%=h consigneecontact.email %><br/>
-                    <b>Fax:</b> <%=h consigneecontact.fax %><br/><br/>
-                    <%= link_to 'Edit', edit_consignee_contact_path(consignee,consigneecontact), :class => "edit" %> |
-                    <%= link_to 'Delete', consignee_contact_path(consignee,consigneecontact), :confirm => 'Are you sure?', :method => :delete, :class => "delete" %> |
-                    <%= link_to_function "Hide","new Effect.toggle( 'details#{consigneecontact.id}',  'blind' )", :class => "cancel" %> |
+                    <span id="toolbar" class="ui-widget-header ui-corner-all">
+                    <%= link_to 'Edit', edit_consignee_contact_path(consignee,contact), :class => "editbutton" %>
+                    <%= link_to 'Delete', consignee_contact_path(consignee,contact), :confirm => 'Are you sure?', :method => :delete, :class => "deletebutton" %>
+                    <%= link_to_function "Hide","$j('#details#{contact.id}').toggle('drop',[],'slow')", :class => "cancelbutton" %>
+                    </span>
+                    <b>Position: </b> <%=h contact.position %> <br/>
+                    <b>Department:</b> <%=h contact.department %><br/>
+                    <b>Phone Number 1:</b> <%=h contact.phone1 %><br/>
+                    <b>Phone Number 2:</b> <%=h contact.phone2 %><br/>
+                    <b>Email:</b> <%=h contact.email %><br/>
+                    <b>Fax:</b> <%=h contact.fax %><br/><br/>
                  </div>
               </div>
-      </li>
+      </li> <br/>
       <% end %>
     </ol>
 <%  else %>

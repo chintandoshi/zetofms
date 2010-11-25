@@ -88,4 +88,9 @@ class ConsigneesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def city_autocomplete
+    @consignee = Consignee.find(params[:id])
+    render :text => @consignee.city.upcase
+  end
 end

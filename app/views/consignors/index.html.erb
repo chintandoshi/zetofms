@@ -1,27 +1,22 @@
 <% render :partial =>  'sidebar' %>
 
+<%= link_to 'Back', url_for(:controller => "contacts", :action => "index"), :class => "backbutton", :style => "float:right;" %>
 <h1>Consignors</h1>
-<div id="controls">
-  <%=  link_to 'Back', url_for(:controller => "contacts", :action => "index"), :class => "back" %>
-</div>
 <%=  render :partial => 'consignorfilter' %>
 <br/>
 
 <table class="listing">
   <thead>
       <tr class="header">
-        <th>  <%= sort_link 'Consignor Name', :consignor_name %>  <%= sort_flag :consignor_name %>  </th>
-        <th></th>
+        <th>Id</th>
+        <th><%= sort_link 'Consignor Name', :consignor_name %>  <%= sort_flag :consignor_name %></th>
       </tr>
   </thead>
   <tbody>
       <% @consignors.each do |consignor| %>
       <tr class="<%= cycle("odd", "even") -%>">
-        <td><%=h consignor.consignor_name %></td>
-         <td class="invisible"><span>
-            <%= link_to "Show",consignor, :class => "showlink" %>
-            <%= link_to "Delete", consignor,:class => "dellink", :confirm => 'Are you sure?', :method => :delete %>
-         </span></td>
+        <td><%=h link_to consignor.id, consignor %></td>
+         <td><%=h consignor.display_name %> </td>
       </tr>
       <% end %>
   </tbody>

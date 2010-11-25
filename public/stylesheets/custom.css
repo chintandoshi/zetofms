@@ -7,22 +7,17 @@
 .listing th, .listing td { text-align: left; padding: 4px 2px; border-bottom: 1px solid #ccc; }
 .listing th { padding: 6px 2px; }
 .listing tr.header { background: #DDDDDD;}
+.listing tr.header:hover { background: #DDDDDD; }
 .listing tr.even { background: #E1E5EB; }
 .listing tr.odd { background:#fff;}
 .listing tr:hover { background: #ecf4fd; }
-.listing tr.header:hover { background: #DDDDDD; }
-.listing td.invisible span { display:none; margin: 0; padding: 0; background: #fff }
-.listing tr:hover span { display:inline; }
-.listing tr .dellink { margin: 0; padding: 4px 4px 4px 20px; background: #fff url('../images/delete.gif') no-repeat 2px;  font-weight: normal; border: 1px solid #fee; }
-.listing tr .showlink { margin: 0; padding: 4px 4px 4px 20px; background: #fff url('../images/details.gif') no-repeat 2px;  font-weight: normal; border: 1px solid #fee; }
+.listing td:hover {
+    cursor: pointer;
+}
+
 
 .sublisting { padding: 1em; border-bottom: 1px solid #ccc;  }
 .sublisting .dropdowndetails {padding: 1em; background: #EBF0F5; }
-.sublisting .dropdowndetails a { padding: 3px 0 3px 25px; position: relative; line-height: 16px; }
-.sublisting .dropdowndetails .edit {  background: transparent url('../images/edit.png') no-repeat 0 1px;}
-.sublisting .dropdowndetails .delete { background: transparent url('../images/delete.gif') no-repeat 0 1px;}
-.sublisting .dropdowndetails .cancel { background: transparent url('../images/cancel.png') no-repeat 0 1px;}
-
 
 .admin {  width: auto;
           border-collapse: collapse;
@@ -43,21 +38,21 @@
 
 
 
-.info { width: auto;
+.info { width: 100%;
         border-collapse: collapse;
-        margin: 2px 0 16px 0;
-        background: #fff;
+        margin: 1em 0 16px 0;
+        background: #EBF0F5;
         border-top: 1px solid #ccc;
         }
 .info tr {
         border-bottom: 1px solid #ccc;
 }
 .info td {
-     padding: 5px;
+     padding: 1px;
      text-align: left;
 }
 .info td.field {
-    font-weight: bold;
+    font-weight: 600;
 }
 
 

@@ -1,0 +1,57 @@
+<% if order.approved? && loadedorder.nil? %>
+    <%= link_to 'Add Loading information', new_order_loaded_order_path(order), :class => "newbutton" %>
+<% elsif order.approved?  && loadedorder %>
+
+    <% if !loadedorder.approved? %>
+        <span id="toolbar" class="ui-widget-header ui-corner-all">
+              <%= link_to 'Edit', edit_order_loaded_order_path(order,loadedorder), :class => "editbutton" %>
+              <%= link_to 'Lock', lock_order_loaded_order_path(order,loadedorder), :class => "approvebutton" %>
+        </span>
+    <% end %>
+
+    <table class="info">
+      <tbody>
+        <tr>
+            <td class="field"> Loading Date:</td> <td>
+            <%=h loadedorder.loading_date %>
+            </td>
+        </tr>
+        <tr>
+            <td class="field"> L/R no.:</td> <td>
+            <%=h loadedorder.lorry_receipt_no %>
+            </td>
+        </tr>
+        <tr>
+            <td class="field"> Vehicle:</td> <td>
+              <%=h loadedorder.vehicle.registration_number if loadedorder.vehicle %>
+            </td>
+        </tr>
+        <tr>
+            <td class="field"> Loaded Quantity:</td> <td>
+            <%=h loadedorder.loaded_quantity %> <%=h order.product_unit.product_unit_name %>
+            </td>
+        </tr>
+        <tr>
+            <td class="field"> Expected Delivery date:</td> <td>
+            <%=h loadedorder.expected_delivery_date %>
+            </td>
+        </tr>
+        <tr>
+            <td class="field"> Delivery Order No.:</td> <td>
+            <%=h loadedorder.delivery_order_no %>
+            </td>
+        </tr>
+        <tr>
+            <td class="field"> Bill of Entry no.:</td> <td>
+            <%=h loadedorder.bill_of_entry_no %>
+            </td>
+        </tr>
+        <tr>
+            <td class="field"> Notes:</td> <td>
+            <%=h loadedorder.notes %>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+
+<% end %>

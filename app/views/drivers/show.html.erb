@@ -1,14 +1,12 @@
-<% render :partial => 'sidebar' %>
+<span id="toolbar" class="ui-widget-header ui-corner-all">
+    <%=  global_print_link() %>
+    <%= link_to 'Edit', edit_driver_path(@driver), :class => "editbutton" %>
+    <%= link_to "Delete", @driver, :class => "deletebutton", :confirm => 'Are you sure?', :method => :delete %>
+    <%= link_to 'Attachments', attachments_driver_path(@driver), :class => "attachmentsbutton" %>
+    <%= link_to 'Back', drivers_path, :class => "backbutton" %>
+</span>
 
-<div id="controls">
-    <%=  global_print_link() %> |
-    <%= link_to 'Edit', edit_driver_path(@driver), :class => "edit" %> |
-    <%= link_to "Delete", @driver, :class => "delete", :confirm => 'Are you sure?', :method => :delete %> |
-    <%= link_to 'Attachments', attachments_driver_path(@driver), :class => "attachments" %> |
-    <%= link_to 'Back', drivers_path, :class => "back" %>
-</div>
-
-<h1><%=h @driver.display_name %></h1>
+<h2><%=h @driver.display_name %></h2>
 
 
 

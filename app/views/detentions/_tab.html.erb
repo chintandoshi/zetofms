@@ -1,0 +1,15 @@
+<% if order.approved? %>
+    <span id="toolbar" class="ui-widget-header ui-corner-all">
+        <%= link_to 'Add a new detention entry', new_order_detention_path(order), :class => "newbutton" %>
+    </span>
+    <br/> <br/><br/>
+    <ol class="sublisting">
+    <% detentions.each do |detention| %>
+      <li>
+        <div id="detention<%= detention.id %>" class="dropdowndetails">
+          <%= render :partial => "detentions/detention", :object => detention, :locals => { :order => order}  %>
+        </div>
+      </li> <br/>
+    <%  end %>
+    </ol>
+<% end %>

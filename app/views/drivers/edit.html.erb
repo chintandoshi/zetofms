@@ -1,8 +1,4 @@
-<% render :partial => 'sidebar' %>
-
-<div id="controls">
-    <%= link_to 'Cancel', @driver, :class => "cancel" %>
-</div>
+<%= link_to 'Cancel', @driver, :class => "closebutton", :style => "float:right;" %>
 
 <h1>Editing driver information</h1>
 
@@ -11,8 +7,8 @@
 
   <%= render :partial => "form", :object => f %>
 
-  <%= f.submit 'Update Driver Information', :class => "button" %>
-  <%= link_to 'Cancel', @driver, :method => 'get' %>
+  <%= f.submit 'Update Driver Information', :class => "savebutton" %>
+  <%= link_to 'Cancel', @driver, :method => 'get', :class => "closebutton" %>
 <% end %>
 
 

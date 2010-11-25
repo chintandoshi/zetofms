@@ -1,6 +1,4 @@
-<div id="controls">
-    <%= link_to 'Cancel', consignees_path, :class => "cancel" %>
-</div>
+<%= link_to 'Cancel', consignees_path, :class => "closebutton", :style => "float:right;" %>
 
 <h1>Add a new consignee</h1>
 
@@ -9,7 +7,7 @@
 
   <%= render :partial => "form", :object => f, :locals => { :mode => "new"} %>
 
-  <%= f.submit 'Add Consignee' %>
-  <%= link_to 'Cancel', consignees_path, :method => 'get'%>
+  <%= f.submit 'Add Consignee', :class => "savebutton" %>
+  <%= link_to 'Cancel', consignees_path, :method => 'get', :class => "closebutton"%>
 
 <% end %>

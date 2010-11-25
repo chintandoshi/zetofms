@@ -1,6 +1,17 @@
-<p>
-Select: <br/>
-<%= link_to 'Customer Accounts',custaccounts_path %> <br />
-<%= link_to 'Consignors', consignors_path %> <br />
-<%= link_to 'Consignees', consignees_path %> <br />
-</p>
+<div class="grid">
+  <%=h @no_of_customers %> Customers <br/><br/><br/>
+  <%= link_to 'Show',custaccounts_path, :class => "viewbutton"  %><br/><br/>
+  <%= link_to 'New',new_custaccount_path, :class => "newbutton"  %>
+</div>
+
+<div class="grid">
+  <%=h @no_of_consignors %> Consignors <br/><br/><br/>
+  <%= link_to 'Show',consignors_path, :class => "viewbutton"  %><br/><br/>
+  <%= link_to 'New',new_consignor_path, :class => "newbutton"  %>
+</div>
+
+<div class="grid">
+  <%=h @no_of_consignees %> Consignees <br/><br/><br/>
+  <%= link_to 'Show',consignees_path, :class => "viewbutton"  %><br/><br/>
+  <%= link_to 'New',new_consignee_path, :class => "newbutton"  %>
+</div>

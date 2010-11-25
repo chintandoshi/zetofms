@@ -1,0 +1,39 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  custaccount_id: 1
+  billingcontact_id: 1
+  purchasecontact_id: 1
+  order_date_time: 2010-11-12 17:35:49
+  consignor_id: 1
+  consigee_id: 1
+  from: MyString
+  to: MyString
+  product_type_id: 1
+  product_unit_id: 1
+  quantity: 1
+  placement_mode: MyString
+  delorder_number: 1
+  dispatch_date_requested: 2010-11-12
+  delivery_date_requested: 2010-11-12
+  notes1: MyText
+  notes2: MyText
+
+two:
+  custaccount_id: 1
+  billingcontact_id: 1
+  purchasecontact_id: 1
+  order_date_time: 2010-11-12 17:35:49
+  consignor_id: 1
+  consigee_id: 1
+  from: MyString
+  to: MyString
+  product_type_id: 1
+  product_unit_id: 1
+  quantity: 1
+  placement_mode: MyString
+  delorder_number: 1
+  dispatch_date_requested: 2010-11-12
+  delivery_date_requested: 2010-11-12
+  notes1: MyText
+  notes2: MyText

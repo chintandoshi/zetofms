@@ -1,0 +1,107 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<div id="panel">
+  <h3>Customer</h3>
+  <p>
+    <%= form.label :custaccount_id, "Customer Account" %><br />
+    <% if mode.eql? "edit" %>
+        <%= text_field_tag :customer, @order.custaccount.display_name, :disabled => true %>
+        <%= form.hidden_field :custaccount_id %>
+    <% else %>
+        <%= form.select(:custaccount_id, populate_combo_with_customerlist, :include_blank => 'Please Select ') %>
+        <%= link_to "Manage customer accounts", custaccounts_path  %>
+    <% end %>
+  </p>
+  <p>
+    <%= form.label :billingcontact_id, "Billing Contact" %><br />
+    <% if mode.eql? "edit" %>
+        <%= form.select(:billingcontact_id, populate_combo_with_customercontacts(@order.custaccount.id), :include_blank => 'Please Select ') %>
+    <% else %>
+        <%= form.select(:billingcontact_id, [], :include_blank => 'Please Select ') %>
+        <%= link_to "Refresh", @order ,:id => "refresh_billing" %>
+    <% end %>
+  </p>
+  <p>
+    <%= form.label :purchasecontact_id, "Purchase Contact" %><br />
+    <% if mode.eql? "edit" %>
+        <%= form.select(:purchasecontact_id, populate_combo_with_customercontacts(@order.custaccount.id), :include_blank => 'Please Select ') %>
+    <% else %>
+        <%= form.select(:purchasecontact_id, [], :include_blank => 'Please Select ') %>
+        <%= link_to "Refresh", @order ,:id => "refresh_purchase" %>
+    <% end %>
+  </p>
+</div>
+<div id="panel">
+  <h3>Order Placement</h3>
+  <p>
+    <%= form.label :placement_date_time, "Order placed at" %><br />
+    <%= form.datetime_select :placement_date_time, :prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year', :hour => "Choose Hours", :minute => "Choose minutes"} %>
+  </p>
+  <p>
+    <%= form.label :placement_mode, "Order placed by" %><br />
+    <%= form.select :placement_mode, ["Phone","Email","Web"], :include_blank => 'Please Select' %>
+  </p>
+</div>
+<div id="panel">
+  <h3>Consignor/Consignee</h3>
+  <p>
+    <%= form.label :consignor_id %><br />
+    <%= form.select(:consignor_id, populate_combo_with_consignorlist, :include_blank => 'Please Select') %>
+    <%= link_to "Manage consignors", consignors_path  %>
+  </p>
+  <p>
+    <%= form.label :from , "From" %><br />
+    <%= form.text_field :from, :size => 20, :readonly => true %>
+  </p>
+  <p>
+    <%= form.label :consignee_id %><br />
+    <%= form.select(:consignee_id, populate_combo_with_consigneelist, :include_blank => 'Please Select') %>
+    <%= link_to "Manage consignees", consignees_path  %>
+  </p>
+  <p>
+    <%= form.label :to , "To" %><br />
+    <%= form.text_field :to, :size => 20, :readonly => true %>
+  </p>
+</div>
+<div id="panel">
+  <h3>Product</h3>
+  <p>
+    <%= form.label :product_type_id, "Product" %><br />
+    <%= form.select(:product_type_id, populate_combo_with_productlist, :include_blank => 'Please Select') %>
+    <%= link_to "Manage products", product_types_path  %>
+  </p>
+  <p>
+    <%= form.label :product_unit_id, "Quantity" %><br />
+    <%= form.select(:product_unit_id, populate_combo_with_productunit, :include_blank => 'Please Select') %>
+    <%= form.text_field :quantity, :size => 10, :max_length => 10 %>
+  </p>
+</div>
+<div id="panel">
+  <h3>Requested Delivery Schedule</h3>
+  <p>
+    <%= form.label :delorder_number, "Delivery Order Number" %><br />
+    <%= form.text_field :delorder_number, :size => 25, :max_length => 25 %>
+  </p>
+  <p>
+    <%= form.label :dispatch_date_requested %><br />
+    <%= form.date_select :dispatch_date_requested,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'} %>
+  </p>
+  <p>
+    <%= form.label :delivery_date_requested %><br />
+    <%= form.date_select :delivery_date_requested,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'} %>
+  </p>
+</div>
+<div id="panel">
+  <h3>Misc.</h3>
+  <p>
+    <%= form.label :notes1, "Notes" %><br />
+    <%= form.text_area :notes1,:cols => 40, :rows => 7 %>
+  </p>
+  <p>
+    <%= form.label :notes2, "Remarks" %><br />
+    <%= form.text_area :notes2,:cols => 40, :rows => 7 %>
+  </p>
+</div>

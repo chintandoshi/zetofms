@@ -43,6 +43,7 @@ Rails::Initializer.run do |config|
     config.gem "authlogic"
     config.gem 'searchlogic'
 
+   
 end
 
 require "will_paginate"

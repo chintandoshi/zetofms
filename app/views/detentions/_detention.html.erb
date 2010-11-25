@@ -1,0 +1,30 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<span id="toolbar" class="ui-widget-header ui-corner-all">
+<%= link_to 'Edit', edit_order_detention_path(order,detention), :class => "editbutton" %>
+<%= link_to 'Remove', order_detention_path(order,detention), :method => :delete, :confirmation => "Are you sure?", :class => "deletebutton" %>
+</span>
+
+<b>Detention Location:</b> <% if detention.detention_location_id == 0 %> <%=h order.consignor.display_name %> <% else %> <%=h order.consignee.display_name %> <% end %>   <br/>
+
+<b>Detention Reason:</b> <%=h detention.detention_reason.description %><br/>
+
+<b>Detention Start Time:</b> <%=h detention.start_time %><br/>
+
+<b>Detention End Time:</b> <%=h detention.end_time %><br/>
+
+<b>Notes:</b> <%=h detention.notes %><br/><br/>
+
+<% if detention.billing %> <br/>
+<b>Invoice No:</b> <%=h detention.invoice_no %><br/>
+<b>Invoice Amount:</b> <%=h detention.invoice_amount%><br/>
+<b>Invoice due date:</b> <%=h detention.invoice_due_date %><br/>
+<b>Invoice Dispatch Date:</b> <%=h detention.invoice_dispatch_date %><br/>
+<b>Paid:</b> <% if detention.paid %> Yes <% else %> No <% end %> <br/>
+<b>Payment Details:</b> <%=h detention.payment_details %><br/>
+<% else %> 
+<b>Billing:</b>: No
+<% end %><br/>

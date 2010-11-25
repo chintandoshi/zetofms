@@ -5,7 +5,6 @@
 
 <% content_for :sidebar_links_list do %>
 <div class="right-container">
-  <%= button_to 'New Driver', new_driver_path, :method => :get, :class => "button" %>
-  <%= button_to 'New Vehicle', new_driver_path, :method => :get, :class => "button" %>
+  <%= link_to 'New Driver', new_driver_path,  :class => "newbutton" %>
 </div>
 <% end %>

@@ -5,12 +5,8 @@
 
 <div id="searchpanel">
 <% form_for @search do |f| %>
-  <p>
-  <%= f.label :consignee_name_like, "Consignee Name:" %> <br/>
+  <%= f.label :consignee_name_like, "Consignee Name:" %>
   <%= f.text_field :consignee_name_like,:maxlength => 50, :size => 40 %>
-  </p>
-  <p>
-  <%= f.submit "Filter", :class => "button" %>
-  </p>
+  <%= f.submit "Filter", :class => "searchbutton" %>
 <% end %>
 </div>

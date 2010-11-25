@@ -1,7 +1,4 @@
-<div id="controls">
-    <%= link_to 'Cancel', custaccounts_path, :class => "cancel" %>
-</div>
-
+<%= link_to 'Cancel', custaccounts_path, :class => "closebutton", :style => "float:right;" %>
 <h1>Add a new customer account</h1>
 
 <% form_for(@custaccount) do |f| %>
@@ -9,7 +6,7 @@
 
   <%= render :partial => "form", :object => f, :locals => { :mode => "new"} %>
 
-  <%= f.submit 'Add Customer Account' %>
-  <%= link_to 'Cancel', custaccounts_path, :method => 'get'%>
+  <%= f.submit 'Add Customer Account', :class => "savebutton" %>
+  <%= link_to 'Cancel', custaccounts_path, :method => 'get', :class => "closebutton"%>
 
 <% end %>

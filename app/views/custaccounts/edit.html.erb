@@ -1,6 +1,4 @@
-<div id="controls">
-    <%= link_to 'Cancel', @custaccount, :class => "cancel" %>
-</div>
+<%= link_to 'Cancel', @custaccount, :class => "closebutton", :style => "float:right;" %>
 
 <h1>Editing Customer Account information</h1>
 
@@ -9,6 +7,6 @@
 
   <%= render :partial => "form", :object => f, :locals => { :mode => "edit"}%>
 
-  <%= f.submit 'Update Account Information', :class => "button" %>
-  <%= link_to 'Cancel', @custaccount, :method => 'get' %>
+  <%= f.submit 'Update Account Information', :class => "savebutton" %>
+  <%= link_to 'Cancel', @custaccount, :method => 'get', :class => "closebutton" %>
 <% end %>

@@ -1,0 +1,87 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<% if !@order.approved? %>
+    <span id="toolbar" class="ui-widget-header ui-corner-all">
+        <%= link_to 'Edit', edit_order_path(@order), :class => "editbutton" %>
+        <%= link_to 'Lock', lock_order_path(@lock), :class => "approvebutton" %>
+    </span>
+<% end %>
+
+<br/>
+<table class="info">
+  <tbody>
+    <tr>
+        <td class="field"> Customer Account:</td> <td>
+        <%=h @order.custaccount.display_name %>
+        </td>
+    </tr>
+    <tr>
+        <td class="field"> Billing Contact:</td> <td>
+          <%=h @order.billingcontact.display_name %>
+        </td>
+    </tr>
+    <tr>
+        <td class="field"> Purchase Contact:</td> <td>
+          <%=h @order.purchasecontact.display_name %>
+        </td>
+    </tr>
+    <tr>
+        <td class="field"> Order Placed On:</td> <td>
+          <%=h @order.placement_date_time %>
+        </td>
+    </tr>
+    <tr>
+        <td class="field"> Order Placed by.:</td> <td>
+          <%=h @order.placement_mode %>
+        </td>
+    </tr>
+    <tr>
+        <td class="field"> Consignor:</td> <td>
+          <%=h @order.consignor.display_name %> (<%=h @order.from %>)
+        </td>
+    </tr>
+    <tr>
+        <td class="field"> Consignee:</td> <td>
+          <%=h @order.consignee.display_name %> (<%=h @order.to %>)
+        </td>
+    </tr>
+    <tr>
+        <td class="field"> Product:</td> <td>
+          <%=h @order.product_type.product_type_name %>
+        </td>
+    </tr>
+    <tr>
+        <td class="field"> Quantity:</td> <td>
+          <%=h @order.quantity %> <%=h @order.product_unit.product_unit_name %>
+        </td>
+    </tr>
+    <tr>
+        <td class="field"> Delivery Order No.:</td> <td>
+          <%=h @order.delorder_number %>
+        </td>
+    </tr>
+    <tr>
+        <td class="field"> Dispatch Date Requested:</td> <td>
+          <%=h @order.dispatch_date_requested %>
+        </td>
+    </tr>
+    <tr>
+        <td class="field"> Delivery Date Requested:</td> <td>
+          <%=h @order.delivery_date_requested %>
+        </td>
+    </tr>
+    <tr>
+        <td class="field"> Notes:</td> <td>
+          <%=h @order.notes1 %>
+        </td>
+    </tr>
+    <tr>
+        <td class="field"> Remarks:</td> <td>
+          <%=h @order.notes2 %>
+        </td>
+    </tr>
+  </tbody>
+</table>

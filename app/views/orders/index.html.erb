@@ -1,0 +1,45 @@
+<%= javascript_include_tag 'order' %>
+<% render :partial => 'sidebar' %>
+
+<h1>Orders</h1>
+
+
+<br/>
+
+<table class="listing">
+  <thead>
+      <tr class="header">
+          <th>Order Id</th>
+          <th>Customer</th>
+          <th>Consignor</th>
+          <th>Consignee</th>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Dispatch date requested</th>
+        <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <% @orders.each do |order| %>
+      <tr class="<%= cycle("odd", "even") -%>">
+          <td><%= link_to order.id, order %></td>
+          <td><%=h order.custaccount.display_name %></td>
+          <td><%=h order.consignor.display_name %></td>
+          <td><%=h order.consignee.display_name %></td>
+          <td><%=h order.product_type.product_type_name %></td>
+          <td><%=h order.quantity %></td>
+          <td><%=h order.dispatch_date_requested %></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+
+ <div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info @orders %>
+  </div>
+  <%= will_paginate @orders, :container => false %>
+</div>
+
+
+<br />

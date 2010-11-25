@@ -1,0 +1,42 @@
+<% render :partial => '/shared/sidebar/admin' %>
+
+<h1>Detention Reasons</h1>
+<br/>
+<table class="admin">
+  <thead>
+      <tr class="header">
+        <th>  <%= sort_link 'Description', :description %>  <%= sort_flag :description %>  </th>
+        <th></th>
+      </tr>
+  </thead>
+  <tbody>
+    <% unless @detention_reasons.empty? -%>
+          <% @detention_reasons.each do |type| %>
+          <tr>
+             <td><%=h type.description %></td>
+             <td class="invisible"><span>
+                  <%= link_to 'Delete', type,:class => "dellink",
+                    :confirm => 'Are you sure?',
+                    :method => :delete %>
+             </span></td>
+          </tr>
+          <% end %>
+      <% end %>
+   </tbody>
+</table>
+
+ <div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info @detention_reasons %>
+  </div>
+  <%= will_paginate @detention_reasons, :container => false %>
+</div>
+
+<% form_for(DetentionReason.new) do |f| %>
+  <%= error_messages_for :detention_reason %>
+  <div id="adminpanel">
+      <%= f.label :description, "Reason description" %>
+      <%= f.text_field :description, :size => 20, :maxlength => 25 %>
+      <%= f.submit 'Add', :class => "newbutton" %>
+  </div>
+<% end %>

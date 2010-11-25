@@ -1,0 +1,37 @@
+<% if order.approved? && deliveredorder.nil? %>
+    <%= link_to 'Add Delivery information', new_order_delivered_order_path(order), :class => "newbutton" %>
+<% elsif order.approved?  && deliveredorder %>
+
+    <% if !deliveredorder.approved? %>
+        <span id="toolbar" class="ui-widget-header ui-corner-all">
+              <%= link_to 'Edit', edit_order_delivered_order_path(order,deliveredorder), :class => "editbutton" %>
+              <%= link_to 'Lock', lock_order_delivered_order_path(order,deliveredorder), :class => "approvebutton" %>
+        </span>
+    <% end %>
+
+    <table class="info">
+      <tbody>
+        <tr>
+            <td class="field"> Delivery Date:</td> <td>
+            <%=h deliveredorder.delivery_date %>
+            </td>
+        </tr>
+        <tr>
+            <td class="field"> Customer Reference no.:</td> <td>
+            <%=h deliveredorder.customer_ref_no %>
+            </td>
+        </tr>
+        <tr>
+            <td class="field"> Unloaded Quantity:</td> <td>
+            <%=h deliveredorder.unloaded_quantity %> <%=h order.product_unit.product_unit_name %>
+            </td>
+        </tr>
+        <tr>
+            <td class="field"> Notes:</td> <td>
+            <%=h deliveredorder.notes %>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+
+<% end %>

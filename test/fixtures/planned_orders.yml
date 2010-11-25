@@ -1,0 +1,27 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  order_id: 1
+  dispatch_date_planned: 2010-11-18
+  delivery_date_planned: 2010-11-18
+  vehicle_id: 1
+  notes: MyText
+  entered_by: MyString
+  entered_on: 2010-11-18 15:12:11
+  last_updated_by: MyString
+  last_updated_on: 2010-11-18 15:12:11
+  approved_by: MyString
+  approved_on: 2010-11-18 15:12:11
+
+two:
+  order_id: 1
+  dispatch_date_planned: 2010-11-18
+  delivery_date_planned: 2010-11-18
+  vehicle_id: 1
+  notes: MyText
+  entered_by: MyString
+  entered_on: 2010-11-18 15:12:11
+  last_updated_by: MyString
+  last_updated_on: 2010-11-18 15:12:11
+  approved_by: MyString
+  approved_on: 2010-11-18 15:12:11

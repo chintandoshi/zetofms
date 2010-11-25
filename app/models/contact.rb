@@ -9,6 +9,8 @@ class Contact < ActiveRecord::Base
                         :allow_nil => true, :allow_blank => true
 
   belongs_to :resource, :polymorphic => true
+  has_many :billingcontactorders, :class_name => "Order", :foreign_key => "billingcontact_id", :dependent => :destroy
+  has_many :purchasecontactorders, :class_name => "Order", :foreign_key => "purchasecontact_id",:dependent => :destroy
 
   def display_name
     title = self.first_name + " " + self.last_name

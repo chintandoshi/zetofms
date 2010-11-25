@@ -1,9 +1,4 @@
-
-
-<div id="controls">
-    <%= link_to 'Cancel', consignors_path, :class => "cancel" %>
-</div>
-
+<%= link_to 'Cancel', consignors_path, :class => "closebutton", :style => "float:right;" %>
 <h1>Add a new consignor</h1>
 
 <% form_for(@consignor) do |f| %>
@@ -11,7 +6,7 @@
 
   <%= render :partial => "form", :object => f, :locals => { :mode => "new"} %>
 
-  <%= f.submit 'Add Consignor' %>
-  <%= link_to 'Cancel', consignors_path, :method => 'get'%>
+  <%= f.submit 'Add Consignor', :class => "savebutton" %>
+  <%= link_to 'Cancel', consignors_path, :method => 'get', :class => "closebutton"%>
 
 <% end %>

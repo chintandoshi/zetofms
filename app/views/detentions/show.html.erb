@@ -1,0 +1,48 @@
+<p>
+  <b>Order:</b>
+  <%=h @detention.order_id %>
+</p>
+
+<p>
+  <b>Detention location:</b>
+  <%=h @detention.detention_location_id %>
+</p>
+
+<p>
+  <b>Start time:</b>
+  <%=h @detention.start_time %>
+</p>
+
+<p>
+  <b>End time:</b>
+  <%=h @detention.end_time %>
+</p>
+
+<p>
+  <b>Detention reason:</b>
+  <%=h @detention.detention_reason_id %>
+</p>
+
+<p>
+  <b>Notes:</b>
+  <%=h @detention.notes %>
+</p>
+
+<p>
+  <b>Billing:</b>
+  <%=h @detention.billing %>
+</p>
+
+<p>
+  <b>Created by:</b>
+  <%=h @detention.created_by %>
+</p>
+
+<p>
+  <b>Updated by:</b>
+  <%=h @detention.updated_by %>
+</p>
+
+
+<%= link_to 'Edit', edit_detention_path(@detention) %> |
+<%= link_to 'Back', detentions_path %>

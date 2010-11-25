@@ -16,6 +16,10 @@
 	padding : 0;
 }
 
+select {
+	padding-right : 20px;
+}
+
 a {
 	color : #437fda;
 }
@@ -26,30 +30,9 @@ a:hover {
 	color : #000;
 }
 
-
-h1 {
-    color: #294459;
-}
-
-h2 {
-	color : #343434;
-	font : italic 200% sans-serif;
-}
-h3 {
-	color : #343434;
-	font : bold 120% sans-serif;
-
-}
-h4 {
-	color : #343434;
-	font : bold italic 110% sans-serif;
-	padding : 1em 1em 0 1em;
-}
-
 html {
-	color : #565656;
+	color : #333;
 	font-size: 80%;
-        font-family:  sans-serif, serif;
 	text-align : justify;
 }
 
@@ -94,7 +77,7 @@ p {
 #menu {
 	background : #437fda;
 	border-bottom : 1px solid #2b548c;
-	font : 100% sans-serif;
+	font-size : 100%;
         font-weight: 700;
         text-align: right
 }
@@ -135,20 +118,6 @@ p {
 
 #right-column { float: left; width: auto; background-color: #E6E4ED; padding: 2em 1em; }
 
-#controls { float:right; padding: 4px; background: #f4f4ee; color: #aaa; border: 1px solid #ddd; -moz-border-radius: 5px; -webkit-border-radius: 5px; }
-#controls a:link, #controls a:visited { color: #4d88cf; }
-#controls a:hover { color: #000; }
-#controls a { padding: 3px 0 3px 25px; position: relative; line-height: 16px; }
-#controls .print {  background: transparent url('../images/print.png') no-repeat 0 1px;}
-#controls .back { background: transparent url('../images/back.jpeg') no-repeat 0 1px;}
-#controls .add {  background: transparent url('../images/add.png') no-repeat 0 1px;}
-#controls .edit {  background: transparent url('../images/edit.png') no-repeat 0 1px;}
-#controls .delete { background: transparent url('../images/delete.gif') no-repeat 0 1px;}
-#controls .attachments { background: transparent url('../images/attachments.gif') no-repeat 0 1px;}
-#controls .cancel { background: transparent url('../images/cancel.png') no-repeat 0 1px;}
-
-
-
 #panel {
         background: #EBF0F5;
 	border : 1px solid #cfcfcf;
@@ -161,12 +130,9 @@ p {
 }
 
 #searchpanel {
-        background: #EBF0F5;
+        background:#E6E4ED;
 	border : 1px solid #cfcfcf;
-	height : auto !important;
-	height : 1%;
-        width: 50%;
-	overflow : hidden;
+        width: auto;
         margin-top: 1em;
         margin-bottom: 1em;
         padding: 5px;
@@ -184,10 +150,14 @@ p {
         padding: 5px;
 }
 
-
-.button {margin: 3px 0; padding: 2px 14px 2px; width: auto; color: #437fda; font-size: 12px; font-family: verdana,sans-serif; font-weight: bold; cursor: pointer; background: #fff url('../images/button-gradient.png') repeat-x 0 0; border-color: #437fda; border-style: solid; border-width: 1px; text-decoration: none; outline: none; overflow: visible; display: inline; line-height: 14px; }
-.button:hover { background-color: #f4f4f4; color: #000; }
-.button:active { background: #f4f4f4; color: #000; }
+.grid {
+        background:#EBF0F5;
+	border : 1px solid #cfcfcf;
+        width: auto;
+        margin: 1em;
+        padding: 1em;
+        float: left;
+}
 
 
 #footer {
@@ -198,3 +168,8 @@ p {
 	width : 65%;
 }
 
+#toolbar {
+    float:right;
+    padding: 4px 4px;
+    font-size: 11px;
+}

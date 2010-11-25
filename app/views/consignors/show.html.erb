@@ -1,14 +1,12 @@
-<% render :partial =>  'sidebar' %>
+<span id="toolbar" class="ui-widget-header ui-corner-all">
+    <%=  global_print_link() %>
+    <%= link_to 'Edit', edit_consignor_path(@consignor), :class => "editbutton" %>
+    <%= link_to "Delete", @consignor, :class => "deletebutton", :confirm => 'Are you sure?', :method => :delete %>
+    <%= link_to 'Add a contact', new_consignor_contact_path(@consignor), :class => "newbutton" %>
+    <%= link_to 'Back', consignors_path, :class => "backbutton" %>
+</span>
 
-<div id="controls">
-    <%=  global_print_link() %> |
-    <%= link_to 'Edit', edit_consignor_path(@consignor), :class => "edit" %> |
-    <%= link_to "Delete", @consignor, :class => "delete", :confirm => 'Are you sure?', :method => :delete %> |
-    <%= link_to 'Add a contact', new_consignor_contact_path(@consignor), :class => "add" %> |
-    <%= link_to 'Back', consignors_path, :class => "back" %>
-</div>
-
-<h1>Consignor information</h1>
+<h2>Consignor information</h2>
 
 
 <table class="info">
