@@ -73,4 +73,10 @@ class ContactsController < ApplicationController
     @resource = nil
   end
 
+  def update_contacts_autocomplete
+    logger.info "HERE"
+    @contacts = Custaccount.find_by_id(params[:id]).contacts
+    render :partial => "update_contacts_autocomplete"
+  end
+
 end
