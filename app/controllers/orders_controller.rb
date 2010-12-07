@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
 
   def index
     @search = Order.search(params[:search])
+    session[:selected_tab] = 0 #Reset tab index
 
     if params[:search]
         @orders = @search.paginate :page => params[:page],
@@ -26,6 +27,9 @@ class OrdersController < ApplicationController
   # GET /orders/1.xml
   def show
     @order = Order.find(params[:id])
+
+    @disabled_tabs = tabs_to_disable(@order)
+    session[:selected_tab] = 0 if !defined?(session[:selected_tab])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -53,6 +57,7 @@ class OrdersController < ApplicationController
   # POST /orders.xml
   def create
     @order = Order.new(params[:order])
+    session[:selected_tab] = 0 #Reset tab index
 
     respond_to do |format|
       if @order.save
@@ -69,6 +74,7 @@ class OrdersController < ApplicationController
   # PUT /orders/1.xml
   def update
     @order = Order.find(params[:id])
+    session[:selected_tab] = 0 #Reset tab index
 
     respond_to do |format|
       if @order.update_attributes(params[:order])
@@ -91,7 +97,7 @@ class OrdersController < ApplicationController
     @order.save
 
     respond_to do |format|
-      format.html { redirect_to(orders_url) }
+      format.html { redirect_to(@order, :notice => "Order cancelled") }
       format.xml  { head :ok }
     end
   end
@@ -107,4 +113,35 @@ class OrdersController < ApplicationController
 
   end
 
+  def close
+    @order = Order.find(params[:id])
+    @order.closed = true
+    @order.closed_by = current_user_session.record.login
+    @order.closed_at = DateTime.now
+    @order.save
+
+    redirect_to(@order, :notice => 'Order successfully locked')
+  end
+
+  private
+   def tabs_to_disable(order)
+        disabled_tabs = []
+        if !order.planning_enabled?
+          disabled_tabs << 1
+        end
+        if !order.loading_enabled?
+          disabled_tabs << 2
+        end
+        if !order.delivery_enabled?
+          disabled_tabs << 3
+        end
+        if !order.detention_enabled?
+          disabled_tabs << 4
+        end
+        if !order.billing_enabled?
+          disabled_tabs << 5
+        end
+
+        return disabled_tabs
+   end
 end

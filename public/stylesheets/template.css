@@ -73,6 +73,7 @@ p {
 #status a:link, #status a:visited { color: #bbb; font-size: 12px; }
 #status a:hover { color: #90af4c; }
 
+#lastupdated { float:right; color: #777; font-size: 12px;  padding: 2px 7px 4px 7px;  }
 
 #menu {
 	background : #437fda;

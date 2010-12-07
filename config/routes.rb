@@ -1,8 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :order_statuses
 
 
   # order module
-  map.resources :orders, :member => { :lock => :get} do |order|
+  map.resources :orders, :member => { :lock => :get, :close => :get} do |order|
      order.resources :planned_orders, :only => [:new, :create, :edit, :update],:member => { :lock => :get }
      order.resources :loaded_orders, :only => [:new, :create, :edit, :update], :member => { :lock => :get }
      order.resources :delivered_orders, :only => [:new,:create, :edit,:update], :member => { :lock => :get}
@@ -32,6 +33,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :detention_reasons, :only => [:index, :create, :destroy]
   map.resources :product_units, :only => [:index, :create, :destroy]
   map.resources :product_types, :only => [:index, :create, :destroy]
+  map.resources :order_status_types, :only => [:index, :create, :destroy]
   map.resources :makes, :only => [:index, :show, :create, :destroy] do |make|
       make.resources :vmodels, :only => [:create, :destroy]
   end

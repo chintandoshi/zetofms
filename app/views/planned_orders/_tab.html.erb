@@ -1,8 +1,8 @@
-<% if order.approved? && plannedorder.nil? %>
+<% if order.planning_enabled? && plannedorder.nil? && @order.enable_tab_controls?  %>
     <%= link_to 'Add Planning information', new_order_planned_order_path(order), :class => "newbutton" %>
-<% elsif order.approved? && plannedorder %>
+<% elsif order.planning_enabled? && plannedorder %>
 
-    <% if !plannedorder.approved? %>
+    <% if !plannedorder.approved? &&  order.enable_tab_controls? %>
         <span id="toolbar" class="ui-widget-header ui-corner-all">
               <%= link_to 'Edit', edit_order_planned_order_path(order,plannedorder), :class => "editbutton" %>
               <%= link_to 'Lock', lock_order_planned_order_path(order,plannedorder), :class => "approvebutton" %>
@@ -13,12 +13,12 @@
       <tbody>
         <tr>
             <td class="field"> Dispatch Date Planned:</td> <td>
-            <%=h plannedorder.dispatch_date_planned %>
+            <%=h plannedorder.dispatch_date_planned.to_s(:long_ordinal) if !plannedorder.dispatch_date_planned.blank? %>
             </td>
         </tr>
         <tr>
             <td class="field"> Delivery Date Planned:</td> <td>
-            <%=h plannedorder.delivery_date_planned %>
+            <%=h plannedorder.delivery_date_planned.to_s(:long_ordinal) if !plannedorder.delivery_date_planned.blank? %>
             </td>
         </tr>
         <tr>
@@ -35,3 +35,5 @@
     </table>
 
 <% end %>
+
+<%= render :partial => 'shared/timestampfooter', :locals => {:order => plannedorder} %>

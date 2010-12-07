@@ -2,6 +2,7 @@ class DetentionReasonsController < ApplicationController
 
   set_tab :admin
 
+
   # GET /detention_reasons
   # GET /detention_reasons.xml
   def index
@@ -19,9 +20,6 @@ class DetentionReasonsController < ApplicationController
   # POST /detention_reasons.xml
   def create
     @detention_reason = DetentionReason.new(params[:detention_reason])
-    @detention_reasons = DetentionReason.paginate :page => params[:page],
-      :per_page => 5,
-      :order => sort_order('description')
 
     respond_to do |format|
       if @detention_reason.save

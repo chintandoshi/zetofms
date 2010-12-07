@@ -6,7 +6,7 @@
     <h3>Loading information</h3>
   <p>
     <%= form.label :loading_date %><br />
-    <%= form.date_select :loading_date,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'} %>
+    <%= form.date_select :loading_date,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'}, :disabled => (mode.eql? "edit") %>
   </p>
   <p>
     <%= form.label :lorry_receipt_no %><br />

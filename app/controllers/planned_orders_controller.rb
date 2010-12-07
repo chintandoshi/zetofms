@@ -1,10 +1,14 @@
 class PlannedOrdersController < ApplicationController
 
   set_tab :orders
-  before_filter :find_order
+  before_filter :find_order, :tab_selection
 
   def find_order
       @order = Order.find_by_id(params[:order_id])
+  end
+
+  def tab_selection
+     session[:selected_tab] = 1
   end
 
   # GET /planned_orders/new

@@ -10,7 +10,7 @@
   </p>
   <p>
     <%= form.label :start_time %><br />
-    <%= form.datetime_select :start_time, :prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year', :hour => "Choose Hours", :minute => "Choose minutes"} %>
+    <%= form.datetime_select :start_time, :prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year', :hour => "Choose Hours", :minute => "Choose minutes"}, :disabled => (mode.eql? "edit") %>
   </p>
   <p>
     <%= form.label :end_time %><br />

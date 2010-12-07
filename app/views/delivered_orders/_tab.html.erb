@@ -1,8 +1,8 @@
-<% if order.approved? && deliveredorder.nil? %>
+<% if order.delivery_enabled? && deliveredorder.nil? && @order.enable_tab_controls? %>
     <%= link_to 'Add Delivery information', new_order_delivered_order_path(order), :class => "newbutton" %>
-<% elsif order.approved?  && deliveredorder %>
+<% elsif order.delivery_enabled? && deliveredorder %>
 
-    <% if !deliveredorder.approved? %>
+    <% if !deliveredorder.approved? &&  order.enable_tab_controls? %>
         <span id="toolbar" class="ui-widget-header ui-corner-all">
               <%= link_to 'Edit', edit_order_delivered_order_path(order,deliveredorder), :class => "editbutton" %>
               <%= link_to 'Lock', lock_order_delivered_order_path(order,deliveredorder), :class => "approvebutton" %>
@@ -13,7 +13,7 @@
       <tbody>
         <tr>
             <td class="field"> Delivery Date:</td> <td>
-            <%=h deliveredorder.delivery_date %>
+            <%=h deliveredorder.delivery_date.to_s(:long_ordinal) if !deliveredorder.delivery_date.blank? %>
             </td>
         </tr>
         <tr>
@@ -35,3 +35,5 @@
     </table>
 
 <% end %>
+
+<%= render :partial => 'shared/timestampfooter', :locals => {:order => deliveredorder} %>

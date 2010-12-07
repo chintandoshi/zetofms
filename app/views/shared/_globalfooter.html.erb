@@ -1,0 +1,15 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<% if !order.nil? %>
+<div>
+<% if order.cancelled? %>
+Canceled by <b><%=h order.cancelled_by %></b> at <%=h order.cancelled_at.strftime('%d %b %Y %H:%M %Z') %>
+<% end %>
+<% if order.closed? %>
+Closed by <b><%=h order.closed_by %></b> at <%=h order.closed_at.strftime('%d %b %Y %H:%M %Z') %>
+<% end %>
+</div>
+<% end %>

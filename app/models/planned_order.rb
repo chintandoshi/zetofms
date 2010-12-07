@@ -16,4 +16,5 @@ class PlannedOrder < ActiveRecord::Base
     current_user_session = UserSession.find
     self.updated_by = current_user_session.record.login
   end
+
 end

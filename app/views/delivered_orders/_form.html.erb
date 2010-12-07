@@ -6,7 +6,7 @@
     <h3>Delivery information</h3>
   <p>
     <%= form.label :delivery_date %><br />
-    <%= form.datetime_select :delivery_date,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year', :hour => "Choose hour", :minute => "Choose minutes"} %>
+      <%= form.datetime_select :delivery_date,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year', :hour => "Choose hour", :minute => "Choose minutes"}, :disabled => (mode.eql? "edit") %>
   </p>
   <p>
     <%= form.label :customer_ref_no %><br />

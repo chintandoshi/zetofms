@@ -1,7 +1,9 @@
-<% if order.approved? %>
+<% if order.detention_enabled? %>
+    <% if order.enable_tab_controls? %>
     <span id="toolbar" class="ui-widget-header ui-corner-all">
         <%= link_to 'Add a new detention entry', new_order_detention_path(order), :class => "newbutton" %>
     </span>
+    <% end %>
     <br/> <br/><br/>
     <ol class="sublisting">
     <% detentions.each do |detention| %>

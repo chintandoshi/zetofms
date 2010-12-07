@@ -6,22 +6,25 @@
     <h3>Billing information</h3>
       <p>
         <%= form.label :invoice_no %><br />
-        <%= form.text_field :invoice_no, :size => 25 %>
+        <%= form.text_field :invoice_no, :size => 25, :disabled => (mode.eql? "edit") %>
       </p>
       <p>
         <%= form.label :invoice_amount %><br />
-        <%= form.text_field :invoice_amount, :size => 25 %>
+        <%= form.text_field :invoice_amount, :size => 25, :disabled => (mode.eql? "edit") %>
       </p>
       <p>
         <%= form.label :invoice_due_date %><br />
-        <%= form.date_select :invoice_due_date,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'} %>
+        <%= form.date_select :invoice_due_date,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'}, :disabled => (mode.eql? "edit") %>
       </p>
       <p>
         <%= form.label :invoice_dispatch_date %><br />
         <%= form.date_select :invoice_dispatch_date,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'} %>
       </p>
 </div>
+
+<% if mode.eql? "edit" %>
 <div id="panel">
+  <a name="paymentdetails"></a>
   <h3>Payment information</h3>
      <p>
         <%= form.label :paid %>
@@ -32,6 +35,8 @@
         <%= form.text_area :payment_details, :rows => 3, :columns => 15 %>
       </p>
 </div>
+<% end %>
+
 <div id="panel">
   <h3>Misc. information</h3>
       <p>

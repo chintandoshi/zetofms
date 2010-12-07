@@ -3,7 +3,7 @@
 # and open the template in the editor.
 %>
 
-<% if !@order.approved? %>
+<% if !@order.approved? &&  @order.enable_tab_controls? %>
     <span id="toolbar" class="ui-widget-header ui-corner-all">
         <%= link_to 'Edit', edit_order_path(@order), :class => "editbutton" %>
         <%= link_to 'Lock', lock_order_path(@lock), :class => "approvebutton" %>
@@ -30,7 +30,7 @@
     </tr>
     <tr>
         <td class="field"> Order Placed On:</td> <td>
-          <%=h @order.placement_date_time %>
+          <%=h @order.placement_date_time.strftime('%d %b %Y %H:%M %Z') %>
         </td>
     </tr>
     <tr>
@@ -65,12 +65,12 @@
     </tr>
     <tr>
         <td class="field"> Dispatch Date Requested:</td> <td>
-          <%=h @order.dispatch_date_requested %>
+          <%=h @order.dispatch_date_requested.to_s(:long_ordinal) %>
         </td>
     </tr>
     <tr>
         <td class="field"> Delivery Date Requested:</td> <td>
-          <%=h @order.delivery_date_requested %>
+          <%=h @order.delivery_date_requested.to_s(:long_ordinal) %>
         </td>
     </tr>
     <tr>
@@ -85,3 +85,6 @@
     </tr>
   </tbody>
 </table>
+
+
+<%= render :partial => 'shared/timestampfooter', :locals => {:order => @order} %>

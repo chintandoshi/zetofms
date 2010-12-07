@@ -1,12 +1,11 @@
-<% @enable_billing = order.approved && order.loaded_order && order.delivered_order && order.loaded_order.approved? && order.delivered_order.approved? %>
-
-<% if @enable_billing && billedorder.nil? %>
+<% if order.billing_enabled? && billedorder.nil? && order.enable_tab_controls? %>
     <%= link_to 'Add Billing information', new_order_billed_order_path(order), :class => "newbutton" %>
-<% elsif @enable_billing  && billedorder %>
+<% elsif order.billing_enabled? && billedorder %>
 
-    <% if !billedorder.approved? %>
+    <% if !billedorder.approved? &&  order.enable_tab_controls? %>
         <span id="toolbar" class="ui-widget-header ui-corner-all">
               <%= link_to 'Edit', edit_order_billed_order_path(order,billedorder), :class => "editbutton" %>
+              <%= link_to 'Update Payment Info', edit_order_billed_order_path(order,billedorder, :anchor => "paymentdetails"), :class => "editbutton" %>
               <%= link_to 'Lock', lock_order_billed_order_path(order,billedorder), :class => "approvebutton" %>
         </span>
     <% end %>
@@ -25,12 +24,12 @@
         </tr>
         <tr>
             <td class="field"> Invoice due date:</td> <td>
-            <%=h billedorder.invoice_due_date %>
+            <%=h billedorder.invoice_due_date.to_s(:long_ordinal) %>
             </td>
         </tr>
         <tr>
             <td class="field"> Invoice dispatch date:</td> <td>
-            <%=h billedorder.invoice_dispatch_date %>
+            <%=h billedorder.invoice_dispatch_date.to_s(:long_ordinal)%>
             </td>
         </tr>
         <tr>
@@ -52,3 +51,5 @@
     </table>
 
 <% end %>
+
+<%= render :partial => 'shared/timestampfooter', :locals => {:order => billedorder} %>

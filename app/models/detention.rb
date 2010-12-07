@@ -1,6 +1,6 @@
 class Detention < ActiveRecord::Base
 
-  validates_presence_of :order_id, :detention_location_id, :start_time, :end_time,
+  validates_presence_of :order_id, :detention_location_id, :start_time,
                         :detention_reason_id
 
   belongs_to :order

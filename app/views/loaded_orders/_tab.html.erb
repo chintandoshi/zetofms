@@ -1,8 +1,8 @@
-<% if order.approved? && loadedorder.nil? %>
+<% if order.loading_enabled? && loadedorder.nil? && @order.enable_tab_controls? %>
     <%= link_to 'Add Loading information', new_order_loaded_order_path(order), :class => "newbutton" %>
-<% elsif order.approved?  && loadedorder %>
+<% elsif order.loading_enabled? && loadedorder %>
 
-    <% if !loadedorder.approved? %>
+    <% if !loadedorder.approved? &&  order.enable_tab_controls? %>
         <span id="toolbar" class="ui-widget-header ui-corner-all">
               <%= link_to 'Edit', edit_order_loaded_order_path(order,loadedorder), :class => "editbutton" %>
               <%= link_to 'Lock', lock_order_loaded_order_path(order,loadedorder), :class => "approvebutton" %>
@@ -13,7 +13,7 @@
       <tbody>
         <tr>
             <td class="field"> Loading Date:</td> <td>
-            <%=h loadedorder.loading_date %>
+            <%=h loadedorder.loading_date.to_s(:long_ordinal) if !loadedorder.loading_date.blank? %>
             </td>
         </tr>
         <tr>
@@ -33,7 +33,7 @@
         </tr>
         <tr>
             <td class="field"> Expected Delivery date:</td> <td>
-            <%=h loadedorder.expected_delivery_date %>
+              <%=h loadedorder.expected_delivery_date.to_s(:long_ordinal) if !loadedorder.expected_delivery_date.blank? %>
             </td>
         </tr>
         <tr>
@@ -55,3 +55,5 @@
     </table>
 
 <% end %>
+
+<%= render :partial => 'shared/timestampfooter', :locals => {:order => loadedorder} %>

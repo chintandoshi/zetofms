@@ -25,11 +25,17 @@ class Order < ActiveRecord::Base
   has_one :delivered_order
   has_one :billed_order
   has_many :detentions
-
+  has_many :order_statuses, :dependent => :destroy
+  has_many :order_status_types, :through => :order_statuses, :source => :status, :order => 'order_statuses.created_at DESC'
+  
   named_scope :open, :conditions => ['cancelled = ?', 0]
 
   before_create :created_by_user
   before_save :updated_by_user
+
+  def find_latest_status()
+    self.order_status_types.first
+  end
 
   def created_by_user
     current_user_session = UserSession.find
@@ -41,6 +47,48 @@ class Order < ActiveRecord::Base
     self.updated_by = current_user_session.record.login
   end
 
+    #Order tab logic
+    def planning_enabled? ()
+      return self.approved?
+    end
 
+    def loading_enabled? ()
+      return self.approved?
+    end
+
+    def delivery_enabled? ()
+      return self.approved? && self.loaded_order
+    end
+
+    def detention_enabled?()
+      return self.approved?
+    end
+
+    def billing_enabled? ()
+      return self.approved? && self.loaded_order && self.loaded_order.approved? && self.delivered_order && self.delivered_order.approved?
+    end
+
+    # buttons on each panel
+    def enable_tab_controls? ()
+      return !self.cancelled? &&  !self.closed?
+    end
+
+    #close/lock order button
+    def close_order_enabled? ()
+      return self.billed_order && self.billed_order.approved? && !self.cancelled? & !self.closed?
+    end
+
+    #cancel button
+    def cancel_order_enabled? ()
+      if self.closed?
+        return false
+      end
+
+      if self.cancelled?
+        return false
+      end
+      
+      return true
+    end
 
 end

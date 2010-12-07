@@ -1,4 +1,7 @@
 module OrdersHelper
+
+    ################################
+    #comboboxes#
     def populate_combo_with_customerlist
      @customer_list = Custaccount.find(:all).map {|customer|
                              [customer.display_name, customer.id ]}

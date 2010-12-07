@@ -1,0 +1,14 @@
+<ol class="sublisting" style="list-style-type:lower-roman">
+<% order.order_statuses.each do |order_status| %>
+    <li>
+      <div class="dropdowndetails">
+      <b><%=h order_status.status.description.upcase() %></b> <br/>
+      <%=h order_status.notes %> <br/><br/>
+          <div id="lastupdated">
+            Updated by <b><%=h order_status.user %></b> at <%=h order_status.created_at.strftime('%d %b %Y %H:%M %Z') %>
+          </div> <br/>
+      </div>
+    </li>
+    <br/>
+<% end %>
+</ol>

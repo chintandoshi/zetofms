@@ -43,6 +43,8 @@ Rails::Initializer.run do |config|
     config.gem "authlogic"
     config.gem 'searchlogic'
 
+    config.active_record.observers = :order_observer, :planned_order_observer, :loaded_order_observer, :delivered_order_observer, :billed_order_observer, :detention_observer
+
    
 end
 

@@ -1,0 +1,14 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<% if !order.nil? %>
+<div>
+Entered by <b><%=h order.created_by %></b> at <%=h order.created_at.strftime('%d %b %Y %H:%M %Z') %> <br/>
+Last Updated by <b><%=h order.updated_by %></b> at <%=h order.updated_at.strftime('%d %b %Y %H:%M %Z') %> <br/>
+<% if order.approved? %>
+Approved by <b><%=h order.approved_by %></b> at <%=h order.approved_at.strftime('%d %b %Y %H:%M %Z') %>
+<% end %>
+</div>
+<% end %>

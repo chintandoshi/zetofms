@@ -3,21 +3,26 @@
 
 <span id="toolbar" class="ui-widget-header ui-corner-all">
     <%=  global_print_link() %>
-    <%= link_to "Cancel Order", @order, :class => "cancelbutton", :confirm => 'Are you sure?', :method => :delete %>
+    <%= link_to "Cancel Order", @order, :class => "cancelbutton",
+      :confirm => 'Are you sure?', :method => :delete, :disabled => !@order.cancel_order_enabled? %>
+    <%= link_to "Close Order", close_order_path(@order), :class => "approvebutton",
+      :disabled => !@order.close_order_enabled?  %>
     <%= link_to 'Attachments', attachments_driver_path(@order), :class => "attachmentsbutton" %>
     <%= link_to 'Back', orders_path, :class => "backbutton" %>
 </span>
 <h1>Order #<%=h @order.id %></h1>
+<h3 style="color:grey">STATUS: <%= @order.find_latest_status().description.upcase %></h3>
 <br/> <br/> 
 
 <div id="tabs">
 	<ul>
-		<li><a href="#tab1">Placement</a></li>
+		<li><a href="#tab1">Booking</a></li>
 		<li><a href="#tab2">Planning</a></li>
 		<li><a href="#tab3">Loading</a></li>
 		<li><a href="#tab4">Delivery</a></li>
                 <li><a href="#tab5">Detention</a></li>
 		<li><a href="#tab6">Billing</a></li>
+                <li><a href="#tab7">Status Log</a></li>
 	</ul>
 
       <div id="tab1">
@@ -38,4 +43,16 @@
      <div id="tab6">
         <%=  render :partial => "billed_orders/tab", :locals => { :order => @order, :billedorder => @order.billed_order} %>
       </div>
+     <div id="tab7">
+        <%=  render :partial => "order_statuses/tab", :locals => { :order => @order} %>
+      </div>
 </div>
+
+<script type="text/javascript">
+   disable_tabs(<%= @disabled_tabs.to_json %>);
+   select_tab(<%= session[:selected_tab] %>);
+</script>
+
+<br/>
+<br/>
+<%= render :partial => 'shared/globalfooter', :locals => {:order => @order} %>

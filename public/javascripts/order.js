@@ -58,13 +58,17 @@ $j(document).ready(function(){
 $j(document).ready(function(){
 
     $j( "#tabs" ).tabs({
-			cookie: {
-				// store cookie for a day, without, it would be a session cookie
-				expires: 1
-			}
-    });
-   
+    });   
 });
+
+function disable_tabs(disabled_tabs) {
+    $j( "#tabs" ).tabs({ disabled: disabled_tabs });
+}
+
+function select_tab(index) {
+    $j("#tabs").tabs("select", index );
+}
+
 
 /* detentions/_form.html.erb */
 $j(document).ready(function(){
@@ -81,4 +85,4 @@ function runToggle(){
        $j('#billingElements :input').val("");
        $j('#detention_paid').prev().val("0");
        $j('#billingElements :input').attr('readonly', true);
-    }
+}

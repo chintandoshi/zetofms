@@ -1,7 +1,7 @@
 class DeliveredOrder < ActiveRecord::Base
   belongs_to :order
 
-  validates_presence_of :order_id, :delivery_date, :unloaded_quantity
+  validates_presence_of :order_id, :delivery_date
   before_create :created_by_user
   before_save :updated_by_user
 

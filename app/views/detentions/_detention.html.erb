@@ -3,10 +3,12 @@
 # and open the template in the editor.
 %>
 
+<% if order.enable_tab_controls? %>
 <span id="toolbar" class="ui-widget-header ui-corner-all">
 <%= link_to 'Edit', edit_order_detention_path(order,detention), :class => "editbutton" %>
 <%= link_to 'Remove', order_detention_path(order,detention), :method => :delete, :confirmation => "Are you sure?", :class => "deletebutton" %>
 </span>
+<% end %>
 
 <b>Detention Location:</b> <% if detention.detention_location_id == 0 %> <%=h order.consignor.display_name %> <% else %> <%=h order.consignee.display_name %> <% end %>   <br/>
 

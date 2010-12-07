@@ -6,11 +6,11 @@
     <h3>Planned delivery schedule</h3>
   <p>
     <%= form.label :dispatch_date_planned %><br />
-    <%= form.date_select :dispatch_date_planned,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'} %>
+    <%= form.date_select :dispatch_date_planned,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'}, :disabled => (mode.eql? "edit") %>
   </p>
   <p>
     <%= form.label :delivery_date_planned %><br />
-    <%= form.date_select :delivery_date_planned,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'} %>
+    <%= form.date_select :delivery_date_planned,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'}, :disabled => (mode.eql? "edit") %>
   </p>
   <p>
     <%= form.label :vehicle_id %><br />

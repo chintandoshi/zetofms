@@ -2,10 +2,14 @@ class LoadedOrdersController < ApplicationController
   # GET /loaded_orders
   # GET /loaded_orders.xml
   set_tab :orders
-  before_filter :find_order
+  before_filter :find_order, :tab_selection
 
   def find_order
       @order = Order.find_by_id(params[:order_id])
+  end
+
+  def tab_selection
+     session[:selected_tab] = 2
   end
 
   # GET /loaded_orders/new
