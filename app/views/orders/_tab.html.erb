@@ -65,12 +65,12 @@
     </tr>
     <tr>
         <td class="field"> Dispatch Date Requested:</td> <td>
-          <%=h @order.dispatch_date_requested.to_s(:long_ordinal) %>
+          <%=h @order.dispatch_date_requested.to_s(:long_ordinal) if !@order.dispatch_date_requested.blank? %>
         </td>
     </tr>
     <tr>
         <td class="field"> Delivery Date Requested:</td> <td>
-          <%=h @order.delivery_date_requested.to_s(:long_ordinal) %>
+          <%=h @order.delivery_date_requested.to_s(:long_ordinal) if !@order.delivery_date_requested.blank? %>
         </td>
     </tr>
     <tr>
