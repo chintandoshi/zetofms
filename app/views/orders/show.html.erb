@@ -1,5 +1,4 @@
 <%= javascript_include_tag 'order' %>
-<% render :partial => 'sidebar' %>
 
 <span id="toolbar" class="ui-widget-header ui-corner-all">
     <%=  global_print_link() %>
@@ -11,7 +10,7 @@
     <%= link_to 'Back', orders_path, :class => "backbutton" %>
 </span>
 <h1>Order #<%=h @order.id %></h1>
-<h3 style="color:grey">STATUS: <%= @order.find_latest_status().description.upcase %></h3>
+<h3 style="color:grey">STATUS: <%= @order.current_status.description.upcase %></h3>
 <br/> <br/> 
 
 <div id="tabs">

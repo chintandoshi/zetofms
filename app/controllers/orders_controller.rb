@@ -2,19 +2,24 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.xml
   set_tab :orders
+  before_filter :set_search_object
+  
+  def set_search_object
+    @search = Order.search(params[:search])
+  end
 
   def index
-    @search = Order.search(params[:search])
+    
     session[:selected_tab] = 0 #Reset tab index
 
     if params[:search]
         @orders = @search.paginate :page => params[:page],
-          :per_page => 5,
-          :order => sort_order('id')
+          :per_page => 10,
+          :order => params[:order_by] || 'orders.current_status_id DESC'
     else
         @orders = Order.paginate :page => params[:page],
-          :per_page => 5,
-          :order => sort_order('id')
+          :per_page => 10,
+          :order => params[:order_by] || 'orders.current_status_id DESC'
     end
 
     respond_to do |format|
@@ -121,6 +126,11 @@ class OrdersController < ApplicationController
     @order.save
 
     redirect_to(@order, :notice => 'Order successfully locked')
+  end
+
+  def tooltip
+    @order = Order.find(params[:id])
+    render :partial => "tooltip", :layout => false
   end
 
   private

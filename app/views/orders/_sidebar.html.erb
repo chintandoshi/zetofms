@@ -6,5 +6,6 @@
 <% content_for :sidebar_links_list do %>
 <div class="right-container">
     <%= link_to 'New Order', new_order_path, :class => "newbutton" %>
+    <%=  render :partial => 'orderfilter' %>
 </div>
 <% end %>

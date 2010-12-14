@@ -86,3 +86,56 @@ function runToggle(){
        $j('#detention_paid').prev().val("0");
        $j('#billingElements :input').attr('readonly', true);
 }
+
+/* _orderfilter.html.erb _statusfilter.html.erb */
+function checkAll()
+{
+        var checked_status = true;
+        $j("input[name='search[current_status_id_equals_any][]']").each(function()
+        {
+                this.checked = checked_status;
+        });
+}
+
+function uncheckAll()
+{
+        var checked_status = false;
+        $j("input[name='search[current_status_id_equals_any][]']").each(function()
+        {
+                this.checked = checked_status;
+        });
+}
+
+function unbilledAll()
+{
+        $j("#checkbox_pending").attr('checked','checked');
+        $j("#checkbox_acknowledged").attr('checked','checked');
+        $j("#checkbox_planning").attr('checked','checked');
+        $j("#checkbox_loaded").attr('checked','checked');
+        $j("#checkbox_delivered").attr('checked','checked');
+        $j("#checkbox_detention").attr('checked','checked');
+
+        $j("#checkbox_billed").removeAttr('checked');
+        $j("#checkbox_closed").removeAttr('checked');
+        $j("#checkbox_cancelled").removeAttr('checked');
+}
+
+function billedAll()
+{
+        $j("#checkbox_pending").removeAttr('checked');
+        $j("#checkbox_acknowledged").removeAttr('checked');
+        $j("#checkbox_planning").removeAttr('checked');
+        $j("#checkbox_loaded").removeAttr('checked');
+        $j("#checkbox_delivered").removeAttr('checked');
+        $j("#checkbox_detention").removeAttr('checked');
+
+        $j("#checkbox_billed").attr("checked","checked");
+        $j("#checkbox_closed").removeAttr('checked');
+        $j("#checkbox_cancelled").removeAttr('checked');
+}
+
+/* orders/index.html.erb */
+$j(document).ready(function(){
+    $j('a.basic').cluetip({width: 400, arrows: true});
+});
+

@@ -1,0 +1,47 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+
+<b>Order created by:</b> <%= @order.created_by %> <br/>
+<% if @order.cancelled %>
+<b>Order cancelled by:</b> <%= @order.cancelled_by %> <br/>
+<% end %>
+<% if @order.closed %>
+<b>Order closed by:</b> <%= @order.closed_by %> <br/>
+<% end %>
+
+<b>Dispatch Date Requested:</b> <%= @order.dispatch_date_requested.to_s(:short_ordinal) if !@order.dispatch_date_requested.nil?  %> <br/>
+<b>Delivery Date Requested:</b> <%= @order.delivery_date_requested.to_s(:short_ordinal) if !@order.delivery_date_requested.nil? %> <br/>
+
+<br/>
+
+<% if @order.planned_order %>
+  <b>Dispatch Date Planned:</b> <%=  @order.planned_order.dispatch_date_planned.to_s(:short_ordinal) %> <br/>
+  <b>Delivery Date Planned:</b> <%=  @order.planned_order.delivery_date_planned.to_s(:short_ordinal) %> <br/>
+<% end %>
+
+<br/>
+
+<% if @order.loaded_order %>
+  <b>Loading Date:</b> <%=  @order.loaded_order.loading_date.to_s(:short_ordinal) %> <br/>
+  <b>Vehicle:</b> <%=  @order.loaded_order.vehicle.registration_number %> <br/>
+<% end %>
+
+<br/>
+
+<% if @order.delivered_order %>
+  <b>Delivery Date:</b> <%=  @order.delivered_order.delivery_date.to_s(:short_ordinal) %> <br/>
+<% end %>
+
+<br/>
+
+<% if @order.billed_order %>
+  <b>Invoice No.:</b> <%=  @order.billed_order.invoice_no %> <br/>
+  <b>Invoice Amount:</b> <%=  @order.billed_order.invoice_amount %> <br/>
+  <b>Invoice date:</b> <%=  @order.billed_order.invoice_due_date.to_s(:short_ordinal) %> <br/>
+  <b>Paid: </b> <%= @order.billed_order.paid %>
+<% end %>
+
+<br/>

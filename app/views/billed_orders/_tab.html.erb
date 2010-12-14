@@ -29,7 +29,7 @@
         </tr>
         <tr>
             <td class="field"> Invoice dispatch date:</td> <td>
-            <%=h billedorder.invoice_dispatch_date.to_s(:long_ordinal)%>
+            <%=h billedorder.invoice_dispatch_date.to_s(:long_ordinal) if !billedorder.invoice_dispatch_date.nil? %>
             </td>
         </tr>
         <tr>

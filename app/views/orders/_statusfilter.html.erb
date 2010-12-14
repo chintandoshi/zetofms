@@ -1,0 +1,61 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+Current Order Status: <br/>
+<table>
+    <tr>
+      <td>
+        <%=  f.check_box :current_status_id_equals_any, {:name => "search[current_status_id_equals_any][]", :id => "checkbox_pending"},  OrderStatusType.status(:Pending).id %>
+        Pending
+      </td>
+      <td>
+        <%=  f.check_box :current_status_id_equals_any, {:name => "search[current_status_id_equals_any][]", :id => "checkbox_acknowledged"}, OrderStatusType.status(:Acknowledged).id %>
+        Acknowledged
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%=  f.check_box :current_status_id_equals_any, {:name => "search[current_status_id_equals_any][]", :id => "checkbox_planning"}, OrderStatusType.status(:Planning).id %>
+        Planning
+      </td>
+      <td>
+        <%=  f.check_box :current_status_id_equals_any, {:name => "search[current_status_id_equals_any][]", :id => "checkbox_detention"}, OrderStatusType.status(:Detention).id %>
+        Detention
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%=  f.check_box :current_status_id_equals_any, {:name => "search[current_status_id_equals_any][]", :id => "checkbox_loaded"}, OrderStatusType.status(:Loaded).id %>
+        Loaded
+      </td>
+      <td>
+        <%=  f.check_box :current_status_id_equals_any, {:name => "search[current_status_id_equals_any][]", :id => "checkbox_delivered"}, OrderStatusType.status(:Delivered).id %>
+        Delivered
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%=  f.check_box :current_status_id_equals_any, {:name => "search[current_status_id_equals_any][]", :id => "checkbox_billed"}, OrderStatusType.status(:Billed).id %>
+        Billed
+      </td>
+      <td>
+        <%=  f.check_box :current_status_id_equals_any, {:name => "search[current_status_id_equals_any][]", :id => "checkbox_cancelled"}, OrderStatusType.status(:Cancelled).id %>
+        Canceled
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%=  f.check_box :current_status_id_equals_any, {:name => "search[current_status_id_equals_any][]", :id => "checkbox_closed"}, OrderStatusType.status(:Closed).id %>
+        Closed
+      </td>
+      <td>
+      </td>
+    </tr>
+</table>
+
+  <%=  link_to_function "Select all", :onclick => "checkAll();" %> |
+  <%=  link_to_function "Clear", :onclick => "uncheckAll();" %> |
+  <%=  link_to_function "Billed", :onclick => "billedAll();" %> |
+  <%=  link_to_function "Unbilled", :onclick => "unbilledAll();" %> <br/>

@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
 
 
   # order module
-  map.resources :orders, :member => { :lock => :get, :close => :get} do |order|
+  map.resources :orders, :member => { :lock => :get, :close => :get, :tooltip => :get} do |order|
      order.resources :planned_orders, :only => [:new, :create, :edit, :update],:member => { :lock => :get }
      order.resources :loaded_orders, :only => [:new, :create, :edit, :update], :member => { :lock => :get }
      order.resources :delivered_orders, :only => [:new,:create, :edit,:update], :member => { :lock => :get}

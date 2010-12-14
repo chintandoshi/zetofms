@@ -26,23 +26,26 @@ class Order < ActiveRecord::Base
   has_one :billed_order
   has_many :detentions
   has_many :order_statuses, :dependent => :destroy
-  has_many :order_status_types, :through => :order_statuses, :source => :status, :order => 'order_statuses.created_at DESC'
+  belongs_to :current_status, :class_name => "OrderStatusType"
   
   named_scope :open, :conditions => ['cancelled = ?', 0]
+
+  #demonstrative
+  #named_scope :find_by_status, lambda {|status_id|
+  #  {:include => ["order_statuses"],
+  #    :conditions => ["order_statuses.status_id = ? and order_statuses.created_at = (select max(created_at) from order_statuses where order_id = orders.id)", status_id],
+  #    :order => ("orders.created_at DESC")
+  #}}
 
   before_create :created_by_user
   before_save :updated_by_user
 
-  def find_latest_status()
-    self.order_status_types.first
-  end
-
-  def created_by_user
+  def created_by_user()
     current_user_session = UserSession.find
     self.created_by = current_user_session.record.login
   end
 
-  def updated_by_user
+  def updated_by_user()
     current_user_session = UserSession.find
     self.updated_by = current_user_session.record.login
   end

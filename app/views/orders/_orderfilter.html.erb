@@ -4,13 +4,70 @@
 %>
 
 <div id="searchpanel">
-<% form_for @search do |f| %>
+<% form_for @search, :url => orders_path do |f| %>
+
+  <%= f.label "Sort results by" %>
+  <%= select_tag :order_by,
+               options_for_select([["date entered on", "created_at DESC"],
+               ["date placed on", "placement_date_time DESC"]] ) %>
+
+  <p><%= f.label :custaccount_id_equals, "Customer" %> <br/>
+  <%= f.collection_select :custaccount_id_equals, Custaccount.all(:order => "company_name"), :id, :company_name, :include_blank => "All" %></p>
+  <p><%= f.label :consignor_id_equals, "Consignor" %> <br/>
+  <%= f.collection_select :consignor_id_equals, Consignor.all(:order => "consignor_name"), :id, :consignor_name, :include_blank => "All" %></p>
+  <p><%= f.label :consignee_id_equals, "Consignee" %> <br/>
+  <%= f.collection_select :consignee_id_equals, Consignee.all(:order => "consignee_name"), :id, :consignee_name, :include_blank => "All" %></p>
+  <p><%= f.label :product_type_id_equals, "Product" %> <br/>
+  <%= f.collection_select :product_type_id_equals, ProductType.all(:order => "product_type_name"), :id, :product_type_name, :include_blank => "All" %></p>
+  
+  <br/>
+  <%= render :partial => "statusfilter", :locals => {:f => f} %>
+
+
   <p>
-  <%= f.label :first_name_or_last_name_like, "Name" %>
-  <%= f.text_field :first_name_or_last_name_like, :maxlength => 25, :size => 25 %>
+    <%= f.label :start, "Order Entered between" %> <br/>
+    <%= f.date_select :created_at_gte, :include_blank => true, :use_short_month => true  %> <br/>
+    <%= f.label :end, "and" %> <br/>
+    <%= f.date_select :created_at_lte, :include_blank => true, :use_short_month => true  %>
   </p>
   <p>
-  <%= f.submit "Filter", :class => "button" %>
+    <%= f.label :start, "Order Placed between" %> <br/>
+    <%= f.date_select :placement_date_time_gte, :include_blank => true, :use_short_month => true  %> <br/>
+    <%= f.label :end, "and" %> <br/>
+    <%= f.date_select :placement_date_time_lte, :include_blank => true, :use_short_month => true  %>
   </p>
+  <p>
+    <%= f.label :start, "Order Loaded between" %> <br/>
+    <%= f.date_select :loaded_order_loading_date_gte, :include_blank => true, :use_short_month => true  %> <br/>
+    <%= f.label :end, "and" %> <br/>
+    <%= f.date_select :loaded_order_loading_date_lte, :include_blank => true,:use_short_month => true  %>
+  </p>
+  <p>
+    <%= f.label :start, "Order Delivered between" %> <br/>
+    <%= f.date_select :delivered_order_delivery_date_gte, :include_blank => true, :use_short_month => true  %> <br/>
+    <%= f.label :end, "and" %> <br/>
+    <%= f.date_select :delivered_order_delivery_date_lte, :include_blank => true,:use_short_month => true  %>
+  </p>
+
+  <p>
+    <%= f.label :loaded_order_lorry_receipt_no_like, "L/R number" %>
+    <%= f.text_field :loaded_order_lorry_receipt_no_like, :size => 15, :maxlength => 25  %>
+  </p>
+
+  <p>
+    <%= f.label :billed_order_invoice_no_like, "Invoice no." %>
+    <%= f.text_field :billed_order_invoice_no_like, :size => 15, :maxlength => 25  %>
+  </p>  
+
+  <p>
+    <%= f.label :invoice_due_date_equals, "Invoice due date" %> <br/>
+    <%= f.date_select :billed_order_invoice_due_date_gte, :include_blank => true, :use_short_month => true  %> <br/>
+  </p>
+
+  <p><%= f.label :loaded_order_vehicle_id_equals, "Vehicle" %> <br/>
+  <%= f.collection_select :loaded_order_vehicle_id_equals, Vehicle.all(:order => "registration_number"), :id, :registration_number, :include_blank => "All" %></p>
+  <br/>
+  
+  <%= f.submit "Search Orders", :class => "searchbutton" %>
 <% end %>
-  </div>
+</div>

@@ -3,32 +3,34 @@
 
 <h1>Orders</h1>
 
-
 <br/>
 
 <table class="listing">
   <thead>
       <tr class="header">
           <th>Order Id</th>
+          <th>Placed on</th>
           <th>Customer</th>
           <th>Consignor</th>
           <th>Consignee</th>
           <th>Product</th>
-          <th>Quantity</th>
-          <th>Dispatch date requested</th>
-        <th></th>
+          <th>Qty</th>
+          <th>Status</th>
+          <th></th>
       </tr>
   </thead>
   <tbody>
       <% @orders.each do |order| %>
       <tr class="<%= cycle("odd", "even") -%>">
           <td><%= link_to order.id, order %></td>
+          <td><%=h order.placement_date_time.strftime('%d/%m/%y %H:%M') %></td>
           <td><%=h order.custaccount.display_name %></td>
-          <td><%=h order.consignor.display_name %></td>
-          <td><%=h order.consignee.display_name %></td>
+          <td><%=h order.consignor.display_name %>(<%=h order.from %>)</td>
+          <td><%=h order.consignee.display_name %>(<%=h order.to %>)</td>
           <td><%=h order.product_type.product_type_name %></td>
-          <td><%=h order.quantity %></td>
-          <td><%=h order.dispatch_date_requested %></td>
+          <td><%=h order.quantity %><%=h order.product_unit.product_unit_name %></td>
+          <td style="color:red;"><%=h order.current_status.description.upcase %></td>
+          <td><%= link_to image_tag("details.gif"),  tooltip_order_path(order), :class => 'basic', :rel => tooltip_order_path(order), :title => "Order Information" %></td>
       </tr>
       <% end %>
   </tbody>
