@@ -9,6 +9,10 @@ load 'config/deploy' # remove this line to skip loading any of the default
 
  namespace :deploy do
 
+  task :dbseed, :roles => :app do
+    run "rake db:seed"
+  end
+
    task :start, :roles => :app do
      run "rm -rf /home/#{user}/public_html;ln -s #{current_path}/public /home/#{user}/public_html"
      run "cd #{current_path} && mongrel_rails start -e production -p #{mongrel_port} -d"
