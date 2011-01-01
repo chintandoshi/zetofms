@@ -10,7 +10,7 @@ load 'config/deploy' # remove this line to skip loading any of the default
  namespace :deploy do
 
   task :dbseed, :roles => :app do
-    run "rake db:seed"
+    run "cd #{current_path} && rake db:seed"
   end
 
    task :start, :roles => :app do
