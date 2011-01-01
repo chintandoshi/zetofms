@@ -1,6 +1,7 @@
 class VehiclesController < ApplicationController
 
   set_tab :vehicles
+  filter_resource_access
 
   # GET /vehicles
   # GET /vehicles.xml

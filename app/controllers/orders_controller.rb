@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   # GET /orders.xml
   set_tab :orders
   before_filter :set_search_object
+  filter_access_to :index, :show, :new, :create, :edit, :update, :destroy, :lock, :close
   
   def set_search_object
     @search = Order.search(params[:search])

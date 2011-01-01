@@ -42,6 +42,7 @@ Rails::Initializer.run do |config|
     config.gem "tabs_on_rails"
     config.gem "authlogic"
     config.gem 'searchlogic'
+    config.gem 'declarative_authorization'
 
     config.active_record.observers = :order_observer, :planned_order_observer, :loaded_order_observer, :delivered_order_observer, :billed_order_observer, :detention_observer
 

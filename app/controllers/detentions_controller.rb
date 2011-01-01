@@ -4,6 +4,7 @@ class DetentionsController < ApplicationController
   # GET /detentions/new.xml
   set_tab :orders
   before_filter :find_order, :tab_selection
+  filter_access_to :new, :edit, :create, :update, :destroy
 
   def tab_selection
      session[:selected_tab] = 4

@@ -1,0 +1,46 @@
+<% render :partial => '/shared/sidebar/admin' %>
+
+<h1>User Roles</h1>
+<br/>
+<table class="admin">
+  <thead>
+      <tr class="header">
+        <th>  <%= sort_link 'Name', :name %>  <%= sort_flag :name %>  </th>
+        <th></th>
+      </tr>
+  </thead>
+  <tbody>
+    <% unless @roles.empty? -%>
+          <% @roles.each do |role| %>
+          <tr>
+             <td><%=h role.name %> - <%=h role.tag %> (<%=h role.description %>)</td>
+             <td class="invisible"><span>
+                  <%= link_to 'Delete', role,:class => "dellink",
+                    :confirm => 'Are you sure?',
+                    :method => :delete %>
+             </span></td>
+          </tr>
+          <% end %>
+      <% end %>
+   </tbody>
+</table>
+
+ <div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info @roles %>
+  </div>
+  <%= will_paginate @roles, :container => false %>
+</div>
+
+<% form_for(Role.new) do |f| %>
+  <%= error_messages_for :role %>
+  <div id="adminpanel">
+      <%= f.label :name, "User Role Name"  %> <br/>
+      <%= f.text_field :name, :size => 25, :maxlength => 25 %> <br/>
+      <%= f.label :description, "Description" %> <br/>
+      <%= f.text_area :description,  :rows => 2, :cols => 15 %> <br/>
+      <%= f.label :tag, "Tag" %> <br/>
+      <%= f.text_field :tag, :size => 20, :maxlength => 20 %> <br/>
+      <%= f.submit 'Add', :class => "newbutton" %>
+  </div>
+<% end %>

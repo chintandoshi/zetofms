@@ -1,6 +1,7 @@
 class DetentionReasonsController < ApplicationController
 
   set_tab :admin
+  filter_resource_access
 
 
   # GET /detention_reasons

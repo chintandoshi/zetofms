@@ -5,8 +5,12 @@
 
 <% if order.enable_tab_controls? %>
 <span id="toolbar" class="ui-widget-header ui-corner-all">
-<%= link_to 'Edit', edit_order_detention_path(order,detention), :class => "editbutton" %>
-<%= link_to 'Remove', order_detention_path(order,detention), :method => :delete, :confirmation => "Are you sure?", :class => "deletebutton" %>
+  <% if permitted_to? :edit, detention %>
+    <%= link_to 'Edit', edit_order_detention_path(order,detention), :class => "editbutton" %>
+  <% end %>
+  <% if permitted_to? :destroy, detention %>
+    <%= link_to 'Remove', order_detention_path(order,detention), :method => :delete, :confirmation => "Are you sure?", :class => "deletebutton" %>
+  <% end %>
 </span>
 <% end %>
 

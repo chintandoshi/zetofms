@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user
   filter_parameter_logging :password, :password_confirmation
   before_filter :require_user
+  before_filter { |c| Authorization.current_user = c.current_user }
 
     def sort_order(default)
       "#{(params[:c] || default.to_s).gsub(/[\s;'\"]/,'')} #{params[:d] == 'down' ? 'DESC' : 'ASC'}"
@@ -28,7 +29,7 @@ class ApplicationController < ActionController::Base
       unless current_user
         store_location
         flash[:notice] = "You must be logged in to access this page"
-        redirect_to new_login_url
+        redirect_to new_user_session_url #login page
         return false
       end
     end
@@ -37,7 +38,7 @@ class ApplicationController < ActionController::Base
       if current_user
         store_location
         flash[:notice] = "You must be logged out to access this page"
-        redirect_to account_url
+        redirect_to root_url #root url
         return false
       end
     end
@@ -50,5 +51,12 @@ class ApplicationController < ActionController::Base
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
     end
+
+    protected
+
+  def permission_denied
+    flash[:notice] = "Sorry, you are not allowed to access that page."
+    redirect_to root_url
+  end
 
 end

@@ -1,7 +1,8 @@
 class DriversController < ApplicationController
   # GET /drivers
   # GET /drivers.xml
-  
+
+  filter_resource_access         #:additional_member => {:mark_as_key_company => :update}
   set_tab :drivers
 
   def index

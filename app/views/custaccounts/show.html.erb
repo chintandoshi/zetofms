@@ -1,8 +1,14 @@
 <span id="toolbar" class="ui-widget-header ui-corner-all">
     <%=  global_print_link() %>
-    <%= link_to 'Edit', edit_custaccount_path(@custaccount), :class => "editbutton" %>
-    <%= link_to "Delete", @custaccount, :class => "deletebutton", :confirm => 'Are you sure?', :method => :delete %>
-    <%= link_to 'Add a contact', new_custaccount_contact_path(@custaccount), :class => "newbutton" %>
+    <% if permitted_to? :edit, @custaccount %>
+      <%= link_to 'Edit', edit_custaccount_path(@custaccount), :class => "editbutton" %>
+    <% end %>
+    <% if permitted_to? :destroy, @custaccount %>
+      <%= link_to "Delete", @custaccount, :class => "deletebutton", :confirm => 'Are you sure?', :method => :delete %>
+    <% end %>
+    <% if permitted_to? :new, :contacts %>
+      <%= link_to 'Add a contact', new_custaccount_contact_path(@custaccount), :class => "newbutton" %>
+    <% end %>
     <%= link_to 'Back', custaccounts_path, :class => "backbutton" %>
 </span> 
 

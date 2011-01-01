@@ -5,6 +5,8 @@
 
 <% content_for :sidebar_links_list do %>
 <div class="right-container">
+  <% if permitted_to? :attachments, Vehicle.new %>
   <%= link_to 'New Vehicle', new_vehicle_path,  :class => "newbutton" %>
+  <% end %>
 </div>
 <% end %>

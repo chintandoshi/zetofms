@@ -1,12 +1,18 @@
 <% if order.billing_enabled? && billedorder.nil? && order.enable_tab_controls? %>
+  <% if permitted_to? :new, BilledOrder.new %>
     <%= link_to 'Add Billing information', new_order_billed_order_path(order), :class => "newbutton" %>
+  <% end %>
 <% elsif order.billing_enabled? && billedorder %>
 
     <% if !billedorder.approved? &&  order.enable_tab_controls? %>
         <span id="toolbar" class="ui-widget-header ui-corner-all">
+          <% if permitted_to? :edit, billedorder %>
               <%= link_to 'Edit', edit_order_billed_order_path(order,billedorder), :class => "editbutton" %>
               <%= link_to 'Update Payment Info', edit_order_billed_order_path(order,billedorder, :anchor => "paymentdetails"), :class => "editbutton" %>
+          <% end %>
+          <% if permitted_to? :lock, billedorder %>
               <%= link_to 'Lock', lock_order_billed_order_path(order,billedorder), :class => "approvebutton" %>
+          <% end %>
         </span>
     <% end %>
 

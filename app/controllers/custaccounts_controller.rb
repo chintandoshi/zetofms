@@ -2,6 +2,7 @@ class CustaccountsController < ApplicationController
   # GET /custaccounts
   # GET /custaccounts.xml
 
+  filter_resource_access
   set_tab :contacts
 
   def index

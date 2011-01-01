@@ -1,11 +1,17 @@
 <% if order.planning_enabled? && plannedorder.nil? && @order.enable_tab_controls?  %>
+  <% if permitted_to? :new, PlannedOrder.new %>
     <%= link_to 'Add Planning information', new_order_planned_order_path(order), :class => "newbutton" %>
+  <% end %>
 <% elsif order.planning_enabled? && plannedorder %>
 
     <% if !plannedorder.approved? &&  order.enable_tab_controls? %>
         <span id="toolbar" class="ui-widget-header ui-corner-all">
-              <%= link_to 'Edit', edit_order_planned_order_path(order,plannedorder), :class => "editbutton" %>
-              <%= link_to 'Lock', lock_order_planned_order_path(order,plannedorder), :class => "approvebutton" %>
+              <% if permitted_to? :edit, plannedorder %>
+                <%= link_to 'Edit', edit_order_planned_order_path(order,plannedorder), :class => "editbutton" %>
+              <% end %>
+              <% if permitted_to? :lock, plannedorder %>
+                <%= link_to 'Lock', lock_order_planned_order_path(order,plannedorder), :class => "approvebutton" %>
+              <% end %>
         </span>
     <% end %>
 

@@ -2,8 +2,10 @@ class ContactsController < ApplicationController
 
   # GET /contacts/new
   # GET /contacts/new.xml
-  before_filter :find_resource
+  before_filter :find_resource, :except => [:update_contacts_autocomplete]
   set_tab :contacts
+
+  filter_access_to  :new,  :create, :edit, :update, :destroy
 
   def index
     @no_of_customers = Custaccount.count

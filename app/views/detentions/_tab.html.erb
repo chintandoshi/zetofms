@@ -1,7 +1,9 @@
 <% if order.detention_enabled? %>
     <% if order.enable_tab_controls? %>
     <span id="toolbar" class="ui-widget-header ui-corner-all">
+      <% if permitted_to? :new, Detention.new %>
         <%= link_to 'Add a new detention entry', new_order_detention_path(order), :class => "newbutton" %>
+      <% end %>
     </span>
     <% end %>
     <br/> <br/><br/>

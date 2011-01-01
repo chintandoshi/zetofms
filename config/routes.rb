@@ -1,6 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :order_statuses
-
 
   # order module
   map.resources :orders, :member => { :lock => :get, :close => :get, :tooltip => :get} do |order|
@@ -10,7 +8,7 @@ ActionController::Routing::Routes.draw do |map|
      order.resources :billed_orders, :only => [:new, :create, :edit, :update], :member => {:lock => :get}
      order.resources :detentions, :only => [:new, :create, :edit, :update, :destroy]
   end
-
+  #map.resources :order_statuses
 
   #contacts
   map.resources :consignees, :member => { :city_autocomplete => :get} do |consignee|
@@ -38,14 +36,13 @@ ActionController::Routing::Routes.draw do |map|
       make.resources :vmodels, :only => [:create, :destroy]
   end
 
-
-
-                                      
+  #attachments
   map.resources :attachment_boxes, :controller => "attachment_boxes", :only => [:destroy, :show]
 
-  map.resources :login, :controller => "user_sessions", :only => [:new, :create], :collection => {:logout => :delete}
-
-  map.resource :account, :controller => "users"
+  #user management
+  map.resources :user_sessions, :only => [:new, :create, :destroy]
+  map.resources :users, :only => [:index, :new, :edit, :create, :update], :member => {:privileges_edit => :get , :privileges_update => :post, :remove => :get}
+  map.resources :roles, :only => [:index, :create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -88,5 +85,5 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 
-  map.root :controller => "user_sessions", :action => "new"
+  map.root :controller => "dashboard", :action => "index"
 end

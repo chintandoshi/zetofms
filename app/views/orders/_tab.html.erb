@@ -5,8 +5,12 @@
 
 <% if !@order.approved? &&  @order.enable_tab_controls? %>
     <span id="toolbar" class="ui-widget-header ui-corner-all">
+      <% if permitted_to? :edit, @order %>
         <%= link_to 'Edit', edit_order_path(@order), :class => "editbutton" %>
+      <% end %>
+      <% if permitted_to? :lock, @order %>
         <%= link_to 'Lock', lock_order_path(@lock), :class => "approvebutton" %>
+      <% end %>
     </span>
 <% end %>
 

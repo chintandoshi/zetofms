@@ -5,7 +5,9 @@
 
 <% content_for :sidebar_links_list do %>
 <div class="right-container">
-    <%= link_to 'New Order', new_order_path, :class => "newbutton" %>
+    <% if permitted_to? :new, Order.new %>
+      <%= link_to 'New Order', new_order_path, :class => "newbutton" %>
+    <% end %>
     <%=  render :partial => 'orderfilter' %>
 </div>
 <% end %>

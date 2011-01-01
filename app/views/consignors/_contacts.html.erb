@@ -12,8 +12,12 @@
               <div id="details<%= contact.id %>" style="display:none;" class="dropdowndetails">
                 <div>
                     <span id="toolbar" class="ui-widget-header ui-corner-all">
-                    <%= link_to 'Edit', edit_consignor_contact_path(consignor,contact), :class => "editbutton" %>
-                    <%= link_to 'Delete', consignor_contact_path(consignor,contact), :confirm => 'Are you sure?', :method => :delete, :class => "deletebutton" %>
+                    <% if permitted_to? :edit, :contacts %>
+                      <%= link_to 'Edit', edit_consignor_contact_path(consignor,contact), :class => "editbutton" %>
+                    <% end %>
+                    <% if permitted_to? :destroy, :contacts %>
+                      <%= link_to 'Delete', consignor_contact_path(consignor,contact), :confirm => 'Are you sure?', :method => :delete, :class => "deletebutton" %>
+                    <% end %>
                     <%= link_to_function "Hide","$j('#details#{contact.id}').toggle('drop',[],'slow')", :class => "cancelbutton" %>
                     </span>
                     <b>Position: </b> <%=h contact.position %> <br/>

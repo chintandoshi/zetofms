@@ -2,10 +2,14 @@
 
 <span id="toolbar" class="ui-widget-header ui-corner-all">
     <%=  global_print_link() %>
-    <%= link_to "Cancel Order", @order, :class => "cancelbutton",
-      :confirm => 'Are you sure?', :method => :delete, :disabled => !@order.cancel_order_enabled? %>
-    <%= link_to "Close Order", close_order_path(@order), :class => "approvebutton",
-      :disabled => !@order.close_order_enabled?  %>
+    <% if permitted_to? :destroy, @order %>
+       <%= link_to "Cancel Order", @order, :class => "cancelbutton",
+         :confirm => 'Are you sure?', :method => :delete, :disabled => !@order.cancel_order_enabled? %>
+    <% end %>
+    <% if permitted_to? :close, @order %>
+      <%= link_to "Close Order", close_order_path(@order), :class => "approvebutton",
+        :disabled => !@order.close_order_enabled?  %>
+    <% end %>
     <%= link_to 'Attachments', attachments_driver_path(@order), :class => "attachmentsbutton" %>
     <%= link_to 'Back', orders_path, :class => "backbutton" %>
 </span>

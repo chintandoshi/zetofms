@@ -1,8 +1,14 @@
 <span id="toolbar" class="ui-widget-header ui-corner-all">
     <%=  global_print_link() %>
-    <%= link_to 'Edit', edit_vehicle_path(@vehicle), :class => "editbutton" %>
-    <%= link_to "Delete", @vehicle, :class => "deletebutton", :confirm => 'Are you sure?', :method => :delete %>
-    <%= link_to 'Attachments', attachments_vehicle_path(@vehicle), :class => "attachmentsbutton " %>
+    <% if permitted_to? :edit, @vehicle %>
+      <%= link_to 'Edit', edit_vehicle_path(@vehicle), :class => "editbutton" %>
+    <% end %>
+    <% if permitted_to? :destroy, @vehicle %>
+      <%= link_to "Delete", @vehicle, :class => "deletebutton", :confirm => 'Are you sure?', :method => :delete %>
+    <% end %>
+    <% if permitted_to? :attachments, @vehicle %>
+      <%= link_to 'Attachments', attachments_vehicle_path(@vehicle), :class => "attachmentsbutton " %>
+    <% end %>
     <%= link_to 'Back', vehicles_path, :class => "backbutton" %>
 </span>
 

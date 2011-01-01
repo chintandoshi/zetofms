@@ -3,6 +3,7 @@ class ConsignorsController < ApplicationController
   # GET /consignors.xml
 
   set_tab :contacts
+  filter_access_to :index, :show, :new, :edit, :create, :update, :destroy
   
   def index
       @search = Consignor.search(params[:search])

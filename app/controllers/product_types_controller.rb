@@ -1,6 +1,7 @@
 class ProductTypesController < ApplicationController
 
   set_tab :admin
+  filter_resource_access
   
   # GET /product_types
   # GET /product_types.xml

@@ -1,0 +1,87 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<h2>User privileges</h2>
+
+<% form_for @user, :url => privileges_update_user_url(@user), :html => { :method => :post} do |form| %>
+  <%= form.error_messages %>
+ <table>
+  <tr>
+    <td><%= form.label :login, "Login id" %></td>
+    <td><%= form.text_field :login, :disabled => true %></td>
+  </tr>
+  
+  <tr>
+    <td><label for="vehicles_pri">Vehicles:</label></td>
+    <td><%= select_tag "vehicle_pri",
+      %(<option value="">None</option>) + options_from_collection_for_select(Role.find_all_by_tag("vehicle"), "id", "description", (@user.roles.detect{|d| d.tag.eql?("vehicle")}.nil? ? 0 : @user.roles.detect{|d| d.tag.eql?("vehicle")}.id ) ) %>
+    </td>
+  </tr>
+
+  <tr>
+    <td><label for="drivers_pri">Drivers:</label> </td>
+    <td><%= select_tag "driver_pri",
+      %(<option value="">None</option>) + options_from_collection_for_select(Role.find_all_by_tag("driver"), "id", "description", (@user.roles.detect{|d| d.tag.eql?("driver")}.nil? ? 0 : @user.roles.detect{|d| d.tag.eql?("driver")}.id ) ) %>
+    </td>
+  </tr>
+
+  <tr>
+    <td><label for="custaccount_pri">Customer Accounts:</label> </td>
+    <td><%= select_tag "custaccount_pri",
+      %(<option value="">None</option>) + options_from_collection_for_select(Role.find_all_by_tag("custaccount"), "id", "description", (@user.roles.detect{|d| d.tag.eql?("custaccount")}.nil? ? 0 : @user.roles.detect{|d| d.tag.eql?("custaccount")}.id ) ) %>
+    </td>
+  </tr>
+
+  <tr>
+    <td><label for="consignor_pri">Consignors:</label></td>
+    <td><%= select_tag "consignor_pri",
+      %(<option value="">None</option>) + options_from_collection_for_select(Role.find_all_by_tag("consignor"), "id", "description", (@user.roles.detect{|d| d.tag.eql?("consignor")}.nil? ? 0 : @user.roles.detect{|d| d.tag.eql?("consignor")}.id ) ) %>
+     </td>
+  </tr>
+
+  <tr>
+    <td><label for="consignee_pri">Consignees:</label></td>
+    <td><%= select_tag "consignee_pri",
+      %(<option value="">None</option>) + options_from_collection_for_select(Role.find_all_by_tag("consignee"), "id", "description", (@user.roles.detect{|d| d.tag.eql?("consignee")}.nil? ? 0 : @user.roles.detect{|d| d.tag.eql?("consignee")}.id ) ) %>
+     </td>
+  </tr>
+
+  <tr>
+    <td><label for="contact_pri">Contacts:</label></td>
+    <td><%= select_tag "contact_pri",
+      %(<option value="">None</option>) + options_from_collection_for_select(Role.find_all_by_tag("contact"), "id", "description", (@user.roles.detect{|d| d.tag.eql?("contact")}.nil? ? 0 : @user.roles.detect{|d| d.tag.eql?("contact")}.id ) ) %>
+    </td>
+  </tr>
+
+  <tr>
+    <td><label for="order_pri">Orders:</label> </td>
+    <td><%= select_tag "order_pri",
+      %(<option value="">None</option>) + options_from_collection_for_select(Role.find_all_by_tag("order"), "id", "description", (@user.roles.detect{|d| d.tag.eql?("order")}.nil? ? 0 : @user.roles.detect{|d| d.tag.eql?("order")}.id ) ) %>
+    </td>
+  </tr>
+
+  <tr>
+    <td><label for="admin_pri">Admin:</label> </td>
+    <td><%= select_tag "admin_pri",
+      %(<option value="">None</option>) + options_from_collection_for_select(Role.find_all_by_tag("admin"), "id", "description", (@user.roles.detect{|d| d.tag.eql?("admin")}.nil? ? 0 : @user.roles.detect{|d| d.tag.eql?("admin")}.id ) ) %>
+    </td>
+  </tr>
+ </table>
+  <%  #
+  #
+  #		<label for="roles_ui">Privileges:</label> <br />
+  #		<% Role.find(:all).each do |role| >
+  #			<%= check_box_tag(
+  #                            "user[role_list][#{role.id}]",
+  #                            "1",
+  #                            @user.roles.detect{|d| d == role}) >
+  #			<%= "#{role.description}"><br />
+  #            <% end >
+  #
+  %>
+
+  <%= form.submit 'Update User Privileges', :class => "savebutton" %>
+  <%= link_to 'Cancel', users_path, :method => 'get', :class => "closebutton" %>
+<% end %>

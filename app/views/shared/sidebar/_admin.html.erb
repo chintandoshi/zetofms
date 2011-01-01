@@ -4,12 +4,18 @@
 %>
 
 <% content_for :sidebar_links_list do %>
-Configure: <br/>
 <div class="right-container">
+  <h3>Master Tables</h3>
   <%=h link_to 'Vehicles Types', makes_path, :class => "viewbutton" %> <br/>
   <%=h link_to 'Freight products', product_types_path,  :class => "viewbutton" %> <br/>
   <%=h link_to 'Frieght units', product_units_path,  :class => "viewbutton" %> <br/>
   <%=h link_to 'Detention Reasons', detention_reasons_path,  :class => "viewbutton" %> <br/>
   <%=h link_to 'Order Status Codes', order_status_types_path,  :class => "viewbutton" %> <br/>
+  <%=h link_to 'User Role Types', roles_path,  :class => "viewbutton" %> <br/>
+</div>
+<br/>
+<div class="right-container">
+  <h3>Users</h3>
+  <%=h link_to 'Manage/Privilege', users_path, :class => "viewbutton" %> <br/>
 </div>
 <% end %>

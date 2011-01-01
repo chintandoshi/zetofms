@@ -1,8 +1,14 @@
 <span id="toolbar" class="ui-widget-header ui-corner-all">
     <%=  global_print_link() %>
-    <%= link_to 'Edit', edit_consignor_path(@consignor), :class => "editbutton" %>
-    <%= link_to "Delete", @consignor, :class => "deletebutton", :confirm => 'Are you sure?', :method => :delete %>
-    <%= link_to 'Add a contact', new_consignor_contact_path(@consignor), :class => "newbutton" %>
+    <% if permitted_to? :edit, @consignor %>
+      <%= link_to 'Edit', edit_consignor_path(@consignor), :class => "editbutton" %>
+    <% end %>
+    <% if permitted_to? :destroy, @consignor %>
+      <%= link_to "Delete", @consignor, :class => "deletebutton", :confirm => 'Are you sure?', :method => :delete %>
+    <% end %>
+    <% if permitted_to? :new, :contacts %>
+      <%= link_to 'Add a contact', new_consignor_contact_path(@consignor), :class => "newbutton" %>
+    <% end %>
     <%= link_to 'Back', consignors_path, :class => "backbutton" %>
 </span>
 

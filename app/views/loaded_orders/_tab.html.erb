@@ -1,11 +1,17 @@
 <% if order.loading_enabled? && loadedorder.nil? && @order.enable_tab_controls? %>
+   <% if permitted_to? :new, LoadedOrder.new %>
     <%= link_to 'Add Loading information', new_order_loaded_order_path(order), :class => "newbutton" %>
+   <% end %>
 <% elsif order.loading_enabled? && loadedorder %>
 
     <% if !loadedorder.approved? &&  order.enable_tab_controls? %>
         <span id="toolbar" class="ui-widget-header ui-corner-all">
+          <% if permitted_to? :edit, loadedorder %>
               <%= link_to 'Edit', edit_order_loaded_order_path(order,loadedorder), :class => "editbutton" %>
+          <% end %>
+          <% if permitted_to? :lock, loadedorder %>
               <%= link_to 'Lock', lock_order_loaded_order_path(order,loadedorder), :class => "approvebutton" %>
+          <% end %>
         </span>
     <% end %>
 

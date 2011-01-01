@@ -1,11 +1,17 @@
 <% if order.delivery_enabled? && deliveredorder.nil? && @order.enable_tab_controls? %>
+  <% if permitted_to? :new, DeliveredOrder.new %>
     <%= link_to 'Add Delivery information', new_order_delivered_order_path(order), :class => "newbutton" %>
+  <% end %>
 <% elsif order.delivery_enabled? && deliveredorder %>
 
     <% if !deliveredorder.approved? &&  order.enable_tab_controls? %>
         <span id="toolbar" class="ui-widget-header ui-corner-all">
+          <% if permitted_to? :edit, deliveredorder %>
               <%= link_to 'Edit', edit_order_delivered_order_path(order,deliveredorder), :class => "editbutton" %>
+          <% end %>
+          <% if permitted_to? :lock, deliveredorder %>
               <%= link_to 'Lock', lock_order_delivered_order_path(order,deliveredorder), :class => "approvebutton" %>
+          <% end %>
         </span>
     <% end %>
 

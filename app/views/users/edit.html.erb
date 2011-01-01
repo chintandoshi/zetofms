@@ -1,9 +1,26 @@
-<h1>Edit My Account</h1>
+<h1>User Profile</h1>
 
-<% form_for @user, :url => account_path do |f| %>
+<p>
+  <b>Privileges:</b> <br/>
+  <% @user.roles.each do |role| %>
+    <%=h  role.description %> <br/>
+  <% end %>
+</p>
+
+<p>
+  <b>Last request at:</b>
+  <%=h @user.last_request_at %> <br/>
+  <b>Last login at:</b>
+  <%=h @user.last_login_at %> <br/>
+  <b>Current login at:</b>
+  <%=h @user.current_login_at %>
+</p>
+
+<% form_for @user do |f| %>
   <%= f.error_messages %>
-  <%= render :partial => "form", :object => f %>
-  <%= f.submit "Update" %>
+  <%= render :partial => "form", :object => f, :locals => { :mode => "edit"} %>
+  <%= f.submit "Update", :class => 'savebutton' %>
+  <%= link_to 'Cancel', root_url, :class => "closebutton"%>
 <% end %>
 
-<br /><%= link_to "My Profile", account_path %>
+

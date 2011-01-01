@@ -5,3 +5,8 @@
 #   
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
+
+# create admin user with full privileges for admin tab
+user = User.create(:login => "admin", :password => "admin", :password_confirmation => "admin", :email => "chintan.doshi@zetotech.com")
+role = Role.find_by_name("useradmin")
+user.roles << role

@@ -1,17 +1,29 @@
 <div class="grid">
   <%=h @no_of_customers %> Customers <br/><br/><br/>
-  <%= link_to 'Show',custaccounts_path, :class => "viewbutton"  %><br/><br/>
-  <%= link_to 'New',new_custaccount_path, :class => "newbutton"  %>
+  <% if permitted_to? :index, Custaccount.new %>
+    <%= link_to 'Show',custaccounts_path, :class => "viewbutton"  %><br/><br/>
+  <% end %>
+  <% if permitted_to? :new, Custaccount.new %>
+    <%= link_to 'New',new_custaccount_path, :class => "newbutton"  %>
+  <% end %>
 </div>
 
 <div class="grid">
   <%=h @no_of_consignors %> Consignors <br/><br/><br/>
-  <%= link_to 'Show',consignors_path, :class => "viewbutton"  %><br/><br/>
-  <%= link_to 'New',new_consignor_path, :class => "newbutton"  %>
+  <% if permitted_to? :index, Consignor.new %>
+    <%= link_to 'Show',consignors_path, :class => "viewbutton"  %><br/><br/>
+  <% end %>
+  <% if permitted_to? :new, Consignor.new %>
+    <%= link_to 'New',new_consignor_path, :class => "newbutton"  %>
+  <% end %>
 </div>
 
 <div class="grid">
   <%=h @no_of_consignees %> Consignees <br/><br/><br/>
-  <%= link_to 'Show',consignees_path, :class => "viewbutton"  %><br/><br/>
-  <%= link_to 'New',new_consignee_path, :class => "newbutton"  %>
+  <% if permitted_to? :index, Consignee.new %>
+    <%= link_to 'Show',consignees_path, :class => "viewbutton"  %><br/><br/>
+  <% end %>
+  <% if permitted_to? :new, Consignee.new %>
+    <%= link_to 'New',new_consignee_path, :class => "newbutton"  %>
+  <% end %>
 </div>

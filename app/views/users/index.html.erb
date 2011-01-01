@@ -1,0 +1,29 @@
+<% render :partial => '/shared/sidebar/admin' %>
+
+<table class="admin">
+  <thead>
+      <tr class="header">
+        <th>  <%= sort_link 'Login Id', :login %>  <%= sort_flag :login %>  </th>
+        <th></th>
+        <th></th>
+      </tr>
+  </thead>
+  <tbody>
+    <% unless @users.empty? -%>
+          <% @users.each do |user| %>
+          <tr class="<%= cycle("odd", "even") -%>">
+             <td><%=h user.login %></td>
+             <td><%=h link_to "Privileges",privileges_edit_user_path(user), :class => "approvebutton" %></td>
+             <td><%=h link_to "Remove", remove_user_path(user), :class => "deletebutton", :confirm => 'Are you sure?' %></td>
+          </tr>
+          <% end %>
+      <% end %>
+   </tbody>
+</table>
+
+ <div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info @users %>
+  </div>
+  <%= will_paginate @users, :container => false %>
+</div>

@@ -24,7 +24,8 @@
 			<div id="header">
                             <p id="status">
                               Signed in as <%= current_user_session.record.login %> |
-                              <%= link_to('Logout',  logout_login_url, :method => :delete) if current_user() %>
+                              <%= link_to 'Profile', edit_user_url(:current) if current_user() %> |
+                              <%= link_to('Logout',  user_session_url(:current), :method => :delete) if current_user() %>
                             </p>
                             <h1>ZetoCRM</h1>
 			</div>

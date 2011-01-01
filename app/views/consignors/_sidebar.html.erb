@@ -5,6 +5,8 @@
 
 <% content_for :sidebar_links_list do %>
 <div class="right-container">
-  <%= link_to 'New Consignor', new_consignor_path, :class => "newbutton" %>
+  <% if permitted_to? :new, Consignor.new %>
+    <%= link_to 'New Consignor', new_consignor_path, :class => "newbutton" %>
+  <% end %>
 </div>
 <% end %>

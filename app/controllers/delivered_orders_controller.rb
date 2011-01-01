@@ -2,6 +2,7 @@ class DeliveredOrdersController < ApplicationController
 
   set_tab :orders
   before_filter :find_order, :tab_selection
+  filter_access_to :new, :edit, :create, :update, :lock
 
   def find_order
       @order = Order.find_by_id(params[:order_id])

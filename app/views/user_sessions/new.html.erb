@@ -1,6 +1,6 @@
 <h1>Welcome to ZETOCRM</h1>
 
-<% form_for @user_session, :url => login_index_path do |f| %>
+<% form_for @user_session do |f| %>
   <%= f.error_messages %>
   <%= f.label :login %><br />
   <%= f.text_field :login %><br />
@@ -8,7 +8,10 @@
   <%= f.label :password %><br />
   <%= f.password_field :password %><br />
   <br />
-  <%= f.check_box :remember_me %><%= f.label :remember_me %><br />
-  <br />
-  <%= f.submit "Login" %>
+  <%= f.submit "Login", :class => "savebutton" %>
 <% end %>
+
+  <p>
+    <%= link_to "New User Registration", new_user_url  %>
+  </p>
+<br/>

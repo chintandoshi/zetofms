@@ -3,6 +3,7 @@ class MakesController < ApplicationController
   # GET /makes.xml
 
   set_tab :admin
+  filter_resource_access
 
   def index
 
@@ -36,7 +37,7 @@ class MakesController < ApplicationController
 
     respond_to do |format|
       if @make.save
-        format.html { redirect_to(makes_url, :notice => 'Vechile Make was successfully added.') }
+        format.html { redirect_to(makes_url, :notice => 'Vehicle Make was successfully added.') }
         format.xml  { render :xml => @make, :status => :created, :location => @make }
       else
         format.html { render :action => "index" }

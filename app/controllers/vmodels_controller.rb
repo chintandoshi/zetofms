@@ -1,6 +1,7 @@
 class VmodelsController < ApplicationController
 
   set_tab :admin
+  filter_resource_access
 
   # POST /vmodels
   # POST /vmodels.xml
