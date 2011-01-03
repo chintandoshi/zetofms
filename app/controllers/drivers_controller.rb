@@ -90,26 +90,4 @@ class DriversController < ApplicationController
     end
   end
 
-  def attachments
-    @driver = Driver.find(params[:id])
-  end
-
-  def add_attachment
-      @attachment = AttachmentBox.new(params[:attachment_box])
-      @driver = Driver.find(params[:id])
-
-      if (!@attachment.valid?)
-        render :action => "attachments"
-        return
-      end
-
-    @attachment.username = current_user_session.record.login
-    @driver.attachment_boxes << @attachment
-    
-      if @driver.save!
-          redirect_to(attachments_driver_path(@driver), :notice => 'Uploaded successfully.')
-      end
-
-    end
-
 end

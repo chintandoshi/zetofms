@@ -27,7 +27,7 @@ authorization do
 
   role :driversoperator do
     includes :driversrestricted
-    has_permission_on [:drivers], :to => [:new, :edit, :create, :update, :attachments]
+    has_permission_on [:drivers], :to => [:new, :edit, :create, :update]
   end
 
   role :driversrestricted do
@@ -43,12 +43,23 @@ authorization do
 
   role :vehiclesoperator do
     includes :vehiclesrestricted
-    has_permission_on [:vehicles], :to => [:new, :edit, :create, :update, :attachments]
+    has_permission_on [:vehicles], :to => [:new, :edit, :create, :update]
   end
 
   role :vehiclesrestricted do
     includes :guest
     has_permission_on [:vehicles], :to => [:index, :show]
+  end
+
+  #contacts
+  role :attachmentssuper do
+    includes :attachmentsrestricted
+    has_permission_on [:attachment_boxes], :to => [:create, :destroy]
+  end
+
+  role :attachmentsrestricted do
+    includes :guest
+    has_permission_on [:attachment_boxes], :to => [:index, :show]
   end
 
   #contacts

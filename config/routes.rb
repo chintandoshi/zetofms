@@ -7,6 +7,7 @@ ActionController::Routing::Routes.draw do |map|
      order.resources :delivered_orders, :only => [:new,:create, :edit,:update], :member => { :lock => :get}
      order.resources :billed_orders, :only => [:new, :create, :edit, :update], :member => {:lock => :get}
      order.resources :detentions, :only => [:new, :create, :edit, :update, :destroy]
+     order.resources :attachment_boxes, :only => [:index, :show, :create, :destroy]
   end
   #map.resources :order_statuses
 
@@ -22,10 +23,14 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   #drivers
-  map.resources :drivers, :member => {:attachments => :get, :add_attachment => :post}
+  map.resources :drivers do |driver|
+    driver.resources :attachment_boxes, :only => [:index, :show, :create, :destroy]
+  end
 
   #vehicles
-  map.resources :vehicles, :member => {:attachments => :get, :add_attachment => :post}
+  map.resources :vehicles do |vehicle|
+    vehicle.resources :attachment_boxes, :only => [:index, :show, :create, :destroy]
+  end
 
   #admin
   map.resources :detention_reasons, :only => [:index, :create, :destroy]
@@ -35,9 +40,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :makes, :only => [:index, :show, :create, :destroy] do |make|
       make.resources :vmodels, :only => [:create, :destroy]
   end
-
-  #attachments
-  map.resources :attachment_boxes, :controller => "attachment_boxes", :only => [:destroy, :show]
 
   #user management
   map.resources :user_sessions, :only => [:new, :create, :destroy]

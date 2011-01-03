@@ -1,0 +1,33 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<%= link_to 'Back', @resource, :class => "backbutton", :style => "float:right;" %> <br/>
+
+<table class="admin">
+  <thead>
+     <th>ATTACHMENT:</th>
+     <th></th>
+     <th></th>
+  </thead>
+  <tbody>
+      <% @resource.attachment_boxes.each do |attachment| %>
+      <tr class="<%= cycle("even", "odd") %>">
+        <td><b><%= attachment.uploadedfile.original_filename  %></b>
+        (uploaded by <%= attachment.username %> at
+        <%= attachment.created_at.strftime('%d %b %Y %H:%M %Z')  %>)</td>
+        <td> <%= link_to "View",[@resource, attachment], :class => "viewbutton" %></td>
+        <td><%= link_to "Delete", [@resource, attachment],  :confirm => 'Are you sure?',:method => :delete, :class => "deletebutton" %></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+
+<p>
+    <% form_for [@resource, AttachmentBox.new],:html => { :multipart => true } do |form| %>
+      <%= error_messages_for :attachment_box %>
+      <%= form.file_field :uploadedfile %> <br/><br/>
+      <%= form.submit "Upload", :class => "attachmentsbutton" %>
+    <% end %>
+</p>

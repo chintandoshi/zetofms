@@ -63,6 +63,14 @@
   </tr>
 
   <tr>
+    <td><label for="attachment_pri">Attachments:</label> </td>
+    <td><%= select_tag "attachment_pri",
+      %(<option value="">None</option>) + options_from_collection_for_select(Role.find_all_by_tag("attachment"), "id", "description", (@user.roles.detect{|d| d.tag.eql?("attachment")}.nil? ? 0 : @user.roles.detect{|d| d.tag.eql?("attachment")}.id ) ) %>
+    </td>
+  </tr>
+ </table>
+
+  <tr>
     <td><label for="admin_pri">Admin:</label> </td>
     <td><%= select_tag "admin_pri",
       %(<option value="">None</option>) + options_from_collection_for_select(Role.find_all_by_tag("admin"), "id", "description", (@user.roles.detect{|d| d.tag.eql?("admin")}.nil? ? 0 : @user.roles.detect{|d| d.tag.eql?("admin")}.id ) ) %>

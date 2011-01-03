@@ -27,6 +27,9 @@ class Order < ActiveRecord::Base
   has_many :detentions
   has_many :order_statuses, :dependent => :destroy
   belongs_to :current_status, :class_name => "OrderStatusType"
+
+  has_many :attachment_boxes, :as => :resource, :dependent => :destroy
+  accepts_nested_attributes_for :attachment_boxes
   
   named_scope :open, :conditions => ['cancelled = ?', 0]
 

@@ -10,7 +10,9 @@
       <%= link_to "Close Order", close_order_path(@order), :class => "approvebutton",
         :disabled => !@order.close_order_enabled?  %>
     <% end %>
-    <%= link_to 'Attachments', attachments_driver_path(@order), :class => "attachmentsbutton" %>
+    <% if permitted_to? :index, :attachment_boxes %>
+      <%= link_to 'Attachments', order_attachment_boxes_path(@order), :class => "attachmentsbutton" %>
+    <% end %>
     <%= link_to 'Back', orders_path, :class => "backbutton" %>
 </span>
 <h1>Order #<%=h @order.id %></h1>

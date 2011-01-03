@@ -93,29 +93,6 @@ class VehiclesController < ApplicationController
     end
   end
 
-
-  def attachments
-    @vehicle = Vehicle.find(params[:id])
-  end
-
-  def add_attachment
-      @attachment = AttachmentBox.new(params[:attachment_box])
-      @vehicle = Vehicle.find(params[:id])
-
-      if (!@attachment.valid?)
-        render :action => "attachments"
-        return
-      end
-
-    @attachment.username = current_user_session.record.login
-    @vehicle.attachment_boxes << @attachment
-
-      if @vehicle.save!
-          redirect_to(attachments_vehicle_path(@vehicle), :notice => 'Uploaded successfully.')
-      end
-
-    end
-
   private
 
   def update_products(vehicle)

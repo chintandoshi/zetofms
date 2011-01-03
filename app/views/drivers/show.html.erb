@@ -6,8 +6,8 @@
     <% if permitted_to? :destroy, @driver %>
       <%= link_to "Delete", @driver, :class => "deletebutton", :confirm => 'Are you sure?', :method => :delete %>
     <% end %>
-    <% if permitted_to? :attachments, @driver %>
-      <%= link_to 'Attachments', attachments_driver_path(@driver), :class => "attachmentsbutton" %>
+    <% if permitted_to? :index, :attachment_boxes %>
+      <%= link_to 'Attachments', driver_attachment_boxes_path(@driver), :class => "attachmentsbutton" %>
     <% end %>
     <%= link_to 'Back', drivers_path, :class => "backbutton" %>
 </span>
