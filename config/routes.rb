@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
 
   # order module
-  map.resources :orders, :member => { :lock => :get, :close => :get, :tooltip => :get} do |order|
+  map.resources :orders, :member => { :lock => :get, :cancel => :delete, :close => :delete, :tooltip => :get} do |order|
      order.resources :planned_orders, :only => [:new, :create, :edit, :update],:member => { :lock => :get }
      order.resources :loaded_orders, :only => [:new, :create, :edit, :update], :member => { :lock => :get }
      order.resources :delivered_orders, :only => [:new,:create, :edit,:update], :member => { :lock => :get}
@@ -28,7 +28,7 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   #vehicles
-  map.resources :vehicles do |vehicle|
+  map.resources :vehicles, :member => {:retire => :put}, :collection => {:retired => :get} do |vehicle|
     vehicle.resources :attachment_boxes, :only => [:index, :show, :create, :destroy]
   end
 

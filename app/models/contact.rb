@@ -17,4 +17,14 @@ class Contact < ActiveRecord::Base
     title += " (" + self.position + "," + self.department + ")"
   end
 
+  before_destroy :safe_to_destroy?
+
+  private
+  def safe_to_destroy?
+    unless self.billingcontactorders.empty? && self.purchasecontactorders.empty?
+       error_msg = "Unable to delete #{self.display_name} as the contact is associated to one or more orders(s) as billing or purchase contact."
+      raise ActiveRecord::RecordNotDestroyed, error_msg
+    end
+  end
+
 end

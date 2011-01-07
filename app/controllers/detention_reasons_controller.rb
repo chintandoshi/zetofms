@@ -37,7 +37,13 @@ class DetentionReasonsController < ApplicationController
   # DELETE /detention_reasons/1.xml
   def destroy
     @detention_reason = DetentionReason.find(params[:id])
-    @detention_reason.destroy
+
+    begin
+      @detention_reason.destroy
+    rescue ActiveRecord::RecordNotDestroyed => e
+      redirect_to(detention_reasons_url, :notice => e.message)
+      return
+    end
 
     respond_to do |format|
       format.html { redirect_to(detention_reasons_url,:notice => 'Detention Reason was successfully deleted.') }

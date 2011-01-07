@@ -69,7 +69,8 @@ class UsersController < ApplicationController
       format.html { render :action => "privileges_edit" }
     end
   end
-
+  
+  private
   def update_roles(user)
     # delete existing associations
     user.roles.delete_all

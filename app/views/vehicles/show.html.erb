@@ -1,10 +1,13 @@
 <span id="toolbar" class="ui-widget-header ui-corner-all">
     <%=  global_print_link() %>
-    <% if permitted_to? :edit, @vehicle %>
+    <% if permitted_to?(:edit, @vehicle) && @vehicle.retired_at.nil? %>
       <%= link_to 'Edit', edit_vehicle_path(@vehicle), :class => "editbutton" %>
     <% end %>
     <% if permitted_to? :destroy, @vehicle %>
-      <%= link_to "Delete", @vehicle, :class => "deletebutton", :confirm => 'Are you sure?', :method => :delete %>
+      <%= link_to "Delete", @vehicle, :class => "deletebutton", :confirm => 'Deleting vehicle will also deleted repairs, fuel, driver etc data associated with this vehicle. Are you sure ?', :method => :delete %>
+    <% end %>
+    <% if permitted_to?(:retire, @vehicle)  && @vehicle.retired_at.nil? %>
+      <%= link_to "Retire", retire_vehicle_path(@vehicle), :class => "retirebutton", :confirm => 'Are you sure ?', :method => :put %>
     <% end %>
     <% if permitted_to? :index, :attachment_boxes %>
       <%= link_to 'Attachments',vehicle_attachment_boxes_path(@vehicle), :class => "attachmentsbutton " %>
@@ -19,7 +22,7 @@
   <tbody>
     <tr>
         <td class="field"> Registration Number:</td> <td>
-        <%=h @vehicle.registration_number %></td>
+        <%=h @vehicle.registration_number %> <b><%= "(Retired)" if !@vehicle.retired_at.nil? %></b></td>
     </tr>
     <tr>
         <td class="field"> Vehicle Manufacturer:</td> <td>

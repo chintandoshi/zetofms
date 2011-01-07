@@ -1,24 +1,33 @@
 class VehiclesController < ApplicationController
 
   set_tab :vehicles
-  filter_resource_access
+  filter_resource_access :additional_collection => [:retired]
 
   # GET /vehicles
   # GET /vehicles.xml
   def index
-      @search = Vehicle.search(params[:search])
+      @search = Vehicle.active.search(params[:search])
 
       if params[:search]
        @vehicles = @search.paginate :page => params[:page],
-          :per_page => 4,
+          :per_page => 15,
           :order => sort_order('registration_number')
       else
-        @vehicles = Vehicle.paginate :page => params[:page],
-          :per_page => 4,
+        @vehicles = Vehicle.active.paginate :page => params[:page],
+          :per_page => 15,
           :order => sort_order('registration_number')
       end
+
   end
-  
+
+  # GET /vehicles/retired
+  def retired
+
+        @vehicles = Vehicle.retired.paginate :page => params[:page],
+          :per_page => 15,
+          :order => sort_order('registration_number')
+
+  end
 
   # GET /vehicles/1
   # GET /vehicles/1.xml
@@ -44,7 +53,7 @@ class VehiclesController < ApplicationController
 
   # GET /vehicles/1/edit
   def edit
-    @vehicle = Vehicle.find(params[:id])
+    @vehicle = Vehicle.active.find(params[:id])
   end
 
   # POST /vehicles
@@ -67,7 +76,7 @@ class VehiclesController < ApplicationController
   # PUT /vehicles/1
   # PUT /vehicles/1.xml
   def update
-    @vehicle = Vehicle.find(params[:id])
+    @vehicle = Vehicle.active.find(params[:id])
 
     respond_to do |format|
       if @vehicle.update_attributes(params[:vehicle])
@@ -85,12 +94,29 @@ class VehiclesController < ApplicationController
   # DELETE /vehicles/1.xml
   def destroy
     @vehicle = Vehicle.find(params[:id])
-    @vehicle.destroy
+
+    begin
+      @vehicle.destroy
+    rescue ActiveRecord::RecordNotDestroyed => e
+      redirect_to( @vehicle, :notice => e.message)
+      return
+    end
 
     respond_to do |format|
-      format.html { redirect_to(vehicles_url) }
+      format.html { redirect_to(vehicles_url, :notice => "Vehicle deleted.") }
       format.xml  { head :ok }
     end
+  end
+
+  # PUT /vehicles/12/toggle
+  def retire
+    vehicle = Vehicle.active.find(params[:id])
+
+    if vehicle.retired_at.nil?
+      vehicle.update_attribute(:retired_at, DateTime.now)
+    end
+
+    redirect_to(vehicles_url, :notice => "Vehicle #{vehicle.registration_number} retired.")
   end
 
   private

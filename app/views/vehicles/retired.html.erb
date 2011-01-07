@@ -1,0 +1,31 @@
+<% render :partial => 'sidebar' %>
+
+<h1>Retired vehicles</h1>
+
+<table class="listing">
+  <thead>
+      <tr class="header">
+        <th>Id</th>
+        <th>  <%= sort_link 'Registration Number', :registration_number %>  <%= sort_flag :registration_number %>  </th>
+        <th> Manufacturer / Model </th>
+      </tr>
+  </thead>
+  <tbody>
+      <% @vehicles.each do |vehicle| %>
+      <tr class="<%= cycle("odd", "even") -%>">
+        <td><%=h link_to vehicle.id, vehicle %></td>
+        <td><%=h vehicle.registration_number %></td>
+        <td><%=h vehicle.make.make_name %> <%=h vehicle.vmodel.model_name %></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+
+
+ <div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info @vehicles %>
+  </div>
+  <%= will_paginate @vehicles, :container => false %>
+</div>
+

@@ -50,8 +50,14 @@ class MakesController < ApplicationController
   # DELETE /makes/1.xml
   def destroy
     @make = Make.find(params[:id])
-    @make.destroy
-
+    
+    begin
+      @make.destroy
+    rescue ActiveRecord::RecordNotDestroyed => e
+      redirect_to(makes_url, :notice => "Cant delete #{@make.make_name} with #{@make.vmodels.count} associated models")
+      return
+    end
+    
     respond_to do |format|
       format.html { redirect_to(makes_url, :notice => "Vehicle manufacturer was successfully deleted") }
       format.xml  { head :ok }

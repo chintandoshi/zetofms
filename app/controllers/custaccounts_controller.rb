@@ -84,7 +84,13 @@ class CustaccountsController < ApplicationController
   # DELETE /custaccounts/1.xml
   def destroy
     @custaccount = Custaccount.find(params[:id])
-    @custaccount.destroy
+
+    begin
+      @custaccount.destroy
+    rescue ActiveRecord::RecordNotDestroyed
+      redirect_to( @custaccount, :notice => "Unable to delete as its associated with one or more orders")
+      return
+    end
 
     respond_to do |format|
       format.html { redirect_to(custaccounts_url) }

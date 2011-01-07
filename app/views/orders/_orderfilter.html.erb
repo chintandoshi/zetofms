@@ -64,7 +64,7 @@
     <%= f.date_select :billed_order_invoice_due_date_gte, :include_blank => true, :use_short_month => true  %> <br/>
   </p>
 
-  <p><%= f.label :loaded_order_vehicle_id_equals, "Vehicle" %> <br/>
+  <p><%= f.label :loaded_order_vehicle_id_or_planned_order_vehicle_id_equals, "Vehicle" %> <br/>
   <%= f.collection_select :loaded_order_vehicle_id_equals, Vehicle.all(:order => "registration_number"), :id, :registration_number, :include_blank => "All" %></p>
   <br/>
   

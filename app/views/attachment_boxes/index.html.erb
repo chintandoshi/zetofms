@@ -24,10 +24,12 @@
   </tbody>
 </table>
 
-<p>
-    <% form_for [@resource, AttachmentBox.new],:html => { :multipart => true } do |form| %>
-      <%= error_messages_for :attachment_box %>
-      <%= form.file_field :uploadedfile %> <br/><br/>
-      <%= form.submit "Upload", :class => "attachmentsbutton" %>
-    <% end %>
-</p>
+<% if permitted_to? :create, :attachment_boxes %>
+    <p>
+        <% form_for [@resource, AttachmentBox.new],:html => { :multipart => true } do |form| %>
+          <%= error_messages_for :attachment_box %>
+          <%= form.file_field :uploadedfile %> <br/><br/>
+          <%= form.submit "Upload", :class => "attachmentsbutton" %>
+        <% end %>
+    </p>
+<% end %>

@@ -20,11 +20,11 @@ class Order < ActiveRecord::Base
   belongs_to :purchasecontact,:class_name => "Contact"
   belongs_to :product_type
   belongs_to :product_unit
-  has_one :planned_order
-  has_one :loaded_order
-  has_one :delivered_order
-  has_one :billed_order
-  has_many :detentions
+  has_one :planned_order , :dependent => :destroy
+  has_one :loaded_order, :dependent => :destroy
+  has_one :delivered_order, :dependent => :destroy
+  has_one :billed_order, :dependent => :destroy
+  has_many :detentions, :dependent => :destroy
   has_many :order_statuses, :dependent => :destroy
   belongs_to :current_status, :class_name => "OrderStatusType"
 
@@ -79,7 +79,7 @@ class Order < ActiveRecord::Base
       return !self.cancelled? &&  !self.closed?
     end
 
-    #close/lock order button
+    #close order button
     def close_order_enabled? ()
       return self.billed_order && self.billed_order.approved? && !self.cancelled? & !self.closed?
     end

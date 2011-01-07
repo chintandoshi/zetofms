@@ -174,3 +174,7 @@ p {
     padding: 4px 4px;
     font-size: 11px;
 }
+
+.toggle { padding: 6px 0 6px 20px; background: url('../images/plus.gif') no-repeat left center; }
+.toggle:hover { cursor: pointer; }
+.closed { padding: 6px 0 6px 20px; background: url('../images/minus.gif') no-repeat left center; }

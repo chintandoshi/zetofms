@@ -14,4 +14,13 @@ class Consignor < ActiveRecord::Base
     return self.consignor_name
   end
 
+  before_destroy :safe_to_destroy?
+
+  private
+  def safe_to_destroy?
+    unless self.orders.empty?
+      raise ActiveRecord::RecordNotDestroyed
+    end
+  end
+  
 end

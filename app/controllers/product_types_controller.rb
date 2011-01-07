@@ -40,7 +40,13 @@ class ProductTypesController < ApplicationController
   # DELETE /product_types/1.xml
   def destroy
     @product_type = ProductType.find(params[:id])
-    @product_type.destroy
+
+    begin
+      @product_type.destroy
+    rescue ActiveRecord::RecordNotDestroyed => e
+      redirect_to(product_types_url, :notice => e.message)
+      return
+    end
 
     respond_to do |format|
       format.html { redirect_to(product_types_url, :notice => 'Product Type was successfully deleted.') }

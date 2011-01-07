@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   # GET /orders.xml
   set_tab :orders
   before_filter :set_search_object
-  filter_access_to :index, :show, :new, :create, :edit, :update, :destroy, :lock, :close
+  filter_access_to :index, :show, :new, :create, :edit, :update, :lock, :destroy, :close, :cancel, :tooltip
   
   def set_search_object
     @search = Order.search(params[:search])
@@ -97,13 +97,11 @@ class OrdersController < ApplicationController
   # DELETE /orders/1.xml
   def destroy
     @order = Order.find(params[:id])
-    @order.cancelled = true
-    @order.cancelled_at = DateTime.now
-    @order.cancelled_by = current_user_session.record.login
-    @order.save
+    id = params[:id]
+    @order.destroy
 
     respond_to do |format|
-      format.html { redirect_to(@order, :notice => "Order cancelled") }
+      format.html { redirect_to(orders_url, :notice => "Order #{id} deleted.") }
       format.xml  { head :ok }
     end
   end
@@ -126,7 +124,22 @@ class OrdersController < ApplicationController
     @order.closed_at = DateTime.now
     @order.save
 
-    redirect_to(@order, :notice => 'Order successfully locked')
+    redirect_to(@order, :notice => 'Order successfully closed.')
+  end
+
+
+  # DELETE /orders/1/cancel
+  def cancel
+    @order = Order.find(params[:id])
+    @order.cancelled = true
+    @order.cancelled_at = DateTime.now
+    @order.cancelled_by = current_user_session.record.login
+    @order.save
+
+    respond_to do |format|
+      format.html { redirect_to(@order, :notice => "Order cancelled") }
+      format.xml  { head :ok }
+    end
   end
 
   def tooltip

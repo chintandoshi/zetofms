@@ -58,7 +58,13 @@ class ContactsController < ApplicationController
   # DELETE /contacts/1.xml
   def destroy
     @contact = Contact.find(params[:id])
-    @contact.destroy
+
+    begin
+      @contact.destroy
+    rescue ActiveRecord::RecordNotDestroyed => e
+      redirect_to( @resource, :notice => e.message)
+      return
+    end
 
     respond_to do |format|
       format.html { redirect_to(@resource, :notice => 'Contact was successfully deleted') }

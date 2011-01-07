@@ -2,6 +2,7 @@
 
 <%= link_to 'Back to vehicle manufacturers', makes_path, :class => "backbutton", :style => "float:right " %>
 
+<% unless @make.vmodels.empty? -%>
 <table class="admin">
   <thead>
       <tr class="header">
@@ -10,7 +11,6 @@
       </tr>
   </thead>
   <tbody>
-    <% unless @make.vmodels.empty? -%>
           <% @make.vmodels.each do |vmodel| %>
           <tr>
              <td><%=h vmodel.model_name %></td>
@@ -18,10 +18,14 @@
                   <%= link_to 'Delete', make_vmodel_url(@make, vmodel),:class => "dellink", :confirm => 'Are you sure?', :method => :delete %>
              </span></td>
           </tr>
-          <% end %>
       <% end %>
    </tbody>
 </table>
+<% else %>
+<p><b>No models found</b></p> <br/>
+<% end %>
+
+
 
 <% form_for [@make,Vmodel.new] do |f| %>
   <%= error_messages_for :vmodel %>

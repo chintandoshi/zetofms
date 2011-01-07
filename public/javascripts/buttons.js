@@ -68,7 +68,16 @@ $j(function() {
                 primary: "ui-icon-arrowreturnthick-1-e"
             }
         });
-});
-
+        $j(".retirebutton").button({
+            icons: {
+                primary: "ui-icon-flag"
+            }
+        });
+        $j(".indexbutton").button({
+            icons: {
+                primary: "ui-icon-home"
+            }
+        });
+})
 
 

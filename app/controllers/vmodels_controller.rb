@@ -23,9 +23,15 @@ class VmodelsController < ApplicationController
   # DELETE /vmodels/1
   # DELETE /vmodels/1.xml
   def destroy
-    vmodel = Vmodel.find(params[:id])
-    make_id = vmodel.make_id
-    vmodel.destroy
+    vm = Vmodel.find(params[:id])
+    make_id = vm.make_id
+
+    begin
+      vm.destroy
+    rescue ActiveRecord::RecordNotDestroyed => e
+      redirect_to(make_url(make_id), :notice => "Unable to delete #{vm.model_name} as it has 1 or more vehicle(s) associated. " )
+      return
+    end
 
     respond_to do |format|
       format.html { redirect_to(make_url(make_id), :notice => "Vehicle model was successfully deleted.") }

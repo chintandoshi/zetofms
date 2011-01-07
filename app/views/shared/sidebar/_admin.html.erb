@@ -7,11 +7,15 @@
 <div class="right-container">
   <h3>Master Tables</h3>
   <%=h link_to 'Vehicles Types', makes_path, :class => "viewbutton" %> <br/>
-  <%=h link_to 'Freight products', product_types_path,  :class => "viewbutton" %> <br/>
-  <%=h link_to 'Frieght units', product_units_path,  :class => "viewbutton" %> <br/>
+  <%=h link_to 'Product types', product_types_path,  :class => "viewbutton" %> <br/>
+  <%=h link_to 'Product units', product_units_path,  :class => "viewbutton" %> <br/>
   <%=h link_to 'Detention Reasons', detention_reasons_path,  :class => "viewbutton" %> <br/>
-  <%=h link_to 'Order Status Codes', order_status_types_path,  :class => "viewbutton" %> <br/>
-  <%=h link_to 'User Role Types', roles_path,  :class => "viewbutton" %> <br/>
+  <% if permitted_to? :index, :order_status_types %>
+    <%=h link_to 'Order Status Codes', order_status_types_path,  :class => "viewbutton" %> <br/>
+  <% end %>
+  <% if permitted_to? :index, :roles %>
+    <%=h link_to 'User Role Types', roles_path,  :class => "viewbutton" %> <br/>
+  <% end %>
 </div>
 <br/>
 <div class="right-container">

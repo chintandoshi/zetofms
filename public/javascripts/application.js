@@ -13,6 +13,13 @@ $j(document).ready(function(){
         }
     });
 
+    // site-wide toggle headers
+    $j(".toggle").toggle(function() {
+        $j(this).addClass("closed");
+        }, function () {
+        $j(this).removeClass("closed");
+        });
+
 });
 
 

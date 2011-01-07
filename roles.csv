@@ -1,0 +1,25 @@
+30,ordersrestricted,can VIEW/SEARCH orders,2010-12-30 12:52:41,2010-12-30 12:52:41,order
+31,ordersoperator,can VIEW/SEARCH/ADD/EDIT orders,2010-12-30 12:53:21,2010-12-30 12:53:21,order
+32,orderssuper,can VIEW/SEARCH/ADD/EDIT/LOCK/CANCEL/CLOSE/DELETE orders,2010-12-30 12:53:54,2010-12-30 12:53:54,order
+33,masteradmin,Master Table administration,2010-12-30 12:54:21,2010-12-30 12:54:21,admin
+34,driversrestricted,can VIEW/SEARCH drivers,2010-12-30 12:55:02,2010-12-30 12:55:02,driver
+35,driversoperator,can VIEW/SEARCH/ADD/EDIT  drivers,2010-12-30 12:55:37,2010-12-30 12:55:37,driver
+36,driverssuper,can VIEW/SEARCH/ADD/EDIT/DELETE/RETIRE drivers,2010-12-30 12:56:01,2010-12-30 12:56:01,driver
+37,vehiclesrestricted,can VIEW/SEARCH vehicles,2010-12-30 12:56:37,2010-12-30 12:56:37,vehicle
+38,vehiclesoperator,can VIEW/SEARCH/ADD/EDIT vehicles,2010-12-30 12:56:53,2010-12-30 12:56:53,vehicle
+39,vehiclessuper,can VIEW/SEARCH/ADD/EDIT/DELETE/RETIRE vehicles,2010-12-30 12:57:11,2010-12-30 12:57:11,vehicle
+40,contactsoperator,can VIEW/ADD/EDIT contacts,2010-12-30 12:57:46,2010-12-30 12:57:46,contact
+41,contactssuper,can VIEW/ADD/EDIT/DELETE contacts,2010-12-30 12:58:12,2010-12-30 12:58:12,contact
+42,custaccountsrestricted,can VIEW/SEARCH customer accounts,2010-12-30 12:59:38,2010-12-30 12:59:38,custaccount
+43,custaccountsoperator,can VIEW/SEARCH/ADD/EDIT customer accounts,2010-12-30 13:00:22,2010-12-30 13:00:22,custaccount
+44,custaccountssuper,can VIEW/SEARCH/ADD/EDIT/DELETE customer accounts,2010-12-30 13:00:42,2010-12-30 13:00:42,custaccount
+45,consignorsrestricted,can VIEW/SEARCH consignors,2010-12-30 13:01:04,2010-12-30 13:01:04,consignor
+46,consignorsoperator,can VIEW/SEARCH/ADD/EDIT consignors,2010-12-30 13:01:27,2010-12-30 13:01:27,consignor
+47,consignorssuper,can VIEW/SEARCH/ADD/EDIT/DELETE consignors,2010-12-30 13:01:48,2010-12-30 13:01:48,consignor
+48,consigneesrestricted,can VIEW/SEARCH consignees,2010-12-30 13:02:04,2010-12-30 13:02:04,consignee
+49,consigneesoperator,can VIEW/SEARCH/ADD/EDIT consignees,2010-12-30 13:02:32,2010-12-30 13:02:32,consignee
+50,consigneessuper,can VIEW/SEARCH/ADD/EDIT/DELETE consignees,2010-12-30 13:02:54,2010-12-30 13:02:54,consignee
+51,useradmin,Master Table administration & User privileges,2011-01-01 11:05:04,2011-01-01 11:05:04,admin
+52,attachmentsrestricted,Can VIEW attachments,2011-01-03 13:34:05,2011-01-03 13:34:05,attachment
+53,attachmentssuper,can VIEW/ADD/DELETE attachments,2011-01-03 13:34:38,2011-01-03 13:34:38,attachment
+54,superuser,super user . special privileges for internal use,2011-01-05 10:34:11,2011-01-05 10:34:11,super

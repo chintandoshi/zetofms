@@ -82,10 +82,16 @@ class ConsignorsController < ApplicationController
   # DELETE /consignors/1.xml
   def destroy
     @consignor = Consignor.find(params[:id])
-    @consignor.destroy
+
+    begin
+      @consignor.destroy
+    rescue ActiveRecord::RecordNotDestroyed
+      redirect_to( @consignor, :notice => "Unable to delete as its associated with one or more orders")
+      return
+    end
 
     respond_to do |format|
-      format.html { redirect_to(consignors_url) }
+      format.html { redirect_to(consignors_url, :notice => "Consignor deleted.") }
       format.xml  { head :ok }
     end
   end

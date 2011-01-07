@@ -6,7 +6,7 @@ authorization do
   #orders
   role :ordersrestricted do
     includes :guest
-    has_permission_on [:orders], :to => [:index, :show]
+    has_permission_on [:orders], :to => [:index, :show, :tooltip]
   end
 
   role :ordersoperator do
@@ -16,7 +16,7 @@ authorization do
 
   role :orderssuper do
     includes :ordersoperator
-    has_permission_on [:orders, :planned_orders, :loaded_orders, :delivered_orders, :billed_orders, :detentions], :to => [:lock, :destroy, :close]
+    has_permission_on [:orders, :planned_orders, :loaded_orders, :delivered_orders, :billed_orders, :detentions], :to => [:lock, :destroy, :cancel, :close]
   end
 
   #drivers
@@ -38,7 +38,7 @@ authorization do
   #vehicles
   role :vehiclessuper do
     includes :vehiclesoperator
-    has_permission_on [:vehicles], :to => [:destroy]
+    has_permission_on [:vehicles], :to => [:destroy, :retire]
   end
 
   role :vehiclesoperator do
@@ -48,7 +48,7 @@ authorization do
 
   role :vehiclesrestricted do
     includes :guest
-    has_permission_on [:vehicles], :to => [:index, :show]
+    has_permission_on [:vehicles], :to => [:index, :show, :retired]
   end
 
   #contacts
@@ -122,6 +122,12 @@ authorization do
   end
 
   #admin
+  role :superuser do
+    has_permission_on [:order_status_types, :roles], :to => [:index, :create, :destroy]
+    has_permission_on [:authorization_rules], :to => [:read]
+    has_permission_on [:authorization_usages], :to => [:read]
+  end
+
   role :useradmin do
     includes :masteradmin
     has_permission_on [:users], :to => [:index, :privileges_edit, :privileges_update, :remove]
@@ -129,7 +135,7 @@ authorization do
 
   role :masteradmin do
     includes :guest
-    has_permission_on [:makes, :vmodels, :detention_reasons, :product_units, :product_types, :order_status_types, :roles], :to => [:index, :show, :create, :destroy]
+    has_permission_on [:makes, :vmodels, :detention_reasons, :product_units, :product_types], :to => [:index, :show, :create, :destroy]
   end
 
 

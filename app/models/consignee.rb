@@ -13,4 +13,13 @@ class Consignee < ActiveRecord::Base
   def display_name
     return self.consignee_name
   end
+
+  before_destroy :safe_to_destroy?
+
+  private
+  def safe_to_destroy?
+    unless self.orders.empty?
+      raise ActiveRecord::RecordNotDestroyed
+    end
+  end
 end
