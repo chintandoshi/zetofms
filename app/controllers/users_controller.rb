@@ -66,7 +66,7 @@ class UsersController < ApplicationController
       update_roles(@user)
       redirect_to(users_path, :notice => 'Successfully updated privileged for the user.')
     else
-      format.html { render :action => "privileges_edit" }
+       render :action => "privileges_edit"
     end
   end
   
