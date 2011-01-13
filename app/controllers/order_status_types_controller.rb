@@ -19,6 +19,9 @@ class OrderStatusTypesController < ApplicationController
   # POST /order_status_types
   # POST /order_status_types.xml
   def create
+    @order_status_types = OrderStatusType.paginate :page => params[:page],
+      :per_page => 15,
+      :order => sort_order('description')
     @order_status_type = OrderStatusType.new(params[:order_status_type])
 
     respond_to do |format|

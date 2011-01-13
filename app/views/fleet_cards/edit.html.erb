@@ -1,0 +1,12 @@
+<%= link_to 'Cancel', @fleet_card, :class => "closebutton", :style => "float:right;" %>
+
+<h1>Editing Fleet Card information</h1>
+
+<% form_for(@fleet_card) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => "form", :object => f, :locals => { :mode => "edit"}%>
+
+  <%= f.submit 'Update Fleet Card Information', :class => "savebutton" %>
+  <%= link_to 'Cancel', @fleet_card, :method => 'get', :class => "closebutton" %>
+<% end %>

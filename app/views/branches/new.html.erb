@@ -1,0 +1,12 @@
+<%= link_to 'Cancel', branches_path, :class => "closebutton", :style => "float:right;" %>
+<h1>Add a new branch</h1>
+
+<% form_for(@branch) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => "form", :object => f, :locals => { :mode => "new"} %>
+
+  <%= f.submit 'Add Branch', :class => "savebutton" %>
+  <%= link_to 'Cancel', branches_path, :method => 'get', :class => "closebutton"%>
+
+<% end %>

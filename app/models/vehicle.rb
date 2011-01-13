@@ -13,6 +13,8 @@ class Vehicle < ActiveRecord::Base
   has_and_belongs_to_many :product_types
   has_many :planned_orders
   has_many :loaded_orders
+  has_many :fuels, :dependent => :destroy
+
   accepts_nested_attributes_for :attachment_boxes
 
   attr_accessor :product_list

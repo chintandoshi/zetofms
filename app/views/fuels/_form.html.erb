@@ -1,0 +1,38 @@
+<div id="panel">
+  <p>
+    <%= form.label :allocation_date %><br />
+    <%= form.date_select :allocation_date, :prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'} %>
+  </p>
+  <p>
+    <%= form.label :vehicle_id, "Select Vehicle" %><br />
+    <%= form.select(:vehicle_id, populate_combo_with_vehiclelist, :prompt => 'Please Select') %>
+  </p>
+  <p>
+    <%= form.label :branch_id, "Select Branch" %><br />
+    <%= form.select(:branch_id, populate_combo_with_branchlist, :prompt => 'Please Select') %>
+  </p>
+  <p>
+    <%= form.label :petrol_pump_id, "Select Petrol Pump" %><br />
+    <%= form.select(:petrol_pump_id, populate_combo_with_pumplist, :prompt => 'Please Select') %>
+  </p>
+  <p>
+    <%= form.label :fuel_payment_type_id, "Select Fuel Payment Type" %><br />
+    <%= form.select(:fuel_payment_type_id, populate_combo_with_fuelpaymentlist, :prompt => 'Please Select') %>
+  </p>
+  <p>
+    <%= form.label :fleet_card_id, "Select Fleet Card" %> <br/>
+    <%= form.select(:fleet_card_id, populate_combo_with_fleetcardlist, :prompt => 'Please Select') %>
+  </p>
+  <p>
+    <%= form.label :issued_qty, "Issued Quantity" %><br />
+    <%= form.text_field :issued_qty, :size => 10, :length => 10 %>
+  </p>
+  <p>
+    <%= form.label :issued_rate, "Issued Rate" %><br />
+    <%= form.text_field :issued_rate, :size => 10, :length => 10 %>
+  </p>
+  <p>
+    <%= form.label :issued_amount, "Issued Amount" %><br />
+    <%= form.text_field :issued_amount, :size => 10, :length => 10 %>
+  </p>
+</div>

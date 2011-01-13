@@ -19,6 +19,9 @@ class RolesController < ApplicationController
   # POST /order_status_types
   # POST /order_status_types.xml
   def create
+    @roles = Role.paginate :page => params[:page],
+      :per_page => 15,
+      :order => sort_order('name')
     @role= Role.new(params[:role])
 
     respond_to do |format|

@@ -16,6 +16,9 @@
   <% if permitted_to? :index, :roles %>
     <%=h link_to 'User Role Types', roles_path,  :class => "viewbutton" %> <br/>
   <% end %>
+  <% if permitted_to? :index, :fuel_payment_types %>
+    <%=h link_to 'Fuel Payment Types', fuel_payment_types_path,  :class => "viewbutton" %> <br/>
+  <% end %>
 </div>
 <br/>
 <div class="right-container">

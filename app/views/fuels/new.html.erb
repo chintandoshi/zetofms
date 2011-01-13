@@ -1,0 +1,32 @@
+<%= link_to 'Cancel', fuels_path, :class => "closebutton", :style => "float:right;" %>
+
+<h1>Enter new fuel allocation</h1>
+
+<% form_for(@fuel) do |f| %>
+  <%= f.error_messages %>
+
+  <%=  render :partial => 'form', :object => f,:locals => { :mode => "new"} %>
+  <p>
+    <%= f.submit 'Save', :class => 'savebutton' %>
+    <%= link_to 'Cancel', fuels_path, :class => "closebutton" %>
+  </p>
+<% end %>
+
+  <% content_for :head do %>
+    <script type="text/javascript">
+        $j(document).ready(function(){
+
+            var selectedvalue = $j('#fuel_fuel_payment_type_id>option:selected').text();
+            selectedvalue == 'Fleet Card' ? $j('#fuel_fleet_card_id').attr("disabled", false) :
+                                        $j('#fuel_fleet_card_id').attr("disabled", true);
+
+            $j('#fuel_fuel_payment_type_id').change(function(){
+
+                    var selectedvalue = $j('#fuel_fuel_payment_type_id>option:selected').text();
+                    selectedvalue == 'Fleet Card' ? $j('#fuel_fleet_card_id').attr("disabled", false) :
+                                        $j('#fuel_fleet_card_id').attr("disabled", true);
+
+           });
+        });
+    </script>
+<% end %>

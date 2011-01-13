@@ -20,6 +20,9 @@ class DetentionReasonsController < ApplicationController
   # POST /detention_reasons
   # POST /detention_reasons.xml
   def create
+    @detention_reasons = DetentionReason.paginate :page => params[:page],
+      :per_page => 5,
+      :order => sort_order('description')
     @detention_reason = DetentionReason.new(params[:detention_reason])
 
     respond_to do |format|

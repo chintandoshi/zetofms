@@ -1,0 +1,12 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<% content_for :sidebar_links_list do %>
+<div class="right-container">
+  <% if permitted_to? :new, PetrolPump.new %>
+    <%= link_to 'New Petrol Pump', new_petrol_pump_path,  :class => "newbutton" %>
+  <% end %>
+</div>
+<% end %>

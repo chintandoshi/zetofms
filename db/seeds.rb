@@ -21,3 +21,8 @@ role = Role.find_by_name("useradmin")
 superrole = Role.find_by_name("superuser")
 user.roles << role
 user.roles << superrole
+
+# seed fuel payment types master table
+FuelPaymentType.find_or_create_by_name(:name => "Cash")
+FuelPaymentType.find_or_create_by_name(:name => "Credit")
+FuelPaymentType.find_or_create_by_name(:name => "Fleet Card")

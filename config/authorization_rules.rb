@@ -35,6 +35,38 @@ authorization do
     has_permission_on [:drivers], :to => [:index, :show]
   end
 
+  #branches
+  role :branchessuper do
+    includes :branchesoperator
+    has_permission_on [:branches], :to => [:destroy]
+  end
+
+  role :branchesoperator do
+    includes :branchesrestricted
+    has_permission_on [:branches], :to => [:new, :edit, :create, :update]
+  end
+
+  role :branchesrestricted do
+    includes :guest
+    has_permission_on [:branches], :to => [:index, :show]
+  end
+
+  #fuel
+  role :fuelsuper do
+    includes :fueloperator
+    has_permission_on [:petrol_pumps, :fleet_cards, :fuels], :to => [:destroy]
+  end
+
+  role :fueloperator do
+    includes :fuelrestricted
+    has_permission_on [:petrol_pumps,:fleet_cards, :fuels], :to => [:new, :edit, :create, :update]
+  end
+
+  role :fuelrestricted do
+    includes :guest
+    has_permission_on [:petrol_pumps,:fleet_cards,:fuels], :to => [:index, :show]
+  end
+
   #vehicles
   role :vehiclessuper do
     includes :vehiclesoperator
@@ -123,7 +155,7 @@ authorization do
 
   #admin
   role :superuser do
-    has_permission_on [:order_status_types, :roles], :to => [:index, :create, :destroy]
+    has_permission_on [:order_status_types, :roles, :fuel_payment_types], :to => [:index, :create, :destroy]
     has_permission_on [:authorization_rules], :to => [:read]
     has_permission_on [:authorization_usages], :to => [:read]
   end

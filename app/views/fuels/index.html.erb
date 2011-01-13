@@ -1,0 +1,39 @@
+<% render :partial => 'sidebar' %>
+
+<h1>Fuel</h1>
+
+<%=  render :partial => 'fuelfilter' %>
+<br/>
+
+<table class="listing">
+  <thead>
+      <tr class="header">
+        <th>Id</th>
+        <th>  <%= sort_link 'Date', :allocation_date %>  <%= sort_flag :allocation_date %>  </th>
+        <th>  <%= sort_link 'Vehicle', :vehicle_id %>  <%= sort_flag :vehicle_id %>  </th>
+        <th>  <%= sort_link 'Branch', :branch_id %>  <%= sort_flag :branch_id %>  </th>
+        <th>  <%= sort_link 'Petrol Pump', :petrol_pump_id %>  <%= sort_flag :petrol_pump_id %>  </th>
+        <th>  <%= sort_link 'Payment', :fuel_payment_type_id %>  <%= sort_flag :fuel_payment_type_id %>  </th>
+      </tr>
+  </thead>
+  <tbody>
+      <% @fuels.each do |fuel| %>
+      <tr class="<%= cycle("odd", "even") -%>">
+        <td><%=h link_to fuel.id, fuel %></td>
+        <td><%=h fuel.allocation_date %></td>
+        <td><%=h fuel.vehicle.registration_number %></td>
+        <td><%=h fuel.branch.name %></td>
+        <td><%=h fuel.petrol_pump.name %></td>
+        <td><%=h fuel.fuel_payment_type.name %></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+
+
+ <div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info @fuels %>
+  </div>
+  <%= will_paginate @fuels, :container => false %>
+</div>

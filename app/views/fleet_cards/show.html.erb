@@ -1,0 +1,28 @@
+<span id="toolbar" class="ui-widget-header ui-corner-all">
+    <%=  global_print_link() %>
+    <% if permitted_to? :edit, @fleet_card %>
+      <%= link_to 'Edit', edit_fleet_card_path(@fleet_card), :class => "editbutton" %>
+    <% end %>
+    <% if permitted_to? :destroy, @fleet_card %>
+      <%= link_to "Delete", @fleet_card, :class => "deletebutton", :confirm => 'Are you sure?', :method => :delete %>
+    <% end %>
+    <%= link_to 'Back', fleet_cards_path, :class => "backbutton" %>
+</span>
+
+<h2>Fleet Card information</h2>
+
+
+<table class="info">
+  <tbody>
+    <tr>
+        <td class="field"> Fleet Card Name:</td> <td>
+        <%=h @fleet_card.name %></td>
+    </tr>
+    <tr>
+        <td class="field"> Details:</td><td>
+        <%=h @fleet_card.details %></td>
+    </tr>
+  </tbody>
+</table>
+
+

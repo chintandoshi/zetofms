@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  allocation_date: 2011-01-10
+  vehicle_id: 1
+
+two:
+  allocation_date: 2011-01-10
+  vehicle_id: 1

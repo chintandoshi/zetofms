@@ -1,0 +1,20 @@
+<h1>Editing fuel</h1>
+
+<% form_for(@fuel) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :allocation_date %><br />
+    <%= f.date_select :allocation_date %>
+  </p>
+  <p>
+    <%= f.label :vehicle_id %><br />
+    <%= f.text_field :vehicle_id %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @fuel %> |
+<%= link_to 'Back', fuels_path %>

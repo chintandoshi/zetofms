@@ -23,3 +23,9 @@
 52,attachmentsrestricted,Can VIEW attachments,2011-01-03 13:34:05,2011-01-03 13:34:05,attachment
 53,attachmentssuper,can VIEW/ADD/DELETE attachments,2011-01-03 13:34:38,2011-01-03 13:34:38,attachment
 54,superuser,super user . special privileges for internal use,2011-01-05 10:34:11,2011-01-05 10:34:11,super
+55,branchesrestricted,can VIEW/SEARCH branches,2010-12-30 12:55:02,2010-12-30 12:55:02,branch
+56,branchesoperator,can VIEW/SEARCH/ADD/EDIT  branches,2010-12-30 12:55:37,2010-12-30 12:55:37,branch
+57,branchessuper,can VIEW/SEARCH/ADD/EDIT/DELETE/RETIRE branches,2010-12-30 12:56:01,2010-12-30 12:56:01,branch
+61,fuelrestricted,can VIEW/SEARCH fuel,2010-12-30 12:55:02,2010-12-30 12:55:02,fuel
+62,fueloperator,can VIEW/SEARCH/ADD/EDIT  fuel,2010-12-30 12:55:37,2010-12-30 12:55:37,fuel
+63,fuelsuper,can VIEW/SEARCH/ADD/EDIT/DELETE/RETIRE fuel,2010-12-30 12:56:01,2010-12-30 12:56:01,fuel

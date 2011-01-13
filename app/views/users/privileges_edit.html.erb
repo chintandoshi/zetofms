@@ -28,6 +28,20 @@
   </tr>
 
   <tr>
+    <td><label for="branches_pri">Branches:</label> </td>
+    <td><%= select_tag "branch_pri",
+      %(<option value="">None</option>) + options_from_collection_for_select(Role.find_all_by_tag("branch"), "id", "description", (@user.roles.detect{|d| d.tag.eql?("branch")}.nil? ? 0 : @user.roles.detect{|d| d.tag.eql?("branch")}.id ) ) %>
+    </td>
+  </tr>
+
+  <tr>
+    <td><label for="fuel_pri">Fuel:</label> </td>
+    <td><%= select_tag "fuel_pri",
+      %(<option value="">None</option>) + options_from_collection_for_select(Role.find_all_by_tag("fuel"), "id", "description", (@user.roles.detect{|d| d.tag.eql?("fuel")}.nil? ? 0 : @user.roles.detect{|d| d.tag.eql?("fuel")}.id ) ) %>
+    </td>
+  </tr>
+
+  <tr>
     <td><label for="custaccount_pri">Customer Accounts:</label> </td>
     <td><%= select_tag "custaccount_pri",
       %(<option value="">None</option>) + options_from_collection_for_select(Role.find_all_by_tag("custaccount"), "id", "description", (@user.roles.detect{|d| d.tag.eql?("custaccount")}.nil? ? 0 : @user.roles.detect{|d| d.tag.eql?("custaccount")}.id ) ) %>

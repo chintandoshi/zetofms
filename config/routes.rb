@@ -32,11 +32,22 @@ ActionController::Routing::Routes.draw do |map|
     vehicle.resources :attachment_boxes, :only => [:index, :show, :create, :destroy]
   end
 
+  #branches
+  map.resources :branches
+
+  #fuel module
+  map.resources :petrol_pumps
+  map.resources :fleet_cards
+  map.resources :fuels, :member
+
+  
   #admin
   map.resources :detention_reasons, :only => [:index, :create, :destroy]
   map.resources :product_units, :only => [:index, :create, :destroy]
   map.resources :product_types, :only => [:index, :create, :destroy]
   map.resources :order_status_types, :only => [:index, :create, :destroy]
+  map.resources :roles, :only => [:index, :create, :destroy]
+  map.resources :fuel_payment_types, :only => [:index, :create, :destroy]
   map.resources :makes, :only => [:index, :show, :create, :destroy] do |make|
       make.resources :vmodels, :only => [:create, :destroy]
   end
@@ -44,8 +55,6 @@ ActionController::Routing::Routes.draw do |map|
   #user management
   map.resources :user_sessions, :only => [:new, :create, :destroy]
   map.resources :users, :only => [:index, :new, :edit, :create, :update], :member => {:privileges_edit => :get , :privileges_update => :post, :remove => :get}
-  map.resources :roles, :only => [:index, :create, :destroy]
-
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

@@ -1,0 +1,13 @@
+<p>
+  <b>Allocation date:</b>
+  <%=h @fuel.allocation_date %>
+</p>
+
+<p>
+  <b>Vehicle:</b>
+  <%=h @fuel.vehicle_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_fuel_path(@fuel) %> |
+<%= link_to 'Back', fuels_path %>

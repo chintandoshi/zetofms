@@ -1,0 +1,28 @@
+<% render :partial => 'sidebar' %>
+
+<h1>Branches</h1>
+
+<table class="listing">
+  <thead>
+      <tr class="header">
+        <th></th>
+        <th>  <%= sort_link 'Name', :name %>  <%= sort_flag :name %>  </th>
+      </tr>
+  </thead>
+  <tbody>
+      <% @branches.each do |branch| %>
+      <tr class="<%= cycle("odd", "even") -%>">
+        <td><%=h link_to branch.id, branch %></td>
+        <td><%=h branch.name %></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+
+
+ <div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info @branches %>
+  </div>
+  <%= will_paginate @branches, :container => false %>
+</div>

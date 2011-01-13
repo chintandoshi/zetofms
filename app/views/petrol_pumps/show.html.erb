@@ -1,0 +1,52 @@
+<span id="toolbar" class="ui-widget-header ui-corner-all">
+    <%=  global_print_link() %>
+    <% if permitted_to? :edit, @petrol_pump %>
+      <%= link_to 'Edit', edit_petrol_pump_path(@petrol_pump), :class => "editbutton" %>
+    <% end %>
+    <% if permitted_to? :destroy, @petrol_pump %>
+      <%= link_to "Delete", @petrol_pump, :class => "deletebutton", :confirm => 'Are you sure?', :method => :delete %>
+    <% end %>
+    <%= link_to 'Back', petrol_pumps_path, :class => "backbutton" %>
+</span>
+
+<h2>Petrol Pump information</h2>
+
+
+<table class="info">
+  <tbody>
+    <tr>
+        <td class="field"> Petrol Pump Name:</td> <td>
+        <%=h @petrol_pump.name %></td>
+    </tr>
+    <tr>
+        <td class="field"> Address:</td> <td>
+        <%=h @petrol_pump.address %></td>
+    </tr>
+    <tr>
+        <td class="field"> City:</td> <td>
+        <%=h @petrol_pump.city %></td>
+    </tr>
+    <tr>
+        <td class="field"> State:</td><td>
+        <%=h @petrol_pump.state %></td>
+    </tr>
+    <tr>
+        <td class="field"> Country:</td><td>
+        <%=h @petrol_pump.country %></td>
+    </tr>
+    <tr>
+        <td class="field"> Phone Number 1:</td><td>
+        <%=h @petrol_pump.phone1 %></td>
+    </tr>
+    <tr>
+        <td class="field"> Phone Number 2:</td><td>
+        <%=h @petrol_pump.phone2 %></td>
+    </tr>
+    <tr>
+        <td class="field"> Notes:</td><td>
+        <%=h @petrol_pump.notes %></td>
+    </tr>
+  </tbody>
+</table>
+
+

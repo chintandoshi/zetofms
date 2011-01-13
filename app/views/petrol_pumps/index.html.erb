@@ -1,0 +1,28 @@
+<% render :partial => 'sidebar' %>
+
+<h1>Petrol Pumps</h1>
+
+<table class="listing">
+  <thead>
+      <tr class="header">
+        <th></th>
+        <th>  <%= sort_link 'Name', :name %>  <%= sort_flag :name %>  </th>
+      </tr>
+  </thead>
+  <tbody>
+      <% @petrol_pumps.each do |petrolpump| %>
+      <tr class="<%= cycle("odd", "even") -%>">
+        <td><%=h link_to petrolpump.id, petrolpump %></td>
+        <td><%=h petrolpump.name %></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+
+
+ <div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info @petrol_pumps %>
+  </div>
+  <%= will_paginate @petrol_pumps, :container => false %>
+</div>

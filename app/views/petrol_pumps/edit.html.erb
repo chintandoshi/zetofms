@@ -1,0 +1,12 @@
+<%= link_to 'Cancel', @petrol_pump, :class => "closebutton", :style => "float:right;" %>
+
+<h1>Editing Petrol Pump information</h1>
+
+<% form_for(@petrol_pump) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => "form", :object => f, :locals => { :mode => "edit"}%>
+
+  <%= f.submit 'Update Petrol Pump Information', :class => "savebutton" %>
+  <%= link_to 'Cancel', @petrol_pump, :method => 'get', :class => "closebutton" %>
+<% end %>
