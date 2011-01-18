@@ -31,12 +31,12 @@
   </div>
   <%= will_paginate @fuel_payment_types, :container => false %>
 </div>
-
+<br/>
 <% form_for(FuelPaymentType.new) do |f| %>
   <%= error_messages_for :fuel_payment_type%>
   <div id="adminpanel">
       <%= f.label :name, "Fuel Payment Type" %>
-      <%= f.text_field :name, :size => 20, :maxlength => 25 %>
+      <%= f.text_field :name, :size => 20, :maxlength => 25 %><br/>
       <%= f.submit 'Add', :class => "newbutton" %>
   </div>
 <% end %>

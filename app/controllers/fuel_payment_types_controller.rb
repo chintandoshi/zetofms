@@ -1,6 +1,7 @@
 class FuelPaymentTypesController < ApplicationController
 
   set_tab :admin
+  set_tab :fuel, :adminmenu
   filter_resource_access
 
   # GET /fuel_payment_types

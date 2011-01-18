@@ -33,11 +33,12 @@
   <%= will_paginate @makes, :container => false %>
 </div>
 
+<br/>
 <% form_for(Make.new) do |f| %>
   <%= error_messages_for :make %>
   <div id="adminpanel">
       <%= f.label :make_name, "New Manufacturer" %>
-      <%= f.text_field :make_name, :size => 20, :maxlength => 25 %>
+      <%= f.text_field :make_name, :size => 20, :maxlength => 25 %><br/>
       <%= f.submit 'Add', :class => "newbutton" %>
   </div>
 <% end %>

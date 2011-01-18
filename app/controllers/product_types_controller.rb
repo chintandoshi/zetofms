@@ -1,6 +1,7 @@
 class ProductTypesController < ApplicationController
 
   set_tab :admin
+  set_tab :producttypes, :adminmenu
   filter_resource_access
   
   # GET /product_types

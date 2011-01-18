@@ -5,103 +5,131 @@
 
 <div id="panel">
   <h3>Customer</h3>
-  <p>
     <%= form.label :custaccount_id, "Customer Account" %><br />
     <% if mode.eql? "edit" %>
-        <%= text_field_tag :customer, @order.custaccount.display_name, :disabled => true %>
+        <%= text_field_tag :customer, @order.custaccount.display_name, :disabled => true %><br />
         <%= form.hidden_field :custaccount_id %>
     <% else %>
         <%= form.select(:custaccount_id, populate_combo_with_customerlist, :include_blank => 'Please Select ') %>
-        <%= link_to "Manage customer accounts", custaccounts_path  %>
+        <%= link_to "Manage customer accounts", custaccounts_path  %><br />
     <% end %>
-  </p>
-  <p>
     <%= form.label :billingcontact_id, "Billing Contact" %><br />
     <% if mode.eql? "edit" %>
-        <%= form.select(:billingcontact_id, populate_combo_with_customercontacts(@order.custaccount.id), :include_blank => 'Please Select ') %>
+        <%= form.select(:billingcontact_id, populate_combo_with_customercontacts(@order.custaccount.id), :include_blank => 'Please Select ') %><br />
     <% else %>
         <%= form.select(:billingcontact_id, [], :include_blank => 'Please Select ') %>
-        <%= link_to "Refresh", @order ,:id => "refresh_billing" %>
+        <%= link_to "Refresh", @order ,:id => "refresh_billing" %><br />
     <% end %>
-  </p>
-  <p>
     <%= form.label :purchasecontact_id, "Purchase Contact" %><br />
     <% if mode.eql? "edit" %>
-        <%= form.select(:purchasecontact_id, populate_combo_with_customercontacts(@order.custaccount.id), :include_blank => 'Please Select ') %>
+        <%= form.select(:purchasecontact_id, populate_combo_with_customercontacts(@order.custaccount.id), :include_blank => 'Please Select ') %><br />
     <% else %>
         <%= form.select(:purchasecontact_id, [], :include_blank => 'Please Select ') %>
-        <%= link_to "Refresh", @order ,:id => "refresh_purchase" %>
+        <%= link_to "Refresh", @order ,:id => "refresh_purchase" %><br />
     <% end %>
-  </p>
 </div>
+<br />
 <div id="panel">
   <h3>Order Placement</h3>
-  <p>
     <%= form.label :placement_date_time, "Order placed at" %><br />
-    <%= form.datetime_select :placement_date_time, :prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year', :hour => "Choose Hours", :minute => "Choose minutes"} %>
-  </p>
-  <p>
+    <%= form.datetime_select :placement_date_time, :prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year', :hour => "Choose Hours", :minute => "Choose minutes"} %><br />
     <%= form.label :placement_mode, "Order placed by" %><br />
-    <%= form.select :placement_mode, ["Phone","Email","Web"], :include_blank => 'Please Select' %>
-  </p>
+    <%= form.select :placement_mode, ["Phone","Email","Web"], :include_blank => 'Please Select' %><br />
 </div>
+<br />
 <div id="panel">
   <h3>Consignor/Consignee</h3>
-  <p>
     <%= form.label :consignor_id %><br />
     <%= form.select(:consignor_id, populate_combo_with_consignorlist, :include_blank => 'Please Select') %>
-    <%= link_to "Manage consignors", consignors_path  %>
-  </p>
-  <p>
+    <%= link_to "Manage consignors", consignors_path  %><br />
     <%= form.label :from , "From" %><br />
-    <%= form.text_field :from, :size => 20, :readonly => true %>
-  </p>
-  <p>
+    <%= form.text_field :from, :size => 20, :readonly => true %><br />
     <%= form.label :consignee_id %><br />
     <%= form.select(:consignee_id, populate_combo_with_consigneelist, :include_blank => 'Please Select') %>
-    <%= link_to "Manage consignees", consignees_path  %>
-  </p>
-  <p>
+    <%= link_to "Manage consignees", consignees_path  %><br />
     <%= form.label :to , "To" %><br />
-    <%= form.text_field :to, :size => 20, :readonly => true %>
-  </p>
+    <%= form.text_field :to, :size => 20, :readonly => true %><br />
 </div>
+<br />
 <div id="panel">
   <h3>Product</h3>
-  <p>
     <%= form.label :product_type_id, "Product" %><br />
     <%= form.select(:product_type_id, populate_combo_with_productlist, :include_blank => 'Please Select') %>
-    <%= link_to "Manage products", product_types_path  %>
-  </p>
-  <p>
+    <%= link_to "Manage products", product_types_path  %><br />
     <%= form.label :product_unit_id, "Quantity" %><br />
     <%= form.select(:product_unit_id, populate_combo_with_productunit, :include_blank => 'Please Select') %>
-    <%= form.text_field :quantity, :size => 10, :max_length => 10 %>
-  </p>
+    <%= form.text_field :quantity, :size => 10, :max_length => 10 %><br />
 </div>
+<br />
 <div id="panel">
   <h3>Requested Delivery Schedule</h3>
-  <p>
     <%= form.label :delorder_number, "Delivery Order Number" %><br />
-    <%= form.text_field :delorder_number, :size => 25, :max_length => 25 %>
-  </p>
-  <p>
+    <%= form.text_field :delorder_number, :size => 25, :max_length => 25 %><br />
     <%= form.label :dispatch_date_requested %><br />
-    <%= form.date_select :dispatch_date_requested,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'} %>
-  </p>
-  <p>
+    <%= form.date_select :dispatch_date_requested,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'} %><br />
     <%= form.label :delivery_date_requested %><br />
-    <%= form.date_select :delivery_date_requested,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'} %>
-  </p>
+    <%= form.date_select :delivery_date_requested,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'} %><br />
 </div>
+<br />
 <div id="panel">
   <h3>Misc.</h3>
-  <p>
     <%= form.label :notes1, "Notes" %><br />
-    <%= form.text_area :notes1,:cols => 40, :rows => 7 %>
-  </p>
-  <p>
+    <%= form.text_area :notes1,:cols => 40, :rows => 7 %><br />
     <%= form.label :notes2, "Remarks" %><br />
-    <%= form.text_area :notes2,:cols => 40, :rows => 7 %>
-  </p>
+    <%= form.text_area :notes2,:cols => 40, :rows => 7 %><br />
 </div>
+
+<% content_for :head do %>
+    <script type="text/javascript">
+    /* orders/_form.html.erb */
+    $j(document).ready(function(){
+
+        /* */
+       $j('#refresh_billing').click(function(){
+                var selectedvalue = $j('#order_custaccount_id>option:selected').val();
+                selectedvalue ? $j('#order_billingcontact_id').load('/contacts/update_contacts_autocomplete?id='+ selectedvalue) :
+                            ( $j('#order_billingcontact_id').html('<option value="">Please Select  </option>'));
+                return false;
+       });
+
+        /* */
+       $j('#refresh_purchase').click(function(){
+                var selectedvalue = $j('#order_custaccount_id>option:selected').val();
+                selectedvalue ? $j('#order_purchasecontact_id').load('/contacts/update_contacts_autocomplete?id='+ selectedvalue) :
+                            ( $j('#order_purchasecontact_id').html('<option value="">Please Select  </option>'));
+                return false;
+       });
+
+
+        /* */
+        $j('#order_custaccount_id').change(function(){
+
+                this.value? $j('#order_billingcontact_id').load('/contacts/update_contacts_autocomplete?id='+this.value) :
+                            ( $j('#order_billingcontact_id').html('<option value="">Please Select  </option>'));
+
+                this.value? $j('#order_purchasecontact_id').load('/contacts/update_contacts_autocomplete?id='+this.value) :
+                            ( $j('#order_purchasecontact_id').html('<option value="">Please Select  </option>'));
+        });
+
+        /* */
+        $j('#order_consignee_id').change(function(){
+
+            this.value?
+                        $j.get('/consignees/' + this.value  + '/city_autocomplete',
+                        function(data) {$j('#order_to').val(data); })
+                        : $j('#order_to').val("");
+        });
+
+        /* */
+        $j('#order_consignor_id').change(function(){
+
+            this.value?
+                        $j.get('/consignors/' + this.value  + '/city_autocomplete',
+                        function(data) {$j('#order_from').val(data);})
+                        : $j('#order_from').val("");
+        });
+
+
+    });
+    </script>
+<% end %>

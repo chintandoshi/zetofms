@@ -4,21 +4,12 @@
 %>
   <div id="panel">
     <h3>Delivery information</h3>
-  <p>
     <%= form.label :delivery_date %><br />
-      <%= form.datetime_select :delivery_date,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year', :hour => "Choose hour", :minute => "Choose minutes"}, :disabled => (mode.eql? "edit") %>
-  </p>
-  <p>
+      <%= form.datetime_select :delivery_date,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year', :hour => "Choose hour", :minute => "Choose minutes"}, :disabled => (mode.eql? "edit") %><br />
     <%= form.label :customer_ref_no %><br />
-    <%= form.text_field :customer_ref_no, :size => 25 %>
-  </p>
-  <p>
+    <%= form.text_field :customer_ref_no, :size => 25 %><br />
     <%= form.label :unloaded_quantity %> <br />
-    <%= form.text_field :unloaded_quantity, :size => 10 %> <%= @order.product_unit.product_unit_name %>
-  </p>
-  <p>
+    <%= form.text_field :unloaded_quantity, :size => 10 %> <%= @order.product_unit.product_unit_name %><br />
     <%= form.label :notes %><br />
-    <%= form.text_area :notes, :rows => 7, :columns => 15 %>
-  </p>
-
+    <%= form.text_area :notes, :rows => 7, :columns => 15 %><br />
 </div>

@@ -31,12 +31,12 @@
   </div>
   <%= will_paginate @order_status_types, :container => false %>
 </div>
-
+<br/>
 <% form_for(OrderStatusType.new) do |f| %>
   <%= error_messages_for :order_status_type%>
   <div id="adminpanel">
       <%= f.label :description, "Order Status Code" %>
-      <%= f.text_field :description, :size => 20, :maxlength => 25 %>
+      <%= f.text_field :description, :size => 20, :maxlength => 25 %><br/>
       <%= f.submit 'Add', :class => "newbutton" %>
   </div>
 <% end %>

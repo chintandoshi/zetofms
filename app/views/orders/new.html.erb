@@ -1,4 +1,3 @@
-<%= javascript_include_tag 'order' %>
 <%= link_to 'Cancel', orders_path, :class => "closebutton", :style => "float:right;" %>
 
 <h1>Enter new order</h1>
@@ -7,8 +6,7 @@
   <%= f.error_messages %>
 
   <%=  render :partial => 'form', :object => f,:locals => { :mode => "new"} %>
-  <p>
+  <br />
     <%= f.submit 'Save', :class => 'savebutton' %>
     <%= link_to 'Cancel', orders_path, :class => "closebutton" %>
-  </p>
 <% end %>

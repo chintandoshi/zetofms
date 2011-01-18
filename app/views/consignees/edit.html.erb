@@ -5,7 +5,7 @@
   <%= f.error_messages %>
 
   <%= render :partial => "form", :object => f, :locals => { :mode => "edit"}%>
-
+  <br />
   <%= f.submit 'Update Consignee Information', :class => "savebutton" %>
   <%= link_to 'Cancel', @consignee, :method => 'get', :class => "closebutton" %>
 <% end %>

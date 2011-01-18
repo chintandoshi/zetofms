@@ -3,6 +3,7 @@ class MakesController < ApplicationController
   # GET /makes.xml
 
   set_tab :admin
+  set_tab :vehicle, :adminmenu
   filter_resource_access
 
   def index

@@ -4,25 +4,30 @@
 %>
 
 <% content_for :sidebar_links_list do %>
-<div class="right-container">
-  <h3>Master Tables</h3>
-  <%=h link_to 'Vehicles Types', makes_path, :class => "viewbutton" %> <br/>
-  <%=h link_to 'Product types', product_types_path,  :class => "viewbutton" %> <br/>
-  <%=h link_to 'Product units', product_units_path,  :class => "viewbutton" %> <br/>
-  <%=h link_to 'Detention Reasons', detention_reasons_path,  :class => "viewbutton" %> <br/>
-  <% if permitted_to? :index, :order_status_types %>
-    <%=h link_to 'Order Status Codes', order_status_types_path,  :class => "viewbutton" %> <br/>
-  <% end %>
-  <% if permitted_to? :index, :roles %>
-    <%=h link_to 'User Role Types', roles_path,  :class => "viewbutton" %> <br/>
-  <% end %>
-  <% if permitted_to? :index, :fuel_payment_types %>
-    <%=h link_to 'Fuel Payment Types', fuel_payment_types_path,  :class => "viewbutton" %> <br/>
-  <% end %>
-</div>
-<br/>
-<div class="right-container">
-  <h3>Users</h3>
-  <%=h link_to 'Manage/Privilege', users_path, :class => "viewbutton" %> <br/>
-</div>
+
+  <% tabs_tag :open_tabs => { :id => "secondtabs" }, :namespace => :adminmenu do |tab| %>
+    <div>
+      <h3>Master Tables</h3>
+      <%= tab.vehicle 'Vehicle Types', makes_path %>
+      <%= tab.producttypes 'Product Types', product_types_path %>
+      <%= tab.productunits   'Product Units', product_units_path %>
+      <%= tab.detention 'Detention Reasons',  detention_reasons_path %>
+
+      <% if permitted_to? :index, :order_status_types %>
+        <%= tab.orderstatus 'Order Status Types',  order_status_types_path %>
+      <% end %>
+      <% if permitted_to? :index, :roles %>
+        <%= tab.roles 'User Role Types', roles_path %>
+      <% end %>
+      <% if permitted_to? :index, :fuel_payment_types %>
+        <%= tab.fuel 'Fuel Payment Types', fuel_payment_types_path %>
+      <% end %>
+    </div>
+    <br/>
+    <div>
+      <h3>Users</h3>
+      <%= tab.user 'Manage/Privilege', users_path %>
+    </div>
+    <% end %>
+
 <% end %>

@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_filter :require_user, :only => [ :edit, :update, :destroy, :privileges_edit, :privileges_update]
 
   set_tab :admin, :only => [:index, :privileges_edit, :privileges_update, :remove]
+  set_tab :user, :adminmenu, :only => [:index, :privileges_edit, :privileges_update, :remove]
   filter_access_to :index, :privileges_edit, :privileges_update, :remove
 
   def new

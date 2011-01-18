@@ -4,40 +4,25 @@
 %>
 <div id="panel">
     <h3>Loading information</h3>
-  <p>
     <%= form.label :loading_date %><br />
-    <%= form.date_select :loading_date,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'}, :disabled => (mode.eql? "edit") %>
-  </p>
-  <p>
+    <%= form.date_select :loading_date,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'}, :disabled => (mode.eql? "edit") %><br />
     <%= form.label :lorry_receipt_no %><br />
-    <%= form.text_field :lorry_receipt_no, :size => 25 %>
-  </p>
-  <p>
+    <%= form.text_field :lorry_receipt_no, :size => 25 %><br />
     <%= form.label :vehicle_id %><br />
     <%= form.select(:vehicle_id, populate_combo_with_vehiclelist, :include_blank => 'Please Select ') %>
-    <%= link_to "Manage vehicles", vehicles_path  %>
-  </p>  
-  <p>
+    <%= link_to "Manage vehicles", vehicles_path  %><br />
     <%= form.label :loaded_quantity %> <br />
-    <%= form.text_field :loaded_quantity, :size => 10 %> <%= @order.product_unit.product_unit_name %>
-  </p>
+    <%= form.text_field :loaded_quantity, :size => 10 %> <%= @order.product_unit.product_unit_name %><br />
 </div>
+<br />
 <div id="panel">
     <h3>Misc.</h3>
-  <p>
     <%= form.label :expected_delivery_date %><br />
-    <%= form.date_select :expected_delivery_date,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'} %>
-  </p>
-  <p>
+    <%= form.date_select :expected_delivery_date,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'} %><br />
     <%= form.label :delivery_order_no %><br />
-    <%= form.text_field :delivery_order_no, :size => 25 %>
-  </p>
-  <p>
+    <%= form.text_field :delivery_order_no, :size => 25 %><br />
     <%= form.label :bill_of_entry_no %><br />
-    <%= form.text_field :bill_of_entry_no, :size => 25 %>
-  </p>
-  <p>
+    <%= form.text_field :bill_of_entry_no, :size => 25 %><br />
     <%= form.label :notes %><br />
-    <%= form.text_area :notes, :rows => 7, :columns => 15 %>
-  </p>
+    <%= form.text_area :notes, :rows => 7, :columns => 15 %><br />
 </div>

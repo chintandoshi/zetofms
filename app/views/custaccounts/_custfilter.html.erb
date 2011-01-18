@@ -6,7 +6,7 @@
 <div id="searchpanel">
 <% form_for @search do |f| %>
   <%= f.label :company_name_like, "Account Name:" %>
-  <%= f.text_field :company_name_like,:maxlength => 50, :size => 25 %>
-  <%= f.submit "Filter", :class => "searchbutton" %>
+  <%= f.text_field :company_name_like,:maxlength => 50, :size => 25 %> <br/>
+  <%= f.submit "Filter" %>
 <% end %>
 </div>

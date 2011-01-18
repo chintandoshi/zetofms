@@ -31,12 +31,12 @@
   </div>
   <%= will_paginate @product_units, :container => false %>
 </div>
-
+<br/>
 <% form_for(ProductUnit.new) do |f| %>
   <%= error_messages_for :product_unit %>
   <div id="adminpanel">
       <%= f.label :product_unit_name, "New unit" %>
-      <%= f.text_field :product_unit_name, :size => 20, :maxlength => 25 %>
+      <%= f.text_field :product_unit_name, :size => 20, :maxlength => 25 %><br/>
       <%= f.submit 'Add', :class => "newbutton" %>
   </div>
 <% end %>

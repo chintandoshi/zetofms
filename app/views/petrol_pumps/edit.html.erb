@@ -6,7 +6,7 @@
   <%= f.error_messages %>
 
   <%= render :partial => "form", :object => f, :locals => { :mode => "edit"}%>
-
+  <br/>
   <%= f.submit 'Update Petrol Pump Information', :class => "savebutton" %>
   <%= link_to 'Cancel', @petrol_pump, :method => 'get', :class => "closebutton" %>
 <% end %>

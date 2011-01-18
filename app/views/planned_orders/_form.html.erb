@@ -4,22 +4,13 @@
 %>
   <div id="panel">
     <h3>Planned delivery schedule</h3>
-  <p>
     <%= form.label :dispatch_date_planned %><br />
-    <%= form.date_select :dispatch_date_planned,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'}, :disabled => (mode.eql? "edit") %>
-  </p>
-  <p>
+    <%= form.date_select :dispatch_date_planned,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'}, :disabled => (mode.eql? "edit") %><br />
     <%= form.label :delivery_date_planned %><br />
-    <%= form.date_select :delivery_date_planned,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'}, :disabled => (mode.eql? "edit") %>
-  </p>
-  <p>
+    <%= form.date_select :delivery_date_planned,:prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'}, :disabled => (mode.eql? "edit") %><br />
     <%= form.label :vehicle_id %><br />
     <%= form.select(:vehicle_id, populate_combo_with_vehiclelist, :include_blank => 'Please Select ') %>
-    <%= link_to "Manage vehicles", vehicles_path  %>
-  </p>
-  <p>
+    <%= link_to "Manage vehicles", vehicles_path  %><br />
     <%= form.label :notes %><br />
-    <%= form.text_area :notes, :rows => 7, :columns => 15 %>
-  </p>
-
+    <%= form.text_area :notes, :rows => 7, :columns => 15 %><br />
 </div>

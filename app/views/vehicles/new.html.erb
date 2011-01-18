@@ -6,7 +6,7 @@
   <%= f.error_messages %>
 
   <%= render :partial => "form", :object => f, :locals => { :mode => "new"} %>
-
+  <br/>
   <%= f.submit 'Add Vehicle', :class => "savebutton" %>
   <%= link_to 'Cancel', vehicles_path, :method => 'get', :class => "closebutton"%>
 

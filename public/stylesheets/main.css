@@ -1,0 +1,54 @@
+/* 
+    Document   : menu
+    Created on : 13 Jan, 2011, 7:37:29 PM
+    Author     : chintdo
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+/* id header */
+#header { background: #eee;}
+#header h2 {margin: 10px; color:#000;}
+#header #status { float:right; color: #bbb; background: #2d2d2d; border: 1px solid #707070; border-width: 0 1px 1px 1px; margin: 15px 15px 0 0; -moz-border-radius-bottomleft: 6px; -moz-border-radius-bottomright: 6px; -webkit-border-bottom-left-radius: 6px; -webkit-border-bottom-right-radius: 6px; }
+#header #status a:link, #status a:visited { color: #bbb;}
+#header #status a:hover { color: #90af4c; }
+
+/* id menu */
+#menu { background : #002B55;}
+#menu ul { padding:0; margin:0; /* overwrite reset.css */}
+#menu li { display : inline; font-size:1.5em; margin-right: 1em;}
+#menu a { color : #fff;  text-decoration: none; background: #002B55; }
+#menu a:hover { }
+#menu li.current { background : #ddd; border: solid #ddd; }
+#spacer { background : #ddd; padding: 10px 0; }
+
+/* id content */
+#content { padding:1em 0; background-color: #fff;}
+#left {   background-color: #99CCFF; padding: 10px 0px 10px 10px; ;}
+#left a { color: #000;}
+#right {  background-color: #fff; padding: 10px 10px 10px 10px; }
+/* id footer */
+#footer { background-color: #ddd;   text-align : center; }
+
+/******************************************/
+
+#panel { background: #E6E4ED; border : 1px solid #cfcfcf; padding: 10px;}
+#searchpanel { background:#E6E4ED; border : 1px solid #cfcfcf; padding: 10px;}
+#toolbar { float:right; padding: 4px 4px; font-size: 11px;}
+
+/************/
+.toggle { padding: 6px 0 6px 20px; background: url('../images/plus.gif') no-repeat left center; }
+.toggle:hover { cursor: pointer; }
+.closed { padding: 6px 0 6px 20px; background: url('../images/minus.gif') no-repeat left center; }
+
+/***************/
+ul#secondtabs {list-style-type:none;}
+ul#secondtabs li.current {background-color: #c5dbec}
+
+/*******************/
+#lastupdated { float:right; color: #777; font-size: 12px;  padding: 2px 7px 4px 7px;  }

@@ -5,10 +5,10 @@
 <h3>Contacts:</h3>
 
 <% unless contacts.empty? %>
-    <ol class="sublisting">
+    <ul class="sublisting">
       <% contacts.each do |contact| %>
       <li>
-              <%= link_to_function "#{contact.display_name}","$j('#details#{contact.id}').toggle('drop',[],'slow')", :class => "viewbutton" %> <br/>
+              <%= link_to_function "#{contact.display_name}","$j('#details#{contact.id}').toggle('drop',[],'slow')", :class => "toggle" %> <br/>
               <div id="details<%= contact.id %>" style="display:none;" class="dropdowndetails">
                 <div>
                     <span id="toolbar" class="ui-widget-header ui-corner-all">
@@ -30,7 +30,7 @@
               </div>
       </li> <br/>
       <% end %>
-    </ol>
+    </ul>
 <%  else %>
   0 contact(s) found.
 <% end %>

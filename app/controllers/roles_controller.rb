@@ -1,6 +1,7 @@
 class RolesController < ApplicationController
 
   set_tab :admin
+  set_tab :roles, :adminmenu
   filter_resource_access
 
   # GET /order_status_types

@@ -1,6 +1,7 @@
 class DetentionReasonsController < ApplicationController
 
   set_tab :admin
+  set_tab :detention, :adminmenu
   filter_resource_access
 
 

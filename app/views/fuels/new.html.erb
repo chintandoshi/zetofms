@@ -6,10 +6,9 @@
   <%= f.error_messages %>
 
   <%=  render :partial => 'form', :object => f,:locals => { :mode => "new"} %>
-  <p>
+  <br/>
     <%= f.submit 'Save', :class => 'savebutton' %>
     <%= link_to 'Cancel', fuels_path, :class => "closebutton" %>
-  </p>
 <% end %>
 
   <% content_for :head do %>

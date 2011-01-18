@@ -31,12 +31,12 @@
   </div>
   <%= will_paginate @detention_reasons, :container => false %>
 </div>
-
+<br/>
 <% form_for(DetentionReason.new) do |f| %>
   <%= error_messages_for :detention_reason %>
   <div id="adminpanel">
       <%= f.label :description, "Reason description" %>
-      <%= f.text_field :description, :size => 20, :maxlength => 25 %>
+      <%= f.text_field :description, :size => 20, :maxlength => 25 %><br/>
       <%= f.submit 'Add', :class => "newbutton" %>
   </div>
 <% end %>

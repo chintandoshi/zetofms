@@ -1,23 +1,27 @@
 .listing { width: 100%;
           border-collapse: collapse;
-          margin: 2px 0 16px 0;
           background: #fff;
           border-top: 1px solid #ccc;
           }
 .listing th, .listing td { text-align: left; padding: 4px 2px; border-bottom: 1px solid #ccc; }
-.listing th { padding: 6px 2px; }
-.listing tr.header { background: #DDDDDD;}
-.listing tr.header:hover { background: #DDDDDD; }
-.listing tr.even { background: #E1E5EB; }
-.listing tr.odd { background:#fff;}
-.listing tr:hover { background: #ecf4fd; }
-.listing td:hover {
-    cursor: pointer;
-}
+.listing thead tr th{ background: #002B55; padding: 6px 2px; color: #fff;}
+.listing thead tr:hover th{ background: #002B55; }
+.listing thead a {color: #fff;}
+.listing tbody tr.even td{ background: #E6E4ED; }
+.listing tbody tr.odd td{ background:#fff;}
+.listing tbody tr:hover td{ background: #ecf4fd; }
+.listing tbody td:hover { cursor: pointer;}
 
+
+
+.info { width: auto; border-collapse: collapse; background: #EBF0F5;}
+.info tr {  }
+.info td {padding: 4px;text-align: left;}
+.info td.field { font-weight: 600;}
 
 .sublisting { padding: 1em; border-bottom: 1px solid #ccc;  }
 .sublisting .dropdowndetails {padding: 1em; background: #EBF0F5; }
+
 
 .admin {  width: auto;
           border-collapse: collapse;
@@ -35,38 +39,10 @@
 
 
 
-
-
-
-.info { width: 100%;
-        border-collapse: collapse;
-        margin: 1em 0 16px 0;
-        background: #EBF0F5;
-        border-top: 1px solid #ccc;
-        }
-.info tr {
-        border-bottom: 1px solid #ccc;
-}
-.info td {
-     padding: 1px;
-     text-align: left;
-}
-.info td.field {
-    font-weight: 600;
-}
-
-
-img
-{  
-   border-style: none;
-   margin: auto;
-
-}
-
 #errorExplanation { width: 65%; display: block; border: 2px solid #c00; padding: 7px 7px 12px 7px; margin: 0 auto 12px auto; background-color: #fee; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
 #errorExplanation h2 { text-align: left; margin: -7px; font-weight: bold; padding: 5px 5px 5px 25px; font-size: 11px; background: #fee url('../images/exclamation.png') 5px center no-repeat; color: #c00; border-bottom: 1px dotted #c00; text-shadow: none; }
-#errorExplanation p { margin: 5px 0; padding: 5px; }
+#errorExplanation p { display:none; margin: 5px 0; padding: 5px; }
 #errorExplanation ul li { font-size: 11px; list-style: square; }
-#errorExplanation ul { padding: 0 0 0 15px; }
+#errorExplanation ul { display:none;padding: 0 0 0 15px; }
 .fieldWithErrors { border: 2px solid #c00; display: inline-block; padding: 0; margin: 0; }
 .validation-error { font-size: 11px; color: #c00; font-style: italic; font-weight: normal; }

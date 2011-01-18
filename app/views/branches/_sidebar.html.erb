@@ -6,7 +6,7 @@
 <% content_for :sidebar_links_list do %>
 <div class="right-container">
   <% if permitted_to? :new, Branch.new %>
-    <%= link_to 'New Branch', new_branch_path,  :class => "newbutton" %>
+    <%= link_to 'New Branch', new_branch_path %>
   <% end %>
 </div>
 <% end %>

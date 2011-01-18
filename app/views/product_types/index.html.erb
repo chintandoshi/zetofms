@@ -31,12 +31,12 @@
   </div>
   <%= will_paginate @product_types, :container => false %>
 </div>
-
+<br/>
 <% form_for(ProductType.new) do |f| %>
   <%= error_messages_for :product_type %>
   <div id="adminpanel">
       <%= f.label :product_type_name, "New product" %>
-      <%= f.text_field :product_type_name, :size => 20, :maxlength => 25 %>
+      <%= f.text_field :product_type_name, :size => 20, :maxlength => 25 %><br/>
       <%= f.submit 'Add', :class => "newbutton" %>
   </div>
 <% end %>

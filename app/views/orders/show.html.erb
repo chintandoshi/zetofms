@@ -1,5 +1,3 @@
-<%= javascript_include_tag 'order' %>
-
 <span id="toolbar" class="ui-widget-header ui-corner-all">
     <%=  global_print_link() %>
     <% if permitted_to? :cancel, @order %>
@@ -64,4 +62,24 @@
 
 <br/>
 <br/>
-<%= render :partial => 'shared/globalfooter', :locals => {:order => @order} %>
+<%= render :partial => 'shared/orders/globalfooter', :locals => {:order => @order} %>
+
+<% content_for :head do %>
+    <script type="text/javascript">
+
+    /* orders/show.html.erb */
+    $j(document).ready(function(){
+        $j( "#tabs" ).tabs({
+        });
+    });
+
+    function disable_tabs(disabled_tabs) {
+        $j( "#tabs" ).tabs({ disabled: disabled_tabs });
+    }
+
+    function select_tab(index) {
+        $j("#tabs").tabs("select", index );
+    }
+
+    </script>
+<% end %>

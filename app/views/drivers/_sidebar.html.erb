@@ -4,9 +4,9 @@
 %>
 
 <% content_for :sidebar_links_list do %>
-<div class="right-container">
+<div>
   <% if permitted_to? :new, Driver.new %>
-    <%= link_to 'New Driver', new_driver_path,  :class => "newbutton" %>
+    <%= link_to 'New Driver', new_driver_path %>
   <% end %>
 </div>
 <% end %>

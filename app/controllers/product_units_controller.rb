@@ -1,6 +1,7 @@
 class ProductUnitsController < ApplicationController
 
   set_tab :admin
+  set_tab :productunits, :adminmenu
   filter_resource_access
 
 

@@ -1,13 +1,12 @@
 <%= link_to 'Cancel', @resource, :class => "closebutton",:style => "float:right;"  %>
 
-
 <h1>Editing contact for <%= @resource.display_name  %>  </h1>
 
 <% form_for [@resource,@contact] do |f| %>
   <%= f.error_messages %>
 
   <%= render :partial => "form", :object => f, :locals => { :mode => "edit"} %>
-
+  <br/>
   <%= f.submit 'Update Contact Information', :class => "savebutton" %>
   <%= link_to 'Cancel', @resource, :method => 'get', :class => "closebutton"%>
 

@@ -4,9 +4,9 @@
 %>
 
 <% content_for :sidebar_links_list do %>
-<div class="right-container">
+<div>
   <% if permitted_to? :new, PetrolPump.new %>
-    <%= link_to 'New Petrol Pump', new_petrol_pump_path,  :class => "newbutton" %>
+    <%= link_to 'New Petrol Pump', new_petrol_pump_path %>
   <% end %>
 </div>
 <% end %>

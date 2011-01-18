@@ -5,12 +5,12 @@
 
 <div id="searchpanel">
 <% form_for @search do |f| %>
-  <p><%= f.label :registration_number_like, "Registration Number" %>
-  <%= f.text_field :registration_number_like,:maxlength => 25, :size => 15 %> </p>
-  <p><%= f.label :vmodel_make_id_equals, "Vehicle Manufacturer" %>
-  <%= f.collection_select :vmodel_make_id_equals, Make.all(:order => "make_name"), :id, :make_name, { :include_blank => true} %></p>
-  <p><%= f.label :vmodel_id_equals, "Vehicle Model" %>
-  <%= f.collection_select :vmodel_id_equals, Vmodel.all(:order => "model_name"), :id, :model_name, { :include_blank => true} %> <br/><br/>
-  <%= f.submit "Filter", :class => "searchbutton" %> </p>
+  <%= f.label :registration_number_like, "Registration Number" %>
+  <%= f.text_field :registration_number_like,:maxlength => 25, :size => 15 %> <br/>
+  <%= f.label :vmodel_make_id_equals, "Vehicle Manufacturer" %>
+  <%= f.collection_select :vmodel_make_id_equals, Make.all(:order => "make_name"), :id, :make_name, { :include_blank => true} %> <br/>
+  <%= f.label :vmodel_id_equals, "Vehicle Model" %>
+  <%= f.collection_select :vmodel_id_equals, Vmodel.all(:order => "model_name"), :id, :model_name, { :include_blank => true} %> <br/>
+  <%= f.submit "Filter" %> 
 <% end %>
   </div>

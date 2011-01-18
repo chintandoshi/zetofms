@@ -1,6 +1,6 @@
 <% render :partial => '/shared/sidebar/admin' %>
 
-<%= link_to 'Back to vehicle manufacturers', makes_path, :class => "backbutton", :style => "float:right " %>
+<%= link_to 'Back', makes_path, :style => "float:right " %>
 
 <% unless @make.vmodels.empty? -%>
 <table class="admin">
@@ -31,7 +31,7 @@
   <%= error_messages_for :vmodel %>
   <div id="adminpanel">
       <%= f.label :model_name, "New Model for #{@make.make_name}" %>
-      <%= f.text_field :model_name, :size => 20, :maxlength => 25 %>
+      <%= f.text_field :model_name, :size => 20, :maxlength => 25 %> <br/>
       <%= f.submit 'Add', :class => "newbutton" %>
   </div>
 <% end %>

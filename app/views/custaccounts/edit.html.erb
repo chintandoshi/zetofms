@@ -6,7 +6,7 @@
   <%= f.error_messages %>
 
   <%= render :partial => "form", :object => f, :locals => { :mode => "edit"}%>
-
+  <br/>
   <%= f.submit 'Update Account Information', :class => "savebutton" %>
   <%= link_to 'Cancel', @custaccount, :method => 'get', :class => "closebutton" %>
 <% end %>

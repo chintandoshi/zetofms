@@ -4,14 +4,12 @@
 %>
 
 <% content_for :sidebar_links_list do %>
-<div class="right-container">
+<div>
   <% if permitted_to? :new, Fuel.new %>
-  <%= link_to 'New Fuel Allocation', new_fuel_path,  :class => "newbutton" %> <br/> <br/>
+  <%= link_to 'New Fuel Allocation', new_fuel_path %> <br/>
   <% end %> 
-</div>
-<div class="right-container">
   <% if permitted_to? :new, Fuel.new %>
-  <%= link_to 'Reconcile', new_fuel_path,  :class => "savebutton" %> <br/> <br/>
+  <%= link_to 'Reconcile', new_fuel_path %> <br/> 
   <% end %> 
 </div>
 <% end %>

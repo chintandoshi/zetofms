@@ -4,15 +4,15 @@
 %>
 
 <% content_for :sidebar_links_list do %>
-<div class="right-container">
+<div>
   <% if permitted_to? :index, Vehicle.new %>
-  <%= link_to 'Active Vehicles', vehicles_path,  :class => "indexbutton", :method => :get %><br/> <br/>
+  <%= link_to 'Active Vehicles', vehicles_path,  :method => :get %><br/>
   <% end %> 
   <% if permitted_to? :new, Vehicle.new %>
-  <%= link_to 'New Vehicle', new_vehicle_path,  :class => "newbutton" %> <br/> <br/>
+  <%= link_to 'New Vehicle', new_vehicle_path %> <br/>
   <% end %> 
   <% if permitted_to? :retired, Vehicle.new %>
-  <%= link_to 'Retired Vehicles', retired_vehicles_path,  :class => "indexbutton", :method => :get %> <br/> <br/>
+  <%= link_to 'Retired Vehicles', retired_vehicles_path, :method => :get %> <br/>
   <% end %>
 </div>
 <% end %>

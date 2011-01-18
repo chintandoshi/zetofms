@@ -19,3 +19,15 @@ ActiveSupport.use_standard_json_time_format = true
 # Don't escape HTML entities in JSON, leave that for the #json_escape helper.
 # if you're including raw json in an HTML page.
 ActiveSupport.escape_html_entities_in_json = false
+
+
+ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
+
+  if instance.error_message.kind_of?(Array)
+    %(#{html_tag}<span class="validation-error">&nbsp;
+      #{instance.error_message.join(',')}</span>).html_safe
+  else
+    %(#{html_tag}<span class="validation-error">&nbsp;
+      #{instance.error_message}</span>).html_safe
+  end
+end

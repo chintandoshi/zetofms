@@ -1,23 +1,14 @@
-<%= javascript_include_tag 'order' %>
-
 <%= link_to 'Cancel', order_path(@order), :class => "closebutton", :style => "float:right;" %>
 <h1>Editing billing details for Order #<%= @order.id %> </h1>
 
-<div id="panel">
-    <b>Customer :</b> <%=h @order.custaccount.display_name %> <br/>
-    <b>Consignor :</b> <%=h @order.consignor.display_name %> <%=h @order.from %>  <br/>
-    <b>Consignee :</b> <%=h @order.consignee.display_name %> <%=h @order.to %>  <br/>
-    <b>Requested Dispatch Date :</b> <%=h @order.dispatch_date_requested %> <br/>
-    <b>Requested Delivery Date :</b> <%=h @order.delivery_date_requested %>
-</div>
+<%= render :partial => "shared/orders/ordersnapshot", :locals => { :order => @order} %>
 
 <% form_for [@order,@billed_order] do |form| %>
   <%= form.error_messages %>
   <% fields_for @billed_order do |f| %>
     <%= render :partial => "form", :object => f, :locals => { :mode => "edit"} %>
   <% end %>
-  <p>
+  <br />
     <%= form.submit 'Save', :class => "newbutton" %>
     <%= link_to 'Cancel', order_path(@order), :class => "closebutton"%>
-  </p>
 <% end %>

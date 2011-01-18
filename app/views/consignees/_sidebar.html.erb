@@ -4,9 +4,9 @@
 %>
 
 <% content_for :sidebar_links_list do %>
-<div class="right-container">
+<div>
   <% if permitted_to? :new, Consignee.new %>
-    <%= link_to 'New Consignee', new_consignee_path,  :class => "newbutton" %>
+    <%= link_to 'New Consignee', new_consignee_path %>
   <% end %>
 </div>
 <% end %>

@@ -1,6 +1,7 @@
 class OrderStatusTypesController < ApplicationController
 
   set_tab :admin
+  set_tab :orderstatus, :adminmenu
   filter_resource_access
   
   # GET /order_status_types
